@@ -1,0 +1,10 @@
+name: Introduction to Air Quality Data Analysis with R
+description: |
+  Training materials for learning the R programming language, specifically tailored towards air 
+  data analysis. The training is structured into distinct lessons, each focusing on a different 
+  aspect of R programming.
+author: FluentData
+license: MIT
+language: en
+keywords: [R, air quality, data analysis]
+difficulty: beginner
