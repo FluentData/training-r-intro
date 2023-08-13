@@ -1,0 +1,199 @@
+# What is R
+
+R is a versatile language with many uses:
+
+- It is a free, open-source language used for statistical analysis.
+- It is popular in academia and widely used in industry, especially in the biotech and finance sectors.
+- It is similar to SAS or S plus, allowing you to do a simple or complex analysis and create impressive-looking graphics.
+- It is not just a statistic software, R is a programming language that enables you to do limitless number of tasks.
+- It is open source and therefore users can make modifications and share them with others.
+
+Find out more about the [increasing popularity of R here](https://r4stats.com/articles/popularity/).
+
+## R vs. Excel
+
+When deciding whether to use R or Excel consider the following:
+
+### Advantages of Excel
+- It is easy to use and familiar.
+- Simple for sorting and scrolling through data.
+
+### Disadvantages of Excel
+- It may lead to errors due to a fault in manual data entry.
+- There are limit on data size which means it can slow your computer with large datasets.
+- It can be challenging to perform a series of steps.
+- Good documentation is crucial for effective description of analysis steps.
+
+### Disadvantages of R
+- It might be difficult to use at the beginning.
+- Understanding and solving errors can be troublesome.
+- It is heavily dependent on the user finding answers through Google searches as there is no structured support.
+- Sharing data analysis with colleagues who are not familiar with it might be challenging.
+
+### Advantages of R
+- It is harder to make an error as you can see all your steps.
+- It can handle unlimited data size with the right configurations.
+- It promotes reproducibility and repeatability.
+- It has an active user community which means there are multiple internet sources and rapid releases of new technology.
+
+Excel is best used for a one-time analysis, with a small dataset and basic graphics. But when doing repeated analyses, lots of variables, advanced graphics, R becomes the more suitable tool. Overtime, you will find yourself gradually migrating from being a hybrid user to a full-time R user.
+
+# Setting Up R and RStudio
+
+To properly make use of R you need two pieces of software:
+
+1. **R:** It is the core component and can be downloaded from [CRAN website](https://cran.r-project.org/). If you open R directly, it has a rather plain interface.
+
+![The plain R console](img/r1.png)
+
+2. **RStudio:** RStudio is an integrated development environment (IDE) that makes R easier to use. It is free and can be downloaded from the [Posit website](https://posit.co/download/rstudio-desktop/). RStudio is not required to use R, but we will be using it throughout these lessons.
+
+RStudio, on opening, looks like this:
+
+![RStudio on first opening](img/rstudio1.png)
+
+The left panel in RStudio is the R console. Try typing `1 + 1` and hit "Enter", R will return the answer in the console, as shown below:
+
+![RStudio 1 + 1](img/rstudio2.png)
+
+We recommend using a script in your R journey, so you can save your code. To create a new script, go to "File" -> "New File" -> "R Script" and it will open in the top-left panel of RStudio. 
+
+![RStudio create new script](img/rstudio3.png)
+
+A script is a text document that can be saved. To run more than one line of code at a time, you just need to highlight them and click the "Run" button on the script tool bar.
+
+![RStudio run multiple lines](img/rstudio4.png)
+
+The bottom-right panel allows you to find and open files, view plots, load packages, and peruse help pages. The top-right panel provides information about the variables being used in your current R session.
+
+# R Basics
+
+## Performing Mathematical Operations
+R can easily perform basic arithmetic. To do this, open up a new script ("File" -> "New File" -> "R Script"), type in or copy the lines below, highlight your code, and click the "Run" button on the script panel toolbar.
+
+```r
+10 + 5
+10 - 5
+10 * 5
+10 / 5
+10 ^ 5
+```
+
+## Arithmetic Operators Reference Table
+
+|Operator  |Meaning         |Example |
+|:--|:--|:--|
+|+         |addition        |2 + 2   |
+|-         |subtraction     |2 - 2   |
+|*         |multiplication  |2 * 2   |
+|/         |division        |2 / 2   |
+|^         |exponentiation  |2 ^ 2   |
+
+R follows the usual order of arithmetic operations and uses parentheses to group operations. It performs divisions before subtractions, meaning `10 - 3 / 5`    equals 9.4 in R. To prioritize subtraction, enclose the operation in brackets like so: `(10 - 3) / 5  ` . That expression equals 1.4 in R.
+
+## Comments in R
+
+Comments are useful for marking up your script with important notes or descriptions that will not be evaluated. To write a comment, use the `#` character. Any text after the `#` on a line will not be evaluated. 
+
+```r
+# This is a comment and it will not be run by R
+x <- 5 # The code before this comment will be run
+```
+
+## Creating Objects
+
+Objects are used to store information in R. They are created using `<-`, the assignment operator. For example:
+
+```r
+x <- 10
+y <- 5
+x + y
+```
+
+This results in `15` in the R console (bottom-left panel in RStudio). You can create a new assignment for an existing object. For instance, setting `x <- 20` changes its value to `20`.
+
+R objects can have almost any name but must follow these conventions:
+  1. They can't start with a number.
+  2. They can't contain any spaces or special characters ($,%,#,-). Periods (.) are okay.
+  3. R is case-sensitive, and therefore, 'my.data' and 'My.data' are considered different objects.
+
+## R Data Types
+
+R has three main object types:
+
+Type      |  Description    |  Examples
+-------------|-----------------|-----------
+Character | Letters and words | "z", "Red", "H2O"
+Numeric  | Numbers          | 1, 3.14, log(10)
+Logical  | Boolean             | TRUE, FALSE
+
+## Grouping Data
+
+There are many ways to group data in R for easy manipulation:
+
+- Vectors: They contain multiple values of the same type (e.g., all numbers or all words).
+- Lists: They contain multiple values of different types (e.g., some numbers and some words).
+- Matrices: They are tables (like spreadsheets) that contain only one data type.
+- Data Frames: They are like Matrices, but can contain mixed data types.
+
+### Vectors
+Vectors are ordered sets of values of the same type. We use `c()` to combine vector elements, like so:
+
+```r
+x <- c(1, 2, 3, 4, 5)
+fruit <- c("apples","bananas","oranges")
+```
+
+Be sure to wrap strings (characters) in quotation marks, otherwise R will interpret them as the names of variables, which might lead to an error if such variables do not exist.
+
+### Lists
+Lists, on the other hand, can contain different types of data. We use `list()` to combine list items:
+
+```r
+x <- list("Benzene", 1.3, TRUE)
+```
+
+### Data Frames
+Data frames are the most common objects we work with when analyzing environmental data. They are essentially tables and can be thought of as spreadsheet-like structures in R. We use `data.frame()` to combine many vectors of the same length:
+
+```r
+pollutant <- c("Benzene", "Toluene", "Xylenes")
+concentration <- c(1.3, 5.5, 6.0)
+carcinogen <- c(TRUE, FALSE, FALSE)
+my.data <- data.frame(pollutant, concentration, carcinogen)
+```
+```card:error
+Note: Provide vectors of the same length when creating a data frame to avoid errors.
+```
+
+# Exercises
+
+Now that we have covered the basics of R, it's your turn to dive in a little deeper and try the exercises below!
+ 
+## Exercise 1
+```exercise
+? Calculate the square of 7 in R.
+! 7^2
+- Hint 1: Use the exponent (caret) operator "^".
+* In R, you can square a number by using the exponent operator ^. For 7, the square is 49.
+```
+
+## Exercise 2
+```exercise
+? Create a vector `grades` that contains the following values: 85, 90, 95, 87, 92.
+! grades <- c(85, 90, 95, 87, 92)
+- Hint 1: Use c() to combine vector elements.
+* Vectors in R can hold a collection of values. In this case, grades is a vector holding the values 85, 90, 95, 87, 92.
+```
+
+## Challenge
+```exercise
+? Create a data frame `students` that has two columns, `names` and `grades`. The `names` column should contain the following names: "Alice", "Bob", "Charlie", "David", "Eve". And the `grades` column should use the `grades` vector created in Exercise 2.
+! names <- c("Alice", "Bob", "Charlie", "David", "Eve")
+grades <- c(85, 90, 95, 87, 92)
+students <- data.frame(names, grades)
+- Hint 1: Remember to use c() to creating the names vector and data.frame() for the data frame.
+* A data frame in R is like a table that stores related data. Here, we have created a data frame 'students' that ties together the names of the students and their grades.
+```
+
+Now, you have a good understanding of what R is and how to carry out basic tasks in R using RStudio. As you progress, you'll start to see R's power, and will find it a valuable tool in your data analysis toolbox. As the saying goes, practice makes perfect, so get some hands-on experience with the exercises and challenges above.

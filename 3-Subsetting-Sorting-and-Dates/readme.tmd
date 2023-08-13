@@ -1,0 +1,148 @@
+# Working with R `data.frame`s
+
+Let's dive into how to handle `data.frame`s in R. Buckle up, as we explore loading, previewing, subsetting, sorting, and combining dataframes.
+
+## Loading the Data
+
+We'll start by loading the `chicago_air` `data.frame` from the `region5air` package available on GitHub.
+
+```r
+library(region5air)
+
+data(chicago_air)
+```
+
+Here we go! Your `chicago_air` dataframe is ready.
+
+```card:info
+Don't forget to import the required packages and load your necessary data before diving into data manipulation.
+```
+
+## A Quick Peek
+
+After loading the data, it's essential to ensure it looks as expected. A sneak peek into the first few rows is possible using the `head()` function.
+
+```r
+head(chicago_air)  
+```
+
+```question
+? How many lines can the head() function in R return by default?
+! a. Six
+- a. Six
+- b. Five
+- c. Ten
+- d. One
+* By default, the head() function in R returns the first six rows/lines of your data frame.
+```
+
+Suppose you yearn for a better peek, and you want to display a specific number of lines. Use the n = parameter.
+
+```r
+head(chicago_air, n = 3)
+```
+
+Similarly, you can get a glimpse of the bottom of the dataframe using the `tail()` function.
+
+```r
+tail(chicago_air)
+```
+
+To summarize data by counts the `table` function can be handy, whereas for quick data visualization the `plot()` and `hist()` functions come in handy.
+
+```r
+table(chicago_air$ozone)  ##Summarizes by counts
+plot(chicago_air$ozone)  # Quick plot of data
+hist(chicago_air$ozone)  #Like a histogram plot except no binning occurs
+```
+
+## Lesson Update
+Next, we will learn about Indexing and Subsetting. Right from these tiny steps, we will travel towards Logical Operators & Subsetting using the subset() function, only to find that Sorting data becomes inevitable for us.
+
+```card:info
+Get ready, put on your curios hats, and let's learn together!
+```
+
+## Indexing and Subsetting
+
+Viewing the entire dataframe is sometimes neither possible nor necessary. Thankfully, we can subset the data using the index values to grab particular rows and columns.
+
+Let's start with a small example.
+
+```r
+my_data <- data.frame(x = 1:5, y = 6:10)
+my_data[4, 2] ## This should grab the value in the 4th row and 2nd column 
+```
+
+Also, data from a vector can be accessed using the same indexing idea. Here's how -
+
+```r
+x <- c(1, 3, 2, 7, 25.3, 6)
+x[5]  # This will access the fifth element in the vector
+```
+
+Now, let's apply this knowledge to subset the `chicago_air` dataframe using the `[` function.
+
+```exercise
+? What command would you use to access all columns of the first row of the `chicago_air` dataframe?
+! chicago_air[1, ]
+- Hint 1: The `[` function is used to subset data in R.
+- Hint 2: The format for subsetting is [row,column] 
+* In the solution, the value before the comma inside the bracket `[` function is 1, representing the first row. Leaving the value after the comma blank means return all columns. 
+```
+
+Say you want more than one row, you just supply a vector of row numbers!
+
+```r
+chicago_air[c(1, 2, 5), ] #Accesses the 1, 2 and 5th rows of data
+```
+
+To select a specific column from the data frame, specify the column number in the brackets, on the right of the comma. 
+
+```r
+head( chicago_air[, 1] )
+```
+
+Remember, you can obtain more than one column by supplying a vector of column numbers. Column names can be used too!
+
+```r
+head( chicago_air[, c("ozone", "temp", "month")] )
+```
+
+Did we tell you can also select both rows and columns at the same time?
+
+```r
+chicago_air[1:5, 3:5]  # Returns first 5 rows of data and the third through fifth columns.
+```
+
+## Subsetting with Logical Operators
+
+Sometimes, you also need to subset a dataframe using logical expressions. 
+
+For example, let's say you want to get rows where the temperature was between 80 and 85 (including those values)
+
+```r
+air[(air$temp >= 80 & air$temp <= 85), ]
+```
+
+Or, you wish to get rows for days except the 6th day.
+
+```r
+head( air[(air$weekday != 6), ] ) #Excludes all data from the 6th day of the week
+```
+
+## Subsetting Using the subset() function
+
+Let's add another tool to your subsetting kit. You can use the `subset()` function to filter a dataframe. 
+
+```r
+high_temp <- subset(air, temp > 90)  
+head(high_temp)
+```
+
+## Sorting Data 
+
+R also allows to sort the rows of a dataframe using the `order()` function.
+
+```r
+ozone_ordered <- order(air$o

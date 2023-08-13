@@ -1,0 +1,133 @@
+# Introduction to Basic Statistics in R
+
+R, originally developed as a statistical programming language, is a perfect tool for performing basic statistics. Many built-in functions and community developed packages make for a seamless statistical analysis experience. This lesson will cover some statistical tests that you come across when working with environmental data.
+
+```card:info
+Throughout this lesson, we will use an ozone data set called `chicago_air` to demonstrate these concepts.
+```
+
+First, we need to load this ozone data and assign the ozone column to its own variable for quick access.
+
+```r
+library(region5air)
+data(chicago_air)
+ozone <- chicago_air$ozone
+```
+
+## Descriptive and Exploratory Statistics
+
+R offers a number of built-in functions for descriptive statistics. The functions we will be exploring all have a parameter `na.rm` that instructs the function to exclude any `NA` values from the calculation.
+
+Let's explore the range and the spread of our dataset:
+
+```r
+min(ozone, na.rm=T)
+max(ozone, na.rm=T)
+range(ozone, na.rm=T)
+summary(ozone)
+```
+
+To visualize the data distribution, `hist()` and `boxplot()` come in handy.
+
+```r
+hist(ozone)
+boxplot(ozone)
+```
+
+## Quiz Question
+```question
+? What does the 'na.rm' parameter stand for in these R functions?
+! c. Remove NA values
+- a. Name Abstract 
+- b. No Answer
+- c. Remove NA values
+- d. Natural Algorithm
+* 'na.rm' parameter stands for 'Remove NA values'. When set to TRUE, this parameter instructs the function to ignore or remove NA values during the calculation.
+```
+
+## Measures of Central Tendency and Dispersion
+
+We can find the mean and median of the ozone concentration dataset using in-built functions.
+
+```r
+mean(ozone, na.rm=T)
+median(ozone, na.rm=T)
+```
+
+Similarly, R provides functions to estimate the variance, standard deviation, and interquartile range—crucial measures of dispersion.
+
+```r
+var(ozone,na.rm=T)
+sd(ozone,na.rm=T)
+IQR(ozone,na.rm=T)
+```
+
+## Useful Packages for Statistics
+
+The `Hmisc`, `psych`, and `pastecs` packages offer functions that provide comprehensive statistical descriptions.
+
+```r
+library(Hmisc)
+describe(ozone)
+
+library(psych)
+describeBy(ozone)
+
+library(pastecs)
+stat.desc(ozone, norm=T)
+```
+
+```card:info
+Ensure you have these packages installed. If not, you can install them using the `install.packages()` function.
+```
+
+## Statistical Tests
+
+R has a rich collection of built-in functions for various statistical tests. We'll use the `t.test()` function to perform a two sample t-test on our Chicago ozone data.
+
+```exercise
+? Why do we need to perform a Shapiro-Wilk test before any statistical tests?
+! To confirm if data follows a normal distribution
+- Hint 1: This test is related to the nature of our data distribution.
+- Hint 2: Are we dealing with normal or non-normal data?
+* The Shapiro-Wilk test is used to check whether data follows a normal distribution. This is important as many statistical tests assume that data is normally distributed. Outcomes of this test dictate what kind of statistical tests we can perform.
+```
+
+We will demonstrate differences between ozone concentrations in different months as they could be significantly different due to seasonal variations.
+
+Next, we should also check the normality of ozone concentrations using histograms and the Shapiro-Wilk test.
+
+You can run the correlation test using `cor.test()`. To create a correlation matrix graph, you can use `ggcorrplot`.
+
+Lastly, pairwise plots can present an overview of relationships among variables.
+
+```exercise
+? What are the functions to create pairwise plots?
+! pairs and pairs.panels
+- Hint 1: One of the functions belongs to the base R and another is from the `psych` package.
+- Hint 2: Both functions share a similar name.
+* The `pairs()` function from base R and the `pairs.panels()` function from the `psych` package can be used to create pairwise plots.
+```
+
+Now, you should be comfortable with different statistical analyses in R. The `EnvStats` package provides an exhaustive list of statistical tests for environmental data.
+
+In the next section, we will delve into more complex problems and explore these statistical tests in more detail.
+
+# Challenges
+
+If you are looking for an additional challenge and want to apply what you have learned, consider trying the following exercises:
+
+```exercise
+? How would you conduct a Fisher's Test using the `chicago_air` dataset?
+! This is a hypothetical question. To carry out a Fisher's Test, we need two nominal variables to find out if there is a significant association between them. As such, the Fisher's Test might not be applicable to the `chicago_air` dataset.
+- Hint 1: A Fisher's Test requires two nominal variables.
+- Hint 2: This test is used to detect any association between the two variables.
+* A Fisher's Test might not be applicable to the `chicago_air` dataset because we need two nominal variables. The Fisher's Test is useful for finding out if there is any significant association between the two variables. 
+
+```exercise
+? Perform a correlation analysis between 'solar' and 'temp' from the `chicago_air` dataset. Interpret the results.
+! NA
+- Hint 1: Start by subsetting the dataset.
+- Hint 2: Use the 'cor()' function to find the correlation. Interpret the result in terms of the strength and direction of the correlation.
+* NA
+```

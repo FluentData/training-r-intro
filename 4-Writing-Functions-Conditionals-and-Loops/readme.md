@@ -1,11 +1,3 @@
----
-title: "Writing Functions, Conditionals, and Loops"
-output: 
-  html_document: 
-    keep_md: yes
-date: "2023-05-25"
----
-
 # Writing functions
 
 We already know that when we use a function, we need to know what the arguments 

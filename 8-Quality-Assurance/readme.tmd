@@ -1,0 +1,73 @@
+# Quality Assurance in R: Ensuring Your Data Behaves 
+
+Before we dive into our journey to conquer all things R-related, let's first get to know the terrain we're going to be facing. 
+
+The fundamental idea of Quality Assurance (QA) in data analysis is to ensure that all of the data in your dataset matches your expectations. In this lesson, you're going to learn some of the key ways to do this in R.
+
+```{r}
+library(region5air)
+data(airdata)
+```
+
+## Overview of Quality Assurance
+
+```card:info
+Quality Assurance is important in all branches of Data Analysis. It helps you verify that your data is what you think it is. If you've ever been surprised by a sudden rain shower when you expected sunshine, then you'll appreciate the value of QA!
+```
+
+## Inspecting Your Data Types
+
+Meet `str()`, your pocket microscope for investigating data in R. It's super helpful when you've just imported data and you want to make sure it's in the right format.
+
+```{r}
+str(chicago_air)
+```
+
+## Dealing with "Illegal" Data
+
+"Illegal" data—values that should never crop up in your dataset—are like party crashers. They're uninvited and can cause chaos. Fear not, though! We can show them the door with R. 
+
+For instance, let's say we had negative ozone values in our dataset, a physical impossibility (unless we've discovered anti-ozone!). We can replace these values with `NA`.
+
+```exercise
+? Write a line of code that would replace negative ozone values in the Chicago air data set with NA.
+! chicago_air$ozone[chicago_air$ozone < 0] <- NA
+- Hint 1: Use the R assignment operator (<-) to replace values.
+- Hint 2: Don't forget that R treats data like a vector, so you don't have to individually check each value.
+* The code uses vectorized functions in R to quickly replace "illegal" (not possible in reality) data within our data set with 'NA' values which stand for 'Not Available'. This allows us to clean our data by removing erroneous values.
+```
+
+## On the Lookout for Outliers
+
+Dealing with outliers can be tricky because they are uncommon but within the realm of possibility. The `outlier()` function, from the psych package, calculates the Mahalanobis distance which is a way of detecting outliers. It identifies records that appear unusual, and the further the point is away from the line in the graph, the more suspect the record is.
+
+This exercise will use `outlier()` function, don't worry if this seems a bit advanced! We'll provide some hints to guide you through this.
+
+```exercise
+
+? Use the `outlier` function from the `psych` package to identify outliers in the chicago air data for "ozone", "temp", and "solar" parameters and create a plot of outliers.
+! library(psych)
+outliers <- outlier(chicago_air[, c("ozone", "temp", "solar")], plot=TRUE)
+- Hint 1: Make sure you have loaded the “psych” package using the library() function before using the outlier() function.
+- Hint 2: Pass the variables "ozone", "temp", and "solar" from the "chicago_air" data as arguments to outlier function.
+* This will create a plot with outliers labelled for each variable. The points further away from the line are more likely to be outliers.
+```
+
+## Challenges
+
+Are you feeling brave? Want to put your new skills to the test? Try these challenges!
+
+```exercise
+/* Challenge 1 */
+? Consider a hypothetical situation where our dataset contains temperature values recorded as degrees Celsius, but anything above 50 is likely an error. Write a line of code that replaces all temperature recordings greater than 50 degrees Celsius with 'NA' in the "my_temp" data.
+! my_temp[my_temp > 50] <- NA
+* This line of code sets any value in the "my_temp" array that's over 50 to 'NA'. Why 50? Because it's unlikely we'd be measuring a temperature higher than 50 degrees Celsius unless we were just inches away from the sun!
+
+/* Challenge 2 */
+? You are given a vector 'errors' which contains wrongly recorded values that appear in your dataset. Write a general function 'correct_errors' that takes in the data vector and the errors vector and replace all errors with 'NA' in the data.
+! correct_errors <- function(data, errors) {
+  data[data %in% errors] <- NA
+  return(data)
+}
+* This function takes in two arguments - 'data' and 'errors'. It replaces all values in 'data' that are present in 'errors' with 'NA'. This could be handy when you have a list of known errors to weed out from your data.
+```

@@ -1,0 +1,163 @@
+<!-- Lesson Revision -->
+
+# Crafting Your Own Functions and Loop Control in R
+
+This lesson will familiarize you with creating your own functions, using conditionals, for loops, and `apply()` functions in R programming. Before proceeding, ensure you understand the basic R data types and the concept of vectors and data frames. 
+
+## Breathing Life into Your Own Functions
+
+It's a great feeling to use built-in functions like `mean()`, but it's an even more incredible feeling to craft your own. Let's create our own simple function, similar to `mean()`, called `myMean()`.
+
+```r
+myMean <- function(x){
+  total_count_of_values <- length(x)
+  total_sum_of_values <- sum(x)
+  average_of_values <- total_sum_of_values/total_count_of_values
+  average_of_values
+}
+```
+
+In our function, we calculate the total count of values in the vector (`x`), find their sum, and subsequently, their average.
+
+Let's take our homemade function for a spin.
+
+```r
+my_vector <- c(1, 3, 5, 2, 6, 9, 0)
+vector_mean <- myMean(x = my_vector)
+vector_mean
+```
+
+It's a good practice to cross-verify our hand-crafted function with R's built-in ones. Let's do that.
+
+```r
+mean(my_vector)  
+```
+
+## Twist and Turns with Conditionals
+Conditionals (like `if` and `ifelse` in R) help add a good decision-making ability to our programs. Here’s a basic outline below of how to use the `if()` function:
+
+```r
+if(<logical expression>) {
+  
+  # code that runs if the logical expression is true
+  
+} else {
+  
+  # code that runs if the logical expression is false
+  
+}
+```
+
+Let's understand this with the air quality index example.
+
+```r
+ozone_value <- 0.075
+
+if(ozone_value > 0.065) {
+  
+  print("Potential Health Effects")
+  
+} else {
+  
+  print("All Good")
+  
+}
+```
+
+R also offers a simplified version of `if()`, called `ifelse()`.
+
+```r
+ozone_value <- 0.060
+
+message <- ifelse(ozone_value > 0.065, "Potential Health Effects", "All Good")
+print(message)
+```
+
+## The Magic of For Loops
+Similar to other programming languages, R has `for` and `while` loops. Let's delve into `for` loops in this tutorial.
+
+```r
+ints <- c(1, 2, 3)
+
+for(i in ints) {
+  
+  print(i)
+  
+}
+```
+
+In this example, we simply print the values of the vector as they loop through.
+
+And now let's walk through a slightly more complicated example.
+
+```r
+my_averages <- c()
+
+my_list <- list(c(1, 5, 9, 3), 1:10, c(23, 42))
+
+for(i in my_list){
+  
+  my_averages <- mean(i) 
+  
+}
+
+my_averages
+```
+
+In this piece of code, three vectors are saved in a `list` variable, and the mean of each vector is saved in a variable named `my_averages`.
+
+## The Magical World of `apply()` Functions
+
+The most efficient way to perform loops in R is through `apply()` and related functions. Let's consider a quick example.
+
+```r
+library(region5air)
+
+data(chicago_air)
+
+air <- chicago_air[, c("ozone", "temp", "solar")]
+
+air_max <- apply(air, 
+                 MARGIN = 2,
+                 FUN = max, 
+                 na.rm = TRUE
+                 )
+air_max
+```
+
+And now, let's apply the `mean` function to each vector in a list,
+```r
+my_list <- list(c(1, 5, 9, 3), 1:10, c(23, 42))
+my_averages <- sapply(my_list, myMean)
+my_averages
+```
+
+## Challenges
+
+Let's test the skills you have accumulated in this lesson, shall we?
+
+1. Modify the function `myMean()` to return a list containing the mean, sum, and length of the vector. 
+
+```exercise
+? Modify `myMean()` function to return a list with mean, sum, and length of the vector.
+! myMean <- function(x){
+      mean_of_values <- sum(x)/length(x)
+      sum_of_values <- sum(x)
+      length_of_values <- length(x)
+  
+      list(Mean=mean_of_values, Sum=sum_of_values, Length=length_of_values)
+  }
+* The function `myMean()` is modified to calculate mean, sum, and length of given vector `x`. It then returns a list with these three values.
+```
+
+2. Write a for loop that prints out each precious metal from the vector: `metals <- c("Gold", "Silver", "Platinum", "Palladium", "Rhodium")`
+
+```exercise
+? Write a for loop that prints each metal from the vector `metals`.
+! metals <- c("Gold", "Silver", "Platinum", "Palladium", "Rhodium")
+
+for(metal in metals) {
+    print(metal)
+}
+* This for loop iterates over each element in the vector `metals`, and prints each one in turn.
+```

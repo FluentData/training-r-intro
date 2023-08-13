@@ -1,13 +1,3 @@
----
-title: "Functions and Importing Data"
-output: 
-  html_document: 
-    keep_md: yes
-date: "2023-05-22"
----
-
-
-
 # Functions
 
 - Functions are a way to repeat the same task on different data. 

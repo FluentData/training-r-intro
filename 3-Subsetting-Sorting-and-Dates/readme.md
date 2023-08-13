@@ -1,11 +1,3 @@
----
-title: "Subsetting and Sorting Data"
-output: 
-  html_document: 
-    keep_md: yes
-date: "2023-05-23"
----
-
 # Working with R `data.frame`s
 
 We'll begin by loading the `chicago_air` `data.frame` from the `region5air`

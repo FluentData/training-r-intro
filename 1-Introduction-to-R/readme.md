@@ -1,14 +1,3 @@
----
-title: "Introduction to R"
-output: 
-  html_document: 
-    keep_md: yes
-date: "2023-05-21"
----
-
-
-
-
 # What is R
 
 R is many things…

@@ -1,11 +1,3 @@
----
-title: "QA and Common Pitfalls"
-output: 
-  html_document: 
-    keep_md: yes
-date: "2023-06-14"
----
-
 ## Quality Assurance
 
 QA is basically the same for all data analysis, regardless of what software 

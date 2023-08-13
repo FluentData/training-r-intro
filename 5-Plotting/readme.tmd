@@ -1,0 +1,210 @@
+# Visualizing Data with R: Creating Plots
+
+In this lesson, we will examine the various methods R offers to visualize data, truly B-RINGing data to life, so to speak! By the end, we will better understand how to use base R graphics as well as the `ggplot2` and `lattice` packages to create attractive and informative plots. As a prerequisite, you should be familiar with vector and data frame operations in R.
+
+```card:info
+This lesson requires grasp on vectors and data frames in R. Each new concept will be introduced and explained, but having familiarity with R's basic data structures will make things smoother.
+```
+<!--Code to install the required packages-->
+```r
+if (!require("region5air")) {
+  install.packages("region5air")
+  library("region5air")
+}
+
+if (!require("lattice")) {
+  install.packages("lattice")
+  library("lattice")
+}
+
+if (!require("ggplot2")) {
+  install.packages("ggplot2")
+  library("ggplot2")
+}
+
+if (!require("tidyr")) {
+  install.packages("tidyr")
+  library("tidyr")
+}
+```
+
+## Base Graphics in R
+
+R's base `plot()` function allows us to create a scatterplot of two vectors. It takes at least two arguments: x (x-axis coordinates) and y (y-axis coordinates). 
+
+```r
+day <- c(1, 2, 3, 4, 5)
+benzene <- c(1.3, 4.5, 2.6, 3.4, 6.4)
+plot(x = day, y = benzene)
+```
+
+For this lesson, we'll use the `chicago_air` data frame from `region5air` package, which contains the air quality records of Chicago, to create our plots.
+
+```r
+library(region5air)
+data(chicago_air)
+head(chicago_air)
+```
+
+```question
+? How does a code block with library(region5air) function work in R?
+! This statement checks if the package "region5air" is already installed. If not, it installs the package and then loads it into the R environment.
+- Hint: library() is an R function used to load packages.
+* The library() function in R is used to load packages into the current R environment. It's required to access functions and datasets included within the package. The condition here first checks if the package "region5air" is already installed with the if(!require()) construct. If it's not, the install.packages() function is used to install it, and then library() loads it.
+```
+
+Let's create a scatterplot of temperature (`temp`) and ozone (`ozone`) concentrations from this dataset.
+
+```r
+plot(chicago_air$temp, chicago_air$ozone)
+```
+
+To produce a chronological plot of ozone over time, we first convert the date into a `Date` object in R.
+
+```r
+chicago_air$date <- as.Date(chicago_air$date)
+plot(chicago_air$date, chicago_air$ozone, type = "l")  # 'l' stands for 'line'
+```
+
+```exercise
+? Draw a scatter plot using the 'solar' and 'ozone' variables from the 'chicago_air' data frame.
+! plot(chicago_air$solar, chicago_air$ozone)
+- Hint 1: Use the plot() function.
+- Hint 2: The two arguments to the plot function should be the columns 'solar' and 'ozone' from 'chicago_air'.
+* The plot() function in R allows us to create scatter plots by taking two vectors as arguments. In this case, we're creating a scatter plot of the 'solar' and 'ozone' columns from the 'chicago_air' data frame. 
+```
+
+Multiple plots can also be placed on the same plotting grid using the `par()` function. The `mfrow` parameter accepts a vector denoting the number of rows and columns. Here, we are plotting two line graphs in one row and two columns.
+
+```r
+par(mfrow = c(1,2))
+
+plot(chicago_air$date, chicago_air$ozone, 
+     type='l', 
+     pch = 16,
+     col = "purple", 
+     lwd = 2.5,
+     xlab="Date", 
+     ylab = 'Ozone (ppm)', 
+     main = 'Chicago Ozone Data')
+
+plot(chicago_air$date, chicago_air$temp, 
+     type='l', 
+     xlab = "Date",
+     ylab= 'Temp (°F)',
+     main = 'Chicago Temp Data')
+
+dev.off()  # Clear the plot area
+```
+
+Now let's create a bar plot and add a reference line that represents the National Ambient Air Quality Standards (NAAQS) for ozone.
+
+```r
+bar_plot <- barplot(height = chicago_air$ozone, 
+                    names.arg = chicago_air$date,
+                    xlab="Date", 
+                    ylab="Ozone (ppm)", 
+                    main = 'Chicago Ozone Data')
+abline(h = .070, col = "red")  # NAAQS standard
+```
+
+## Visualizing Data with the Lattice Package
+
+The Lattice package in R helps create Trellis graphs, an effective method to visualize multivariate data. Let's start by creating a line plot of ozone values over time.
+
+```r
+xyplot(ozone ~ date, 
+       data = chicago_air, 
+       type = "l", 
+       ylab = "Ozone (ppm)")
+```
+
+Even more powerful is Lattice's ability to 'condition' or 'facet' our graphs by other variables.
+
+```exercise
+? What does it mean to 'condition' or 'facet' a graph?
+! It means to split the data into subsets according to one or more factors, and then plot each subset in its own 'panel' of a multi-panel plot.
+- Hint: Think of it as segmenting data based on certain conditions or factors.
+* In data visualization, 'conditioning' or 'faceting' refers to creating a sequence of plots, each of which presents the relationships between variables for a subset of the data, defined by one or several factors. For example, separate plots for male and female genders in a survey, or separate plots for different years in a time series.
+```
+Let's condition our bar graph by the `weekday` and `month` variables. First, we convert these variables to factors to ensure correct ordering.
+
+```r
+chicago_air$month <- factor(months(chicago_air$date), labels = month.name)
+chicago_air$weekday <- factor(weekdays(chicago_air$date, abbreviate = TRUE), labels = c("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"))
+```
+
+Then, we create a conditional box plot with weekdays and months.
+
+```r
+bwplot(ozone ~ weekday | month, 
+       data = chicago_air,
+       ylab = "Ozone (ppm)",
+       xlab = "Weekday",
+       pch = '|',
+       scales = list(x=list(rot=45)))
+```
+
+## Visualizing Data with the ggplot2 Package
+
+The `ggplot2` package uses a layering approach to create complex plots with less syntax.
+
+```r
+ggplot(chicago_air, aes(x = date, y = ozone)) + geom_line()
+```
+
+We can conditon plots in `ggplot2` by reshaping our data frame into a 'longer' format using the `pivot_longer()` function from the `tidyr` package.
+
+```r
+chicago_air$high_temp <- chicago_air$temp > 80
+
+chicago_long <- pivot_longer(chicago_air, 
+                             cols = c("ozone", "temp", "solar"),
+                             names_to = "variable",
+                             values_to = "value")
+
+ggplot(chicago_long, aes(x = date, y = value, color = high_temp)) + 
+  geom_point() +
+  facet_grid(rows = "variable", scales="free_y")
+```
+
+`ggplot2` also makes it easy to draw confidence intervals with its `geom_smooth()` function. 
+
+```r
+ggplot(chicago_air, aes(temp, ozone)) +
+  geom_point() +
+  geom_smooth(method='loess')
+```
+
+Finally, save your plots using the 'Export' button in RStudio or by using the `ggsave()` function.
+
+```r
+my_plot <- ggplot(chicago_air, aes(temp, ozone)) +
+  geom_point() + 
+  geom_smooth(method = loess)
+
+ggsave(filename = "my_plot.png", plot = my_plot)
+```
+
+## Challenges
+
+Congratulations on finishing the lesson! Now, you are well equipped to create and customize plots in R. For a final challenge:
+
+```exercise
+? Create a plot to visualize the relationship between solar radiation and ozone concentration. Use any plotting system you prefer.
+! 
+- This is an open-ended challenge.
+- Consider creating a scatterplot or line graph.
+* This challenge is about applying what you've learned about plotting in R. You have learned to make scatter plots and line graphs among other things. The main thing is to make sure your plot accurately represents the data and is easy to understand.
+```
+
+```exercise
+? Revise the temperature plot above to include a title and labels for both axes.
+! 
+- This is an open-ended challenge.
+- Remember to set appropriate `xlab`, `ylab`, and `main` parameters in your plot() function call.
+* This challenge is about applying what you've learned about adding elements to plots in R. The plot function in R allows you to set the title of the plot (with the `main` parameter), and labels for the X and Y axes (with the `xlab` and `ylab` parameters).
+```
+
+Plot away and happy visualizing!
+

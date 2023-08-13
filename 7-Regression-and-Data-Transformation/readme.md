@@ -1,11 +1,3 @@
----
-title: "Linear Regression"
-output: 
-  html_document: 
-    keep_md: yes
-date: "2023-06-14"
----
-
 ## Linear regression
 
 We use linear regression to figure out what the relationship is between certain 

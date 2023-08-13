@@ -1,0 +1,150 @@
+# Functions in R
+
+In this lesson we will learn to use functions in R, import data into R, and perform quick data exploration.
+
+## What are functions in R?
+
+Functions in R are ways to perform repeated tasks on different sets of data. R comes with built-in functions that perform common tasks.
+
+```r
+# Example usage of built-in R functions
+
+# Creating a vector of numeric values
+x <- c(4, 8, 1, 14, 34)
+
+# Calculate the mean of the data set
+mean(x) 
+```
+A function in R typically follows the format `function()`, where `function` is the name of the function which gives us an idea of what it does. The parentheses `()` is where we put our data or indicate options. These are often referred to as the _arguments_ of the function.
+
+```question
+? What is an argument in a function in R?
+! The input we pass to a function to tell it what to operate on is referred to as an argument.
+- a. The output that a function returns
+- b. The input we pass to a function to tell it what to operate on
+- c. The name of the function
+- d. None of the above
+* An argument in a function in R is the input we pass to a function to tell it what to operate on.
+```
+
+Many built-in functions in R have multiple arguments, so often, we need to provide the function with additional information so that it can return the correct calculation.
+
+```exercise
+? Run the `round()` function
+! round(12.3456, digits=3)
+- Hint 1: Use the round() function
+- Hint 2: Use the digits argument to determine the number of decimal places.
+* The round() function in R allows you to round a number. In this case, the number 12.3456 has been rounded to 12.346.
+```
+
+## Common and Useful Functions in R
+
+### `seq()` function
+The `seq()` function creates a sequence of numbers. It is very useful when writing functions.
+
+```exercise
+? Create a sequence of numbers from 1 to 9 with a step of 2 using the seq() function.
+! seq(1, 9, by = 2)
+- Hint 1: Use 1 as the starting point
+- Hint 2: Set 'to' to 9
+- Hint 3: Set 'by' to 2
+* The seq() function in R generates a sequence of numbers. In this case, we're generating a sequence of numbers from 1 to 9 with steps of 2 i.e., (1, 3, 5, 7, 9).
+```
+
+### `paste()` function
+The `paste()` function concatenates two or more strings.
+
+```exercise
+? Combine the strings "Hello" and "world!" using the paste() function.
+! paste("Hello", "world!", sep = " ")
+- Hint 1: Use "Hello" and "world!" as arguments.
+- Hint 2: Use the sep = " " argument to include a space between the concatenated strings.
+* The paste() function in R allows you to concatenate two or more strings. In this case, "Hello" and "world!" are combined to form "Hello world!".
+```
+
+## Importing Data into R
+
+R provides functionality to import data from a variety of formats, including CSV, Excel, databases, and GIS shapefiles.
+
+### CSV Files
+R has a built-in function called `read.csv()` for importing `.csv` files.
+
+```r
+# Reading CSV file and viewing first few lines
+
+# Import the Chicago daily air quality data
+chicago_daily <- read.csv("chicago_daily.csv")
+head(chicago_daily) # Displays first few lines
+```
+
+### Using Packages
+Anyone can create and make available functions for R that go beyond its base functionality. These are made available in packages.
+
+### Preparing and importing Excel files
+Use the `read_excel()` function from the `readxl` package to read emissions data from an Excel file.
+
+```r
+# Reading an Excel file using the read_excel() function
+
+# Import 'readxl' library
+library(readxl)
+
+# Read 'emissions_IL_2022.xlsx' Excel file
+emissions <- read_excel("emissions_IL_2022.xlsx", sheet = "UNIT_DATA", skip = 6)
+
+# Displays first few lines of the data frame
+head(emissions)
+```
+
+## Quick Data Exploration in R
+It's essential to understand your data before beginning any sort of data analysis. We'll discuss a few options.
+
+```r
+# Exploring and summarizing data 
+
+# Display column names of chicago_air
+colnames(chicago_air)
+
+# Number of observations in the dataset
+nrow(chicago_air)
+
+# Structure of the data
+str(chicago_air)
+
+# Summary of the data
+summary(chicago_air)
+```
+
+## The `$` operator
+Use the `$` operator in R to refer to a specific column name in a `data.frame`. This will return the column as a vector.
+
+```r
+# Usage of the $ operator to select a specific column
+
+str(chicago_air$ozone) 
+```
+
+
+## Challenges
+
+1. Use the `paste()` function to combine the words "Data", "Science", "in", "R". Separate each word with a space.
+
+2. Import a CSV file named `data.csv` and display the first 3 rows.
+
+Please note: We recommend that you write down your answers before testing in R. This helps in building your skills in reading and understanding R code.
+```exercise
+? Challenge 1: Use the `paste()` function to combine the words "Data", "Science", "in", "R". Separate each word with a space.
+! paste("Data", "Science", "in", "R", sep = " ")
+- Hint 1: Use "Data", "Science", "in", and "R" as arguments.
+- Hint 2: Use the sep = " " argument to include a space between the concatenated strings.
+* The paste() function in R allows you to concatenate two or more strings. In this case, "Data", "Science", "in", and "R" are combined to form "Data Science in R".
+ ```
+
+ ```exercise
+? Challenge 2: Import a CSV file named `data.csv` and display the first 3 rows.
+! data <- read.csv("data.csv")
+head(data, n = 3)
+- Hint 1: Use the read.csv() function to import the CSV file.
+- Hint 2: Use the head() function to display the first 3 rows.
+* The read.csv() function in R allows you to import CSV files, and the head() function allows you to display the first n rows of data. In this case, the first 3 rows of the "data.csv" file are displayed.
+ ```

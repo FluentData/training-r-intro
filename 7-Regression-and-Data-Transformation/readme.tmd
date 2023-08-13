@@ -1,0 +1,106 @@
+# Exploring Linear Regression in R
+
+In this lesson, we will delve into linear regression, showcasing its ability to analyze relationships between different variables. The particular focus will be on environmental parameters such as temperature, solar radiation, humidity, wind, and their relation to chemicals of interest, like ozone.
+
+## Prerequisites
+
+Before you begin, make sure you have the `region5air` and `ggplot2` packages installed. They can be installed using the following R code:
+
+```r
+install.packages("region5air")
+install.packages("ggplot2")
+```
+
+## The Basics
+
+Suppose we're interested in the relationship between ozone and temperature for our Chicago data. We'll employ linear regression, more specifically, the `lm()` function in R, to explore this connection.
+
+Before we dive into linear regression, it's always recommended to visualize the data to understand the relationship better. `plot()` function is a handy tool to accomplish this.
+
+Let's load the required package and data:
+
+```r
+library(region5air)
+data(chicago_air)
+```
+
+As part of data preparation, we will convert ozone to ppb (parts per billion) for better interpretation:
+
+```r
+chicago_air$ozone <- chicago_air$ozone * 1000
+```
+
+Now, we gently go ahead and plot the temperature against the ozone:
+
+```r
+plot(chicago_air$temp, chicago_air$ozone, 
+     xlab = expression("Temperature (" * degree * "F)"), 
+     ylab ='Ozone (ppb)')
+```
+
+```card:info
+Remember, the initial inspection of the data helps us gain basic insights into the relationship between the two variables under study. So always start with a plot!
+```
+
+## Linear Regression in Action
+
+We observe a linear relationship between temperature and ozone from the plot. So, let's proceed by fitting a linear model using `lm()` function. This function can be used for both simple (one explanatory variable) or complex (multivariate) models.
+
+We fit the linear model using `lm(formula = response variable ~ explanatory variable)` formula, and we obtain a summary of the model using the `summary()` function.
+
+```r
+ozone_temp_lm <- lm(chicago_air$ozone ~ chicago_air$temp)
+
+summary(ozone_temp_lm)
+```
+
+Adding the regression line from our model to our original scatterplot enhances visual representation and understanding.
+
+```r
+plot(chicago_air$temp, chicago_air$ozone, 
+     xlab='Temperature (degree F)', 
+     ylab='Ozone (ppb)')
+abline(ozone_temp_lm, col="red")
+```
+
+## Understanding the Output
+
+The output summary of our fitted model provides the intercept and slope information, standard errors, and significance of the estimates. For a deeper understanding, we can also create plots from the linear model output.
+
+Plots of Residuals vs Fitted values, Residual Quantile-Quantile (Q-Q) plot, Standardized residuals vs Fitted values, and Residuals vs. Leverage can be insightful. Histograms and Kernel density plots of the residuals also provide helpful attributes of our model.
+
+```r
+plot(ozone_temp_lm)   #Plots various attributes of the model
+hist(ozone_temp_lm$residuals)   #Histogram of model residuals
+```
+
+Creating density of residuals:
+
+```r
+d <- density(ozone_temp_lm$residuals)  
+plot(d, main="Kernel Density of model 1 residuals")  
+polygon(d, col="red", border="blue")
+```
+
+## Visualization using ggplot2
+
+We can leverage `ggplot2` to visualize these relationships and the model parameters better. It simplifies the process of displaying 95% Confidence Intervals.
+
+```r
+library(ggplot2)
+p <- ggplot(chicago_air, aes(x = temp, y = ozone)) + geom_point()
+p + stat_smooth(method = "lm")
+```
+
+## Recap
+
+In today's lesson, we've practiced applying linear regression on real-world data, visualized the relationships between variables, made sense of the output details, and even enhanced our visualizations using `ggplot2`. 
+
+Stay tuned for more on advanced regression techniques!
+
+## Challenges
+
+Sharpen your skills with these additional exercises:
+
+1. Run a linear regression with wind speed as a predictor of ozone. Visualize your result and interpret the summary statistics.
+2. Expand your regression model to include both temperature and wind speed as predictors of ozone. Compare this model to the simpler models. What have you learned? 

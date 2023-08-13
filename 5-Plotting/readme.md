@@ -1,11 +1,3 @@
----
-title: "Plotting in R"
-output: 
-  html_document: 
-    keep_md: yes
-date: "2023-06-06"
----
-
 ## Plotting
 
 The most basic way to visualize data in R is the `plot()` function.

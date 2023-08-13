@@ -1,11 +1,3 @@
----
-title: "Basic Statistics"
-output: 
-  html_document: 
-    keep_md: yes
-date: "2023-06-11"
----
-
 ## Basic Statistics
 
 R was originally developed as a statistical programming language and is commonly
