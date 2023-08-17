@@ -1,0 +1,20 @@
+[
+    {
+        "exercise": "Exercise 1: After loading the 'chicago_air' data, use str() function to understand the structure of the dataset.",
+        "solution": "```r\nlibrary(region5air)\ndata(chicago_air)\n\n# Viewing the structure of the dataset\nstr(chicago_air)\n```",
+        "output": "```r\n# Output depends on the dataset\n```",
+        "hint": "Use the 'str()' function on the dataset to understand its structure."
+    },
+    {
+        "exercise": "Exercise 2: Use the 'boxplot()' function to observe the distribution of the 'ozone' variable in the 'chicago_air' dataset.",
+        "solution": "```r\n# Creating a boxplot of ozone concentrations\nboxplot(chicago_air$ozone, main='Boxplot of Ozone Concentrations', ylab='Ozone Concentrations')\n```",
+        "output": "```r\n# R will not produce textual output for a graphical plot.\n```",
+        "hint": "Use the 'boxplot()' function on the 'ozone' column in the 'chicago_air' dataset. You can include `main` and `ylab` arguments to provide a title and y-label to your plot."
+    },
+    {
+        "exercise": "Exercise 3: Use the 'na.locf()' function from the 'zoo' package to replace missing (NA) values of the 'ozone' variable with the previous non-missing value.",
+        "solution": "```r\nlibrary(zoo)\n\n# Replace NA values with last observation\nchicago_air$ozone <- na.locf(chicago_air$ozone, na.rm=FALSE)\n```",
+        "output": "```r\n# No specific output, the NA values in the 'ozone' column of the dataset are replaced with the previous non-NA value.\n```",
+        "hint": "To use the 'na.locf()' function you will first need to load the 'zoo' package."
+    }
+]

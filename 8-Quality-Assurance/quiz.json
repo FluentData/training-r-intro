@@ -1,0 +1,57 @@
+[
+    {
+        "question": "What is QA in data analysis?",
+        "options": [
+            "Quality Analysis",
+            "Quality Assurance",
+            "Quick Access",
+            "Question Answering"
+        ],
+        "answer": 1,
+        "explanation": "In the context of data analysis, QA stands for Quality Assurance. It is the process of ensuring that the data used in analysis is accurate, reliable, and consistent."
+    },
+    {
+        "question": "What is the main goal of Quality Assurance?",
+        "options": [
+            "To perform data analysis",
+            "To make sure that all of the data is roughly what you expect it to be",
+            "To visualize the data",
+            "To modify the data"
+        ],
+        "answer": 1,
+        "explanation": "The main goal of Quality Assurance (QA) is to make sure that all of the data in your dataset is roughly what you expect it to be."
+    },
+    {
+        "question": "Which function can be used in R to replace 'illegal' data?",
+        "options": [
+            "na.omit()",
+            "na.exclude()",
+            "replace()",
+            "All of the above"
+        ],
+        "answer": 2,
+        "explanation": "The `replace()` function in R is used to replace the 'illegal' or invalid data in your dataset."
+    },
+    {
+        "question": "What is the command to replace a missing value in a vector with the most recent non-missing value prior to it?",
+        "options": [
+            "na.approx(my_temp)",
+            "na.locf(my_temp)",
+            "na.subs(my_temp)",
+            "na.value(my_temp)"
+        ],
+        "answer": 1,
+        "explanation": "The `na.locf()` function from the 'zoo' package in R replaces the NA with the most recent non-NA prior to it."
+    },
+    {
+        "question": "Which function is used to test for outliers in your dataset?",
+        "options": [
+            "na.omit()",
+            "outlier()",
+            "na.exclude()",
+            "na.outlier()"
+        ],
+        "answer": 1,
+        "explanation": "The `outlier()` function in R is used to test for outliers in your dataset."
+    }
+]

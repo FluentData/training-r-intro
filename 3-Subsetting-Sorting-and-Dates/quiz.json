@@ -1,0 +1,57 @@
+[
+    {
+        "question": "How can we visualize the initial lines of a dataframe in R?",
+        "options": [
+            "The tail() function",
+            "The print() function",
+            "The head() function",
+            "The show() function"
+        ],
+        "answer": 2,
+        "explanation": "The head() function in R allows you to visualize the initial lines of a dataframe - by default the first 6 lines, but you can specify a different number."
+    },
+    {
+        "question": "What is subsetting in R?",
+        "options": [
+            "Writing a new line of code",
+            "Creating a new dataframe from an existing one, keeping only certain rows or columns",
+            "Adding a comment to your code",
+            "Creating a backup of your data"
+        ],
+        "answer": 1,
+        "explanation": "Subsetting in R refers to the process of creating a new dataframe from an existing one, but keeping only certain columns (variables) or rows (data points) that meet certain criteria."
+    },
+    {
+        "question": "Which function should be used to crunch data based on its indices in R?",
+        "options": [
+            "The sort() function",
+            "The subset() function",
+            "The index() function",
+            "The order() function"
+        ],
+        "answer": 3,
+        "explanation": "The order() function in R is used to sort data based on its indices."
+    },
+    {
+        "question": "How can we select all rows where a column value is equal to a certain value in R?",
+        "options": [
+            "df[df$column == value, ]",
+            "df[df == value, column]",
+            "df[column(df) == value, ]",
+            "df[column ==, value]"
+        ],
+        "answer": 0,
+        "explanation": "To select rows in R by condition, use df[df$column == value, ]. This selects only the rows where the value of the 'column' is equal to the specified 'value'."
+    },
+    {
+        "question": "How do you merge rows from two dataframes in R?",
+        "options": [
+            "Using the bind() function",
+            "Using the merge() function",
+            "Using the rbind() function",
+            "Using the join() function"
+        ],
+        "answer": 2,
+        "explanation": "The rbind() function can be used in R to merge rows from two dataframes, provided they have the same number of columns."
+    }
+]

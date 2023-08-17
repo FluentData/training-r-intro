@@ -1,0 +1,57 @@
+[
+    {
+        "question": "What is linear regression?",
+        "options": [
+            "A machine learning algorithm for classification problems",
+            "A method to figure out the relationship between two variables",
+            "A method to convert categorical variables into dummy variables",
+            "A type of data preprocessing method in R"
+        ],
+        "answer": 1,
+        "explanation": "Linear regression is a statistical technique that is useful in understanding the relationship between two continuous variables. It can be used to find out which value of the prediction variable will most likely occur when the outcome takes on a certain value."
+    },
+    {
+        "question": "What does the lm() function in R do?",
+        "options": [
+            "It performs linear regression",
+            "It calculates correlation between two variables",
+            "It creates a scatter plot",
+            "It calculates the mean of a variable"
+        ],
+        "answer": 0,
+        "explanation": "The function lm() in R is used to fit linear models, including but not limited to simple and multiple linear regression."
+    },
+    {
+        "question": "Using the lm() function, what is the correct order of the response and explanatory variables in the formula argument?",
+        "options": [
+            "lm(formula = response variable ~ explanatory variable)",
+            "lm(formula = explanatory variable ~ response variable)",
+            "lm(formula = response variable & explanatory variable)",
+            "lm(formula = explanatory variable & response variable)"
+        ],
+        "answer": 0,
+        "explanation": "In the formula argument of the lm() function in R, the response variable comes before the ~ symbol and the explanatory variable(s) comes after. The ~ symbol can be read as 'on' or 'as a function of'."
+    },
+    {
+        "question": "What do the residuals from a linear model represent?",
+        "options": [
+            "The difference between the observed and predicted values",
+            "The correlation between the observed and predicted values",
+            "The average of the observed and predicted values",
+            "The ratio of the observed to the predicted values"
+        ],
+        "answer": 0,
+        "explanation": "Residuals represent the difference between the observed value and the predicted value of the response variable. They are used to understand the discrepancy between the model and the data."
+    },
+    {
+        "question": "In the context of a linear regression model in R, what is the significance of the p-value given by Pr(>|t|)?",
+        "options": [
+            "It tells us the probability that the true coefficient is zero",
+            "It tells us the probability that the model fits the data perfectly",
+            "It tells us the correlation between the variables",
+            "None of the above"
+        ],
+        "answer": 0,
+        "explanation": "The p-value tells us the probability of obtaining a result as extreme as, or more extreme than, the result observed under the null hypothesis of the model. In the context of linear regression, a low p-value (typically considered less than 0.05) indicates that it is unlikely the true coefficient is zero, implying that the corresponding variable is significant in the model."
+    }
+]

@@ -1,0 +1,57 @@
+[
+    {
+        "question": "Which of the following parameters of the `hist()` function is not valid in R?",
+        "options": [
+            "breaks",
+            "col",
+            "border",
+            "frequency"
+        ],
+        "answer": 3,
+        "explanation": "The 'frequency' parameter is not valid in the hist() function in R. The function accepts parameters like 'breaks', 'col' and 'border' among others."
+    },
+    {
+        "question": "What is the function of the `summary()` method in R?",
+        "options": [
+            "To provide a summary of a data frame",
+            "To provide minimum, median and maximum values of a vector",
+            "To provide mean, 1st quartile, median, mean, 3rd quartile and maximum values of a numeric vector",
+            "To provide the classes of values in a data frame"
+        ],
+        "answer": 2,
+        "explanation": "The `summary()` method in R calculates the minimum, 1st quartile, median, mean, 3rd quartile, and maximum values of a numeric vector."
+    },
+    {
+        "question": "How do we calculate the median of a vector in R?",
+        "options": [
+            "Using the 'median()' function",
+            "Using the 'mean()' function",
+            "Using the 'mode()' function",
+            "Using the 'variance()' function"
+        ],
+        "answer": 0,
+        "explanation": "The 'median()' function is used in R to calculate the median of a numeric vector."
+    },
+    {
+        "question": "How do we remove NA values when performing calculations with 'var()', 'sd()', and 'IQR()' functions in R?",
+        "options": [
+            "Using 'var(variable, na.rm=T)'",
+            "Using 'na.omit(variable)'",
+            "Using 'var(na.exclude(variable))'",
+            "Using 'ExcludeNA(variable)'"
+        ],
+        "answer": 0,
+        "explanation": "By adding the parameter 'na.rm=T' when calling the 'var()', 'sd()', and 'IQR()' functions, it tells the function to exclude NA values when performing the calculation."
+    },
+    {
+        "question": "Which function in R is used to calculate the variance?",
+        "options": [
+            "mean()",
+            "sd()",
+            "var()",
+            "IQR()"
+        ],
+        "answer": 2,
+        "explanation": "The function used to calculate the variance in R is var()."
+    }
+]

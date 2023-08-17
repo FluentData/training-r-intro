@@ -1,0 +1,20 @@
+[
+    {
+        "exercise": "Exercise 1: Load the `chicago_air` dataset from the `region5air` package. Display the first 10 rows of the dataset and count the number of rows with temperature greater than 25.",
+        "solution": "```r\n# Load the data\nlibrary(region5air)\ndata(chicago_air)\n\n# Display the first 10 rows\nhead(chicago_air, 10)\n\n# Count the rows with temperature greater than 25\ntemp_gt_25 <- sum(chicago_air$temp > 25)\ntemp_gt_25\n```",
+        "output": "```r\n# Output will depend on the dataset.\n```",
+        "hint": "Use the `head()` function to display the first 10 rows. To count the rows with temperature greater than 25, use the comparison operator `>` in combination with the `sum()` function."
+    },
+    {
+        "exercise": "Exercise 2: From the same `chicago_air` dataset, find all rows where the ozone level is greater than 0.040. How many such instances are there?",
+        "solution": "```r\n# Find rows with ozone > 0.040\nhigh_ozone <- subset(chicago_air, ozone > 0.040)\n\n# Count the number of such instances\nnrow(high_ozone)\n```",
+        "output": "```r\n# Output will depend on the dataset.\n```",
+        "hint": "Use the `subset()` function to filter the rows based on the condition. Use `nrow()` to count the number of such rows."
+    },
+    {
+        "exercise": "Exercise 3: Sort the `chicago_air` dataset by the `temp` column in descending order. Display the top 3 rows of the sorted data.",
+        "solution": "```r\n# Sort by temp\nsorted_data <- chicago_air[order(chicago_air$temp, decreasing = TRUE), ]\n\n# Display top 3 rows\nhead(sorted_data, 3)\n```",
+        "output": "```r\n# Output will depend on the dataset.\n```",
+        "hint": "Use the `order()` function to get the order of the rows for sorting. Define the `decreasing` parameter of the `order()` function as `TRUE` for descending order. Use this order in the data frame subsetting."
+    }
+]

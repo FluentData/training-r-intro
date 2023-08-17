@@ -1,0 +1,20 @@
+[
+    {
+        "exercise": "Exercise 1: Use the `seq()`, `round()`, `paste()`, `substr()` functions with different parameters and observe their results. Also, try combining the functions.",
+        "solution": "```r\n# Using seq function\ndata_seq = seq(1, 20, by = 2)\nprint(data_seq)\n\n# Using round function\ndata_round = round(3.5678, digits=2)\nprint(data_round)\n\n# Using paste function\ndata_paste = paste('Hello', 'R')\nprint(data_paste)\n\n# Using substr function\ndata_substr = substr('Hello R', start = 1, stop = 5)\nprint(data_substr)\n```",
+        "output": "```r\n# seq function output\n [1]  1  3  5  7  9 11 13 15 17 19\n# round function output\n[1] 3.57\n# paste function output\n[1] 'Hello R'\n# substr function output\n[1] 'Hello'\n```",
+        "hint": "The `seq()` function generates regular sequences, `round()` rounds the values to the nearest whole number, `paste()` concatenates vectors after converting to character and `substr()` extracts or replaces substrings in a character vector."
+    },
+    {
+        "exercise": "Exercise 2: Write a custom function in R that takes two arguments, multiplies them, and adds a random number to the product. Test the function with some values.",
+        "solution": "```r\n# Custom function\ncustom_function <- function(x,y) {\n  product <- x*y\n  final_result <- product + runif(1)\n  return(final_result)\n}\n\n# Test the function\nprint(custom_function(4,5))\n```",
+        "output": "```r\n# This will vary due to the random addition\n[1] 20.63213\n```",
+        "hint": "You need to define a function using `<- function(){}` in R. Inside the function, calculate the product of two numbers and add a random number to the product using `runif(1)`."
+    },
+    {
+        "exercise": "Exercise 3: Use the `read.csv()` function to read a CSV file. Then use `head()`, `nrow()`, `colnames()`, `View()`, `str()`, and `summary()` functions to explore the data.",
+        "solution": "Assuming there's a CSV file named 'sample_data.csv' in the working directory, the solution would be:\n```r\ndata <- read.csv('sample_data.csv')\n\n# Display the first few lines\nprint(head(data))\n\n# Number of rows\nprint(nrow(data))\n\n# Column names\nprint(colnames(data))\n\n# Quick look at the data\nView(data)\n\n# Structure of the data\nprint(str(data))\n\n# Summary of the data\nprint(summary(data))\n```",
+        "output": "The output will vary depending on the CSV file",
+        "hint": "Use `read.csv()` to read the data into R. The `head()` function shows the top rows of the data, `nrow()` returns the number of rows in the data, `colnames()` returns the names of the columns, `View()` opens the data in a spreadsheet-style view, `str()` shows the structure of the data, and `summary()` provides summary statistics of the data."
+    }
+]

@@ -1,0 +1,58 @@
+[
+    {
+        "question": "What is the purpose of a function in R?",
+        "options": [
+            "To perform the same task on different data",
+            "To store data",
+            "To visualize data",
+            "To install packages"
+        ],
+        "answer": 0,
+        "explanation": "Functions in R are used to encapsulate a sequence of operations, such as calculations, into a single command, allowing the performance of the same operations on different inputs."
+    },
+    {
+        "question": "What is the correct syntax to round the number 12.3456 to 3 decimal places in R?",
+        "options": [
+            "round(12.3456, 3)",
+            "round(12.3456, places = 3)",
+            "round(12.3456, decimals = 3)",
+            "round(12.3456, digits = 3)"
+        ],
+        "answer": 3,
+        "explanation": "In R, the round() function is used to round numbers. The syntax to round a number to a specific number of decimal places is round(number, digits = n), where n is the number of decimal places."
+    },
+    {
+        "question": "Which function can be used in R to read .csv files?",
+        "options": [
+            "read()",
+            "import.csv()",
+            "read.csv()",
+            "csv.read()"
+        ],
+        "answer": 2,
+        "explanation": "The read.csv() function in R is used to import data from .csv files into R workspace."
+    },
+    {
+        "question": "What is the output of the log10(100) function in R?",
+        "options": [
+            "2",
+            "10",
+            "100",
+            "1000"
+        ],
+        "answer": 0,
+        "explanation": "The log10() function in R is used to compute the base 10 logarithm. Since 10 to the power of 2 equals 100, the log10 of 100 is 2."
+    },
+    {
+        "question": "What is the command to load a previously installed package 'EnvStats' in R?",
+        "options": [
+            "import('EnvStats')",
+            "load('EnvStats')",
+            "use('EnvStats')",
+            "library('EnvStats')"
+        ],
+        "answer": 3,
+        "explanation": "In R, the command library('Package_Name') is used to load a previously installed package into the current workspace."
+    }
+
+]

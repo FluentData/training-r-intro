@@ -1,0 +1,57 @@
+[
+    {
+        "question": "What will be the last value to be printed in the for loop given below?",
+        "options": [
+            "1",
+            "2",
+            "3",
+            "None of these"
+        ],
+        "answer": 2,
+        "explanation": "In the for loop structure for(i in ints){print(i)}, 'ints' is a vector c(1, 2, 3) . Hence, values 1, 2 and 3 will be printed sequentially. Thus, the last value printed will be 3."
+    },
+    {
+        "question": "What are the `apply()` functions in R?",
+        "options": [
+            "Functions to apply changes to dataframes",
+            "Functions to apply a function across parts of a data structure",
+            "Functions to apply packages in R",
+            "Functions to apply loops and conditions"
+        ],
+        "answer": 1,
+        "explanation": "The `apply()` functions like `apply()`, `tapply()`, `lapply()`, and `mapply()` are used to apply a function across parts of a data structure in R."
+    },
+    {
+        "question": "What is the difference between `if` and `ifelse` functions in R?",
+        "options": [
+            "`if` evaluates a single condition while `ifelse` evaluates multiple conditions",
+            "`if` applies to dataframes and `ifelse` applies to vectors",
+            "`if` evaluates multiple conditions while `ifelse` evaluates a single condition",
+            "There is no difference between `if` and `ifelse`"
+        ],
+        "answer": 0,
+        "explanation": "`if` evaluates a single condition whereas `ifelse` is used to evaluate multiple conditions tied together."
+    },
+    {
+        "question": "What is the correct way to define a function in R?",
+        "options": [
+            "function_name() <- function(arguments){ body }",
+            "function_name <- function(arguments){ body }",
+            "function < function_name(arguments){ body }",
+            "function = function_name(arguments){ body }"
+        ],
+        "answer": 1,
+        "explanation": "In R, functions are defined using the syntax function_name <- function(arguments){ body }. Here, 'function_name' is the name of function you want to create, 'arguments' are the inputs to the function and 'body' is the code to be executed when the function is called."
+    },
+    {
+        "question": "Which function is used to apply a function to each member of a list, returning a list in R?",
+        "options": [
+            "apply",
+            "mapply",
+            "lapply",
+            "tapply"
+        ],
+        "answer": 2,
+        "explanation": "The lapply() function applies a function to each member of a list and returns a list."
+    }
+]

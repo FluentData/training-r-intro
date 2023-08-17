@@ -1,0 +1,20 @@
+[
+    {
+        "exercise": "Exercise 1: Write a function `myMax()` in R, which calculates the maximum value of a numeric vector. Check your function by comparing its output with the built-in `max()` function of R for a numeric vector.",
+        "solution": "```r\n# The myMax function\nmyMax <- function(x) {\n  max_value <- max(x)\n  return(max_value)\n}\n\n# Creating a numeric vector\nmy_vector <- c(1, 23, 5, 77, 0, 12)\n\n# Using myMax on my_vector\nprint(myMax(my_vector))\n\n# Using max on my_vector\nprint(max(my_vector))\n```",
+        "output": "```r\n# Both outputs should be the same\n[1] 77\n[1] 77\n```",
+        "hint": "First, create the `myMax` function. This function should take an array of numbers as an argument and return the maximum value from that array. Make sure to use the `max()` function inside your `myMax` function."
+    },
+    {
+        "exercise": "Exercise 2: Write a conditional if-else statement in R to check if a number is greater than 0. If the number is positive print 'Positive', else print 'Negative or Zero'.",
+        "solution": "```r\n# Number to check\ncheck_number <- -1\n\n# If-else statement\ntest_number <- function(x) {\nif (x > 0) {\nprint('Positive')\n} else {\nprint('Negative or Zero')\n}\n}\n\ntest_number(check_number)\n\n# Changing number to check\ncheck_number <- 5\n\ntest_number(check_number)\n```",
+        "output": "```r\n# Output\ntest_number(-1)\n\"Negative or Zero\"\ntest_number(5)\n\"Positive\"\n```",
+        "hint": "You will use `if` and `else` to implement this check. The `if` part will check if the number is more than 0 and print 'Positive'. The `else` part will be executed if the `if` condition is not satisfied and will print 'Negative or Zero'."
+    },
+    {
+        "exercise": "Exercise 3: Write a for loop in R that prints the cube of numbers from 1 to 5.",
+        "solution": "```r\n# For loop to print the cube of numbers from 1 to 5\nfor(i in 1:5) {\n    print(i^3)\n}\n```",
+        "output": "```r\n# Output\n[1] 1\n[1] 8\n[1] 27\n[1] 64\n[1] 125\n```",
+        "hint": "You can use `for(i in 1:5)` to create a loop that will iterate from 1 to 5. In each iteration, print the cube of `i` using the `print` function and the cube operator `^3`."
+    }
+]
