@@ -1,0 +1,285 @@
+title: Introduction to R for Air Quality Data Science
+level: beginner
+audience: 
+  descripition: |
+    Air Quality Data Analysts and Regulators that work for state-level environmental agencies in the United States Midwest 
+  background:
+    - A strong understanding of state and federal air regulations
+    - A background of using Excel for data analysis in the past.
+    - Little or no experience with R.
+  motivations:
+    - Gain coding skills to move beyond spreadsheet limitations for air quality data analysis
+    - Automate repetitive data processing and quality assurance tasks to improve efficiency
+    - Expand capabilities for statistical modeling and inference beyond basic spreadsheet functions
+    - Learn best practices for reproducible analysis using R scripts instead of clicking in GUIs
+    - Acquire core data wrangling, programming, and data science skills that transfer across domains
+    - Leverage R's flexibility for integrating air monitoring data from multiple instruments and formats
+    - Progress their data science skills to take on more analytical projects and advance their careers
+description: |
+  This introductory course provides environmental professionals with a practical foundation in using the R programming 
+  language for air quality data analysis. Through a series of hands-on lessons and coding exercises, learners will become 
+  proficient in R programming fundamentals like data import, transformation, visualization, and modeling. Core skills 
+  covered include data wrangling with dplyr, plotting with ggplot2, writing functions, iteration, and statistical analysis.
+  Examples and datasets are drawn from real-world air monitoring data to ensure direct relevance to those working in air 
+  quality and atmospheric science. Upon completing this course, students will have the ability to leverage R's powerful 
+  capabilities to conduct customized analysis, save time on routine tasks, and improve the quality and reproducibility of
+  their work.
+lessons:
+  - title: Introduction to R and RStudio  
+    description: Get started with R and RStudio by learning how to run basic commands, assign variables, and work with data structures.
+    objectives:
+      - Install and setup R and RStudio
+      - Understand core R concepts like variables, data types, vectors, lists, matrices, data frames
+    topics:
+      - title: What is R?
+        description: Overview of R as a programming language for data analysis. Brief history.
+        key_points:
+          - R is a programming language specialized for statistical analysis and visualization
+          - Originated in academia but now widely used in industry/government
+          - Open source tool with thousands of add-on packages
+      - title: Why use R?
+        description: Discuss advantages of R over spreadsheets/BI tools for custom analysis.  
+        key_points:
+          - Flexibility for doing custom data science/modeling beyond canned reports
+          - Reproducibility by using RScripts instead of click-based GUIs
+          - Large collection of specialized packages for data tasks
+      - title: Installing R and RStudio
+        description: Downloading and installing R and RStudio IDE.
+        key_points:
+          - Download base R from CRAN repository
+          - Download RStudio IDE which provides nice interface
+          - Walk through installation process
+      - title: RStudio IDE overview
+        description: Tour of the RStudio interface and panes. Setting working directory.
+        key_points:
+          - Explain the purpose of each pane
+          - Setting working directory to organize projects
+          - Keyboard shortcuts to navigate panes
+
+  - title: Functions and Data Import
+    description: Learn how to use functions in R and import data from common sources like CSVs and Excel.
+    objectives:
+      - Understand what functions are and how to use them
+      - Use built-in R functions like mean(), paste(), seq()
+      - Install and load R packages
+      - Import CSV and Excel data into R  
+    topics:
+      - title: Functions in R
+        description: Definition of a function in R. Using functions with arguments.
+        key_points:  
+          - Functions encapsulate reusable code
+          - Call functions with name(arguments)
+          - Arguments provide data/configuration
+      - title: Built-in R functions
+        description: Examples of common built-in functions like mean(), paste(), seq()
+        key_points:
+          - mean() for calculating averages
+          - paste() for concatenating text  
+          - seq() for generating sequences
+      - title: Nesting functions
+        description: Placing functions inside other functions.
+        key_points:
+          - Functions can call other functions
+          - Innermost functions execute first
+      - title: R packages
+        description: Installing packages from CRAN. Loading with library().
+        key_points:  
+          - Packages extend R's capabilities
+          - Use install.packages() to install
+          - Use library() to load installed packages
+      - title: Importing data
+        description: Reading CSVs with read.csv(). Reading Excel with readxl package.
+        key_points:
+          - read.csv() to import CSV data
+          - Install/load readxl package for Excel imports
+          - Set options like stringsAsFactors, na.strings
+
+  - title: Subsetting, Sorting, and Combining Data
+    description: Learn techniques for selecting, ordering, and joining datasets in R.
+    objectives:
+      - Subset data frames using indexing, logical operators, filter()
+      - Sort data frames with arrange()
+      - Combine data frames together with bind_rows()
+    topics:
+      - title: Viewing Data Frames
+        description: Using head(), tail(), and View() to inspect data frames.
+        key_points:
+          - head() shows first 6 rows
+          - tail() shows last 6 rows 
+          - View() opens data viewer
+      - title: Subsetting
+        description: Selecting data subsets using [], $, filter().
+        key_points:
+          - "[row,col] extracts elements"
+          - $ extracts named columns
+          - filter() subsets rows
+      - title: Sorting
+        description: Ordering rows with arrange() and desc().
+        key_points:
+          - arrange() sorts rows
+          - desc() sorts in descending order
+      - title: Combining
+        description: Appending data frames together with bind_rows().
+        key_points:
+          - bind_rows() stacks data frames  
+          - Useful for joining related datasets
+
+  - title: Writing Functions, Conditionals, and Loops
+    description: Automate data tasks in R by writing reusable functions, conditional logic, and loops.
+    objectives:
+      - Write custom functions in R
+      - Use if/else statements and for/while loops to control program flow
+      - Apply functions, conditionals, and loops to automate data processing tasks
+    topics:  
+      - title: Writing functions
+        description: Syntax for defining custom functions in R.
+        key_points:
+          - Use fun <- function() {}
+          - Return values with return()
+      - title: Function arguments
+        description: Adding arguments to functions.
+        key_points:
+          - Arguments passed to functions
+          - Use args=DEFAULT to make optional
+      - title: Conditional statements
+        description: Using if/else logic to control code flow.
+        key_points: 
+          - if(condition) {}
+          - else {} executed when condition FALSE
+          - Relational and logical operators
+      - title: for loops
+        description: Repeating code through iterative loops.
+        key_points:
+          - for(var in vector) {}
+          - Iterates through elements
+      - title: while loops
+        description: Repeating code while condition is true.
+        key_points:
+          - while(condition) {}
+          - Condition tested each iteration  
+          - Avoid infinite loops
+      - title: Applying functions and loops
+        description: Using custom functions and loops for data tasks.
+        key_points:
+          - Encapsulate repetitive tasks in functions
+          - Automate batch operations with loops
+
+  - title: Plotting with ggplot2
+    description: Create publication-quality graphics in R with ggplot2.
+    objectives:
+      - Make basic plots like scatter, line, bar charts, histograms
+      - Customize appearance of plots
+      - Use facets to generate multiple conditional plots
+    topics:
+      - title: ggplot2 basics
+        description: Introduction to ggplot() syntax and components.
+        key_points:
+          - Starts with ggplot(data, aes(x,y)) 
+          - Geoms like geom_point() visualize data
+      - title: Common plots
+        description: Examples of basic visualization types.
+        key_points:
+          - Scatterplot: geom_point()
+          - Line plot: geom_line() 
+          - Histogram: geom_histogram()
+          - Bar chart: geom_bar()
+      - title: Customizing plots
+        description: Options for styling and formatting plots.
+        key_points:
+          - Themes like theme_bw()
+          - Axis limits, labels, title, legend
+      - title: Facets
+        description: Generating multiple plots conditioned on variables.
+        key_points:
+          - facet_wrap() for conditional plots
+          - facet_grid() for multi-panel plots
+
+  - title: Basic Statistics in R
+    description: Calculate common descriptive and inference statistics in R.
+    objectives:
+      - Calculate summary statistics like mean, median, correlation
+      - Generate confidence intervals and perform t-tests  
+      - Perform ANOVA analysis and linear models
+    topics:
+      - title: Summary statistics
+        description: Functions for descriptive stats like mean(), median().
+        key_points:
+          - mean(), median() for central tendency
+          - sd(), var() for spread
+          - cor() for correlation
+      - title: Confidence intervals
+        description: Using t.test() for intervals and inference.
+        key_points:  
+          - t.test() for confidence intervals
+          - Outputs p-value for significance 
+      - title: ANOVA
+        description: One-way ANOVA analysis with aov() and TukeyHSD().
+        key_points:
+          - aov() fits ANOVA model
+          - TukeyHSD() for post-hoc tests  
+      - title: Linear models
+        description: Fitting linear models with lm().
+        key_points:
+          - lm() fits linear regression models
+          - summary() to view model output
+
+  - title: Data Transformation and Regression
+    description: Transforming variables and building regression models.
+    objectives:
+      - Transform variables using standard transformations  
+      - Perform basic regression analysis and inference
+      - Handle missing data and outliers
+    topics:
+      - title: Transformations
+        description: Common transformations like log, square root, box-cox.
+        key_points:
+          - log(), sqrt(), boxcox()
+          - Normalizing skewed data
+      - title: Simple regression
+        description: Linear models using lm().
+        key_points:  
+          - lm(y~x) formula syntax
+          - summary() to view model stats
+          - confint() for confidence intervals  
+      - title: Missing data
+        description: Dealing with NA values.
+        key_points:
+          - NA represents missing data
+          - Option 1: Remove NA rows
+          - Option 2: Impute missing values
+      - title: Outliers
+        description: Identifying and handling outliers.
+        key_points:
+          - Check for outliers in plots, statistics
+          - Remove extreme outliers
+          - Robust modeling approaches
+
+  - title: Quality Assurance
+    description: Techniques for assessing and improving data quality.
+    objectives:
+      - Check for outliers and anomalies
+      - Assess common data quality issues  
+      - Perform visual QA with plots
+      - Automate QA checks with functions
+    topics:
+      - title: Descriptive statistics
+        description: Using summary() and histograms to understand distributions.
+        key_points:
+          - summary() for basic stats
+          - histograms to visualize distribution  
+      - title: Visual methods
+        description: Using plots like scatterplots and density plots.
+        key_points:
+          - Scatterplots to check relationships
+          - Density plots to assess distributions  
+      - title: Logical checks
+        description: Checking data properties like ranges and outliers.
+        key_points:
+          - Check for values outside expected range
+          - Identify outliers with boxplots
+      - title: Automating checks
+        description: Writing functions to perform QA on multiple datasets.
+        key_points:
+          - Encapsulate validation logic in functions
+          - Loop through files/datasets
+          - Output QA report
