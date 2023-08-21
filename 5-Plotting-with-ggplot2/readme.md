@@ -72,9 +72,10 @@ Convert `cyl` to factor before defining color
 </details>
 <details><summary>Click for Solution</summary>
 
+```r
 ggplot(mtcars, aes(x=disp, y=mpg, color=factor(cyl))) +
   geom_point()
-      
+```      
 > This exercise introduces the idea of creating scatter plots with different colors for different categories. The `color` aesthetic within the `aes()` function is used to create different colors for different numbers of cylinders.
 </details>
 
@@ -121,12 +122,13 @@ You can directly assign the color in `geom_point()`
 </details>
 <details><summary>Click for Solution</summary>
 
+```r
 ggplot(mtcars, aes(x=disp, y=mpg, color=factor(cyl))) +
   geom_point(colour='#3366FF') +
   ggtitle('Relationship between MPG and Displacement') +
   xlab('Displacement (cu.in.)') +
   ylab('MPG (miles/gallon)')
-      
+```      
 > Here, we add labels to the x and y axes using `xlab()` and `ylab()`, a title using `ggtitle()`, and we specify the color of the points using the `color` argument in `geom_point()`. This makes the plot more informative and appealing.
 </details>
 
@@ -171,9 +173,10 @@ Change the color of the bars using `fill`
 </details>
 <details><summary>Click for Solution</summary>
 
+```r
 ggplot(airquality, aes(x=Ozone)) +
   geom_histogram(binwidth=5, fill='#FF6633', color='black')
-      
+```      
 > In a histogram, the continuous variable is divided into bins or intervals, and the number of observations in each bin is counted. Here, we create a histogram of ozone levels, specify the binwidth as 5, and change the color of the bars using the `fill` parameter.
 </details>
 
@@ -234,6 +237,7 @@ The `facet_wrap()` function is used to create multiple plots based on the `Day` 
 </details>
 <details><summary>Click for Solution</summary>
 
+```r
 avg_ozone <- aggregate(Ozone ~ Month + Day, data = airquality, FUN = mean, na.rm = TRUE)
 
 ggplot(avg_ozone, aes(x=factor(Month), y=Ozone, fill=factor(Day))) +
@@ -243,7 +247,7 @@ ggplot(avg_ozone, aes(x=factor(Month), y=Ozone, fill=factor(Day))) +
   labs(title='Average Ozone Concentration per Month, Faceted by Day',
        x='Month',
        y='Average Ozone Concentration (ppb)')
-      
+```      
 > A faceted plot, also known as a trellis plot or small-multiple plot, breaks the data into subsets based on a factor and then applies the same graphical representation to each subset. This makes it easier to compare different groups in the data.
 </details>
 
@@ -282,13 +286,14 @@ Set color directly in `geom_point()`
 </details>
 <details><summary>Click for Solution</summary>
 
+```r
 ggplot(airquality, aes(x=Wind, y=Solar.R)) +
   geom_point(colour='#00CC00') +
   facet_wrap(~Month) +
   ggtitle('Relationship between Wind Speed and Solar Radiation per Month') +
   xlab('Wind Speed (mph)') +
   ylab('Solar Radiation (lang)')
-      
+```      
 > In this exercise, we have combined scatter plot, faceting, and customization techniques taught in the lesson. Faceting has been used to create a subplot for each Month, and the scatter plot visualizes the relationship between Wind Speed and Solar Radiation.
 </details>
 
@@ -320,13 +325,14 @@ Add labels using `ggtitle()`, `xlab()`, `ylab()`
 </details>
 <details><summary>Click for Solution</summary>
 
+```r
 ggplot(mtcars, aes(x=hp, y=mpg, color=factor(cyl))) +
   geom_point() +
   facet_wrap(~am) +
   ggtitle('MPG vs. Horsepower, Faceted by Gearbox Type') +
   xlab('Horsepower') +
   ylab('Miles per Gallon')
-      
+```      
 > This exercise reinforces how to use many aspects of `ggplot2` together: scatter plots, aesthetics, faceting, and customizing plots with titles and labels. Faceting facilitates a comparison between automatic and manual gearboxes.
 </details>
 
@@ -363,13 +369,14 @@ Add labels using `ggtitle()`, `xlab()`, `ylab()`
 </details>
 <details><summary>Click for Solution</summary>
 
+```r
 ggplot(mtcars, aes(x=mpg)) +
   geom_histogram(binwidth=2, fill='#00CC00') +
   facet_wrap(~am) +
   ggtitle('Distributions of MPG, Faceted by Gearbox Type') +
   xlab('Miles per Gallon') +
   ylab('Count')
-      
+```      
 > In this exercise, histograms have been used to visualize the distribution of mpg segmented by gearbox type. We controlled the binwidth and set the fill color to green.
 </details>
 
