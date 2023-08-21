@@ -1,6 +1,6 @@
 ---
 title: "Plotting with ggplot2"
-output: md_document
+output: github_document
 ---
 
 # Plotting with ggplot2
