@@ -1,0 +1,51 @@
+exercises = [
+    {
+        "section_title": "Viewing Your Data Frame",
+        "text": "Use the `head()`, `tail()` and `View()` functions to examine the dataset. What are the first 3 rows of the dataset?",
+        "solution": "",
+        "output": "",
+        "hints": ["Use the `head()` function to display the first few rows of the dataset."],
+        "explanation": "The first 3 rows of the dataset can be seen by using the `head(dataset, 3)` command."
+    },
+    {
+        "section_title": "Subsetting Your Data",
+        "text": "Subset the dataset to include only the rows where the `ozone` values are greater than 120. How many rows are in the subset?",
+        "solution": "",
+        "output": "",
+        "hints": ["Use the `filter()` function to select rows based on a condition."],
+        "explanation": "To subset the data to include only rows where the `ozone` values are greater than 120, use the `filter(dataset, ozone > 120)` command."
+    },
+    {
+        "section_title": "Sorting Data Frames",
+        "text": "Sort the dataset by the `temperature` column in descending order. What is the value of `temperature` in the first row of the sorted dataset?",
+        "solution": "",
+        "output": "",
+        "hints": ["Use the `arrange()` function to sort the dataset by the `temperature` column in descending order."],
+        "explanation": "To sort the dataset by the `temperature` column in descending order, use the `arrange(dataset, desc(temp))` command. The value of `temperature` in the first row of the sorted dataset can be accessed using `dataset$temperature[1]`."
+    },
+    {
+        "section_title": "Combining Data Frames",
+        "text": "Combine `dataset1` and `dataset2` into a single data frame. How many rows are in the combined data frame?",
+        "solution": "",
+        "output": "",
+        "hints": ["Use the `bind_rows()` function to combine data frames."],
+        "explanation": "To combine `dataset1` and `dataset2` into a single data frame, use the `bind_rows(dataset1, dataset2)` command."
+    }
+]
+
+lesson_exercises = [
+    {
+        "text": "Use the `tail()` function to display the last 4 rows of the dataset.",
+        "solution": "",
+        "output": "",
+        "hints": ["Use the `tail()` function with the appropriate arguments to display the last 4 rows of the dataset."],
+        "explanation": "The last 4 rows of the dataset can be seen by using the `tail(dataset, 4)` command."
+    }
+]
+
+lesson = {
+    "section_exercises": exercises,
+    "lesson_exercises": lesson_exercises
+}
+
+lesson

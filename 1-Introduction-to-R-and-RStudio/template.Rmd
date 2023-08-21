@@ -1,0 +1,20 @@
+{
+  "section_exercises": [
+    {
+      "section_title": "Installing R and RStudio",
+      "text": "Q1: What is the purpose of RStudio?",
+      "solution": "RStudio provides a user-friendly interface for interacting with R.",
+      "output": "",
+      "hints": [],
+      "explanation": ""
+    },
+    {
+      "section_title": "Tour of the RStudio Interface",
+      "text": "Q2: What are the four main panes in the RStudio interface?",
+      "solution": "The four main panes in the RStudio interface are the R Console, the Script pane, the Environment/History pane, and the Files/Plots/Packages/Help pane.",
+      "output": "",
+      "hints": [],
+      "explanation": ""
+    }
+  ]
+}

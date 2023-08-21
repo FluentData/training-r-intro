@@ -1,0 +1,49 @@
+{
+  "section_exercises": [
+    {
+      "section_title": "Data Transformations",
+      "text": "Suppose we have temperature data in Fahrenheit and we want to convert it to Celsius. Create a new variable `temp_celsius` that contains the temperature data in Celsius.",
+      "solution": "data$temp_celsius <- (data$temp - 32) * 5/9",
+      "output": "",
+      "hints": [
+        "To convert Fahrenheit to Celsius, use the formula: `C = (F - 32) * 5/9`",
+        "Create a new variable `temp_celsius` to store the converted temperature data."
+      ],
+      "explanation": "To convert temperature from Fahrenheit to Celsius, we subtract 32 from the Fahrenheit temperature and then multiply the result by 5/9."
+    },
+    {
+      "section_title": "Regression Analysis",
+      "text": "Fit a multiple linear regression model to predict ozone levels using temperature and wind speed as predictors. Assign the model to a variable called `model`.",
+      "solution": "model <- lm(ozone ~ temp + wind, data = data)",
+      "output": "",
+      "hints": [
+        "Use the `lm()` function to fit the linear regression model.",
+        "Specify `ozone ~ temp + wind` to indicate that ozone is the response variable and temperature and wind speed are the predictor variables.",
+        "Don't forget to specify the `data` argument to indicate the dataset to use."
+      ],
+      "explanation": "The `lm()` function is used to fit linear regression models. In this case, we want to predict ozone levels (response) using temperature and wind speed (predictors)."
+    }
+  ],
+  "lesson_exercises": [
+    {
+      "text": "What is the coefficient estimate for the `temp` predictor in the `model`?",
+      "solution": "coefficients(model)['temp']",
+      "output": "",
+      "hints": [
+        "Use the `coef()` function to get the coefficient estimates for the predictors in a linear regression model.",
+        "Specify `['temp']` to extract the coefficient estimate for the `temp` predictor specifically."
+      ],
+      "explanation": "The coefficient estimate for the `temp` predictor in the `model` represents the expected change in the response variable (ozone) for a one-unit increase in the `temp` variable, holding other predictors constant."
+    },
+    {
+      "text": "Compute the 95% confidence interval for the coefficient estimate of the `wind` predictor in the `model`.",
+      "solution": "confint(model)['wind', ]",
+      "output": "",
+      "hints": [
+        "Use the `confint()` function to compute confidence intervals for the coefficient estimates in a linear regression model.",
+        "Specify `['wind', ]` to extract the confidence interval for the `wind` predictor specifically."
+      ],
+      "explanation": "The confidence interval for the coefficient estimate of the `wind` predictor provides a range of plausible values for the true coefficient in the population. It gives us an idea of the uncertainty associated with the estimated effect of `wind` on the response variable (`ozone`)."
+    }
+  ]
+}
