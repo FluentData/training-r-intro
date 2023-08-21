@@ -1,8 +1,4 @@
----
-title: "Introduction to R and RStudio"
-output: 
-  md_document
----
+# Introduction to R and RStudio
 
 Welcome to the first lesson of our R for Air Quality Data Science training course! In this lesson, we will introduce you to the R programming language and the RStudio integrated development environment. We will look at how to install these tools on your own computer and familiarize yourself with the environment where you will be doing most of your R programming. 
 
@@ -43,10 +39,7 @@ Once you have installed both R and RStudio, you can open RStudio to see the main
 
 You can customize the layout of RStudio and the behavior of RStudio to suit your preferences. One common recommendation is to set RStudio to point to your project directory when you open a new session. Use the "Global Options…" in the Tools menu, then select "R General". In the "Default working directory (when not in a project)" you can browse and select your project directory. Click "Apply" and restart RStudio to see the changes.
 
-```{r}
-# This is a simple calculation example executed in R
-2 + 2
-```
+To run any R command, simply type it into the console pane and hit `Enter`. For example, after typing `2 + 2` and hitting `Enter`, the console will show the result `4`.
 
 This rudimentary command introduces us to the idea of R as a large, powerful calculator, and throughout this course we will incrementally build on that knowledge to harness the powerful statistical and data processing capabilities of the R programming language.
 

@@ -1,9 +1,5 @@
-Sure, here is your markdown file converted to an Rmd with appropriate code chunks.
-
 ---
 title: "Plotting with ggplot2"
-author: "Your Name Here"
-date: "YYYY-MM-DD"
 output: md_document
 ---
 
@@ -23,7 +19,7 @@ To use `ggplot2`, we typically follow a sequence of steps:
 
 Let's begin by installing and loading the `ggplot2` package. If you haven't installed it before, uncomment and run the first line.
 
-```{r}
+```{r setup, echo=TRUE}
 # install.packages('ggplot2')
 library(ggplot2)
 ```
@@ -34,7 +30,7 @@ Now we are ready to use `ggplot2` to make some plots!
 
 For our first plot, let's create a scatter plot of ozone concentration (`ozone`) against temperature (`temp`) using the `chicago_air.csv` dataset. 
 
-```{r}
+```{r scatter_plot, echo=TRUE, message=FALSE, warning=FALSE}
 # Load the dataset
 air_quality <- read.csv('../data/chicago_air.csv')
 
@@ -49,7 +45,7 @@ In this example, we have used `geom_point()` to create a scatter plot. The first
 
 The plot above is pretty basic. Let's customize it by adding color, title and labels.
 
-```{r}
+```{r customized_scatter, echo=TRUE, message=FALSE, warning=FALSE}
 # Customized scatter plot
 ggplot(air_quality, aes(x=temp, y=ozone)) +
   geom_point(colour='#3366FF') +
@@ -64,7 +60,7 @@ Here we used `geom_point(colour='#3366FF')` to change the point color, `ggtitle(
 
 Next, let's create a histogram of `ozone` concentrations.
 
-```{r}
+```{r histogram, echo=TRUE, message=FALSE, warning=FALSE}
 # Histogram
 ggplot(air_quality, aes(x=ozone)) +
   geom_histogram(binwidth=0.005, fill='#FF6633', color='black')
@@ -78,7 +74,7 @@ Lastly, let's create a bar plot showing the average `ozone` concentration for ea
 
 First, we need to calculate the average `ozone` concentration per `month` and `weekday`. We will use `aggregate()` function from base R for this purpose.
 
-```{r}
+```{r faceted_bar, echo=TRUE, message=FALSE, warning=FALSE}
 # Calculate mean ozone concentration per month and weekday
 avg_ozone <- aggregate(ozone ~ month + weekday, data = air_quality, FUN = mean, na.rm = TRUE)
 
