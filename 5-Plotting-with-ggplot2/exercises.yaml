@@ -1,0 +1,142 @@
+exercises:
+  - title: Creating a Scatter Plot
+    text: >-
+      Create a scatter plot using the `ggplot2` package. Use the `temp` variable
+      as the x-axis and the `ozone` variable as the y-axis.
+    solution: |-
+      ggplot(data, aes(x = temp, y = ozone)) +
+        geom_point()
+    output: ''
+    hints:
+      - Use the `ggplot()` function to specify the dataset and aesthetics.
+      - Add the `geom_point()` function to create the scatter plot.
+    explanation: >-
+      To create a scatter plot using the `ggplot2` package, you can use the
+      `ggplot()` function to specify the dataset and aesthetics, and then add
+      the `geom_point()` function to create the scatter plot.
+  - title: Creating a Line Chart
+    text: >-
+      Create a line chart using the `ggplot2` package. Use the `date` variable
+      as the x-axis and the `ozone` variable as the y-axis.
+    solution: |-
+      ggplot(data, aes(x = date, y = ozone)) +
+        geom_line()
+    output: ''
+    hints:
+      - Use the `ggplot()` function to specify the dataset and aesthetics.
+      - Add the `geom_line()` function to create the line chart.
+    explanation: >-
+      To create a line chart using the `ggplot2` package, you can use the
+      `ggplot()` function to specify the dataset and aesthetics, and then add
+      the `geom_line()` function to create the line chart.
+  - title: Creating a Bar Chart
+    text: >-
+      Create a bar chart using the `ggplot2` package. Use the `month` variable
+      as the x-axis and fill the bars based on the `month` variable.
+    solution: |-
+      ggplot(data, aes(x = month, fill = factor(month))) +
+        geom_bar()
+    output: ''
+    hints:
+      - Use the `ggplot()` function to specify the dataset and aesthetics.
+      - Add the `geom_bar()` function to create the bar chart.
+    explanation: >-
+      To create a bar chart using the `ggplot2` package, you can use the
+      `ggplot()` function to specify the dataset and aesthetics, and then add
+      the `geom_bar()` function to create the bar chart.
+  - title: Creating a Histogram
+    text: >-
+      Create a histogram using the `ggplot2` package. Use the `ozone` variable
+      as the x-axis.
+    solution: |-
+      ggplot(data, aes(x = ozone)) +
+        geom_histogram()
+    output: ''
+    hints:
+      - Use the `ggplot()` function to specify the dataset and aesthetics.
+      - Add the `geom_histogram()` function to create the histogram.
+    explanation: >-
+      To create a histogram using the `ggplot2` package, you can use the
+      `ggplot()` function to specify the dataset and aesthetics, and then add
+      the `geom_histogram()` function to create the histogram.
+  - title: Customizing Plots
+    text: >-
+      Modify the appearance of a plot created using `ggplot2`. Add a theme to
+      change the overall appearance, add axis labels, and add a title.
+    solution: |-
+      ggplot(data, aes(x = temp, y = ozone)) +
+        geom_point() +
+        theme_bw() +
+        xlab("Temperature") +
+        ylab("Ozone") +
+        ggtitle("Temperature vs. Ozone")
+    output: ''
+    hints:
+      - Use the `+` operator to add different elements to the plot.
+      - Use the `theme_bw()` function to change the theme.
+      - Use the `xlab()` and `ylab()` functions to add axis labels.
+      - Use the `ggtitle()` function to add a title.
+    explanation: >-
+      To modify the appearance of a plot created using `ggplot2`, you can use
+      the `+` operator to add different elements to the plot. You can use the
+      `theme_bw()` function to change the theme, the `xlab()` and `ylab()`
+      functions to add axis labels, and the `ggtitle()` function to add a title.
+  - title: Creating Conditional Plots with Facets
+    text: Create a scatter plot with facets based on the `month` variable
+    solution: |-
+      ggplot(data, aes(x = temp, y = ozone)) +
+        geom_point() +
+        facet_wrap(~ month)
+    output: ''
+    hints:
+      - Use the `ggplot()` function to specify the dataset and aesthetics.
+      - Add the `geom_point()` function to create the scatter plot.
+      - Add the `facet_wrap()` function to create the facets.
+    explanation: >-
+      To create a scatter plot with facets based on the `month` variable, you
+      can use the `ggplot()` function to specify the dataset and aesthetics, add
+      the `geom_point()` function to create the scatter plot, and then add the
+      `facet_wrap()` function to create the facets.
+  - title: Creating Grid of Plots with Facets
+    text: >-
+      Create a scatter plot with facets based on the `month` variable for the
+      rows and the `weekday` variable for the columns
+    solution: |-
+      ggplot(data, aes(x = temp, y = ozone)) +
+        geom_point() +
+        facet_grid(month ~ weekday)
+    output: ''
+    hints:
+      - Use the `ggplot()` function to specify the dataset and aesthetics.
+      - Add the `geom_point()` function to create the scatter plot.
+      - Add the `facet_grid()` function to create the facets.
+    explanation: >-
+      To create a scatter plot with facets based on the `month` variable for the
+      rows and the `weekday` variable for the columns, you can use the
+      `ggplot()` function to specify the dataset and aesthetics, add the
+      `geom_point()` function to create the scatter plot, and then add the
+      `facet_grid()` function to create the facets.
+  - title: Reviewing ggplot2
+    text: >-
+      Which of the following is true about `ggplot2`?
+
+
+      A. `ggplot2` is a package that allows you to create basic plots like
+      scatter plots, line charts, bar charts, and histograms.
+
+      B. `ggplot2` is a powerful visualization library that allows you to create
+      a wide range of plots.
+
+      C. `ggplot2` is a layered approach to creating plots, allowing you to
+      build and modify plots incrementally.
+
+      D. All of the above.
+    solution: D
+    output: ''
+    hints:
+      - Read the lesson content again.
+    explanation: >-
+      `ggplot2` is a powerful visualization library that allows you to create a
+      wide range of plots, such as scatter plots, line charts, bar charts, and
+      histograms. It follows a layered approach to creating plots, allowing you
+      to build and modify plots incrementally.

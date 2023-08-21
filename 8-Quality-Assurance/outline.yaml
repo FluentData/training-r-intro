@@ -1,0 +1,29 @@
+title: Quality Assurance
+description: Techniques for assessing and improving data quality.
+objectives:
+  - Check for outliers and anomalies
+  - Assess common data quality issues
+  - Perform visual QA with plots
+  - Automate QA checks with functions
+topics:
+  - title: Descriptive statistics
+    description: Using summary() and histograms to understand distributions.
+    key_points:
+      - summary() for basic stats
+      - histograms to visualize distribution
+  - title: Visual methods
+    description: Using plots like scatterplots and density plots.
+    key_points:
+      - Scatterplots to check relationships
+      - Density plots to assess distributions
+  - title: Logical checks
+    description: Checking data properties like ranges and outliers.
+    key_points:
+      - Check for values outside expected range
+      - Identify outliers with boxplots
+  - title: Automating checks
+    description: Writing functions to perform QA on multiple datasets.
+    key_points:
+      - Encapsulate validation logic in functions
+      - Loop through files/datasets
+      - Output QA report

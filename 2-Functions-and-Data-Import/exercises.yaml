@@ -1,0 +1,75 @@
+exercises:
+  - title: Calculating the Mean
+    text: >-
+      Write a function called `calculate_mean` that takes a vector of numbers as
+      an argument and returns the mean value.
+    solution: calculate_mean <- function(numbers) { mean(numbers) }
+    output: ''
+    hints: []
+    explanation: ''
+  - title: Concatenating Strings
+    text: >-
+      Write a function called `create_greeting` that takes a name (string) and
+      an age (numeric) as arguments and returns a greeting message that includes
+      the name and age.
+    solution: >-
+      create_greeting <- function(name, age) { greeting <- paste('Hello,', name,
+      '. You are', age, 'years old.') return(greeting) }
+    output: ''
+    hints: []
+    explanation: ''
+  - title: Generating a Sequence
+    text: >-
+      Write a function called `generate_sequence` that takes a starting value,
+      an ending value, and a step size as arguments and returns a vector
+      containing the generated sequence.
+    solution: >-
+      generate_sequence <- function(start, end, step) { sequence <- seq(start,
+      end, step) return(sequence) }
+    output: ''
+    hints: []
+    explanation: ''
+  - title: Install and Load a Package
+    text: >-
+      Write a function called `load_package` that takes the name of a package as
+      an argument, installs the package, and loads it into the R session.
+    solution: >-
+      load_package <- function(package_name) { install.packages(package_name)
+      library(package_name) }
+    output: ''
+    hints: []
+    explanation: ''
+  - title: Importing Data from CSV
+    text: >-
+      Write a function called `import_csv` that takes the file path of a CSV
+      file as an argument and imports the data into R as a data frame using the
+      `read.csv()` function.
+    solution: >-
+      import_csv <- function(file_path) { data <- read.csv(file_path)
+      return(data) }
+    output: ''
+    hints: []
+    explanation: ''
+  - title: Importing Data from Excel
+    text: >-
+      Write a function called `import_excel` that takes the file path of an
+      Excel file as an argument, installs and loads the `readxl` package, and
+      imports the data from the Excel file using the `read_excel()` function.
+    solution: >-
+      import_excel <- function(file_path) { install.packages('readxl')
+      library(readxl) data <- read_excel(file_path) return(data) }
+    output: ''
+    hints: []
+    explanation: ''
+  - title: Using Functions
+    text: >-
+      Write a function called `data_summary` that takes a data frame as an
+      argument, calculates the mean of a specific column using the `mean()`
+      function, and returns a summary message that includes the mean value.
+    solution: >-
+      data_summary <- function(data, column) { mean_value <-
+      mean(data[[column]]) summary <- paste('The mean of', column, 'is',
+      mean_value) return(summary) }
+    output: ''
+    hints: []
+    explanation: ''

@@ -1,0 +1,95 @@
+exercises:
+  - title: Logarithmic Transformation
+    text: >-
+      Perform a logarithmic transformation on the `ozone` variable from the
+      `chicago_air` dataset and assign the transformed variable to a new column
+      called `log_ozone`.
+    solution: chicago_air$log_ozone <- log(chicago_air$ozone)
+    output: >-
+      The `log_ozone` column should contain the logarithmic transformation of
+      the `ozone` variable.
+    hints:
+      - Use the `log()` function in R to perform the logarithmic transformation.
+      - Assign the result to a new column in the `chicago_air` dataset.
+    explanation: >-
+      Performing a logarithmic transformation on a skewed variable can help
+      improve its distribution and relationship with other variables. In this
+      exercise, we used the `log()` function to apply the logarithmic
+      transformation to the `ozone` variable and stored the result in a new
+      column called `log_ozone`.
+  - title: Fit Simple Linear Regression Model
+    text: >-
+      Fit a simple linear regression model using the `ozone` variable as the
+      dependent variable and the `temp` variable as the independent variable
+      from the `chicago_air` dataset.
+    solution: model <- lm(ozone ~ temp, data = chicago_air)
+    output: You should have a linear regression model object named `model`.
+    hints:
+      - Use the `lm()` function in R to fit the linear regression model.
+      - >-
+        Specify the formula `ozone ~ temp` to indicate the relationship to
+        model.
+      - Add the `data` argument and specify the `chicago_air` dataset.
+    explanation: >-
+      A linear regression model allows us to model the relationship between a
+      dependent variable and one or more independent variables. In this
+      exercise, we used the `lm()` function to fit a simple linear regression
+      model with the `ozone` variable as the dependent variable and the `temp`
+      variable as the independent variable from the `chicago_air` dataset.
+  - title: Handling Missing Data
+    text: >-
+      Identify and handle any missing data in the `ozone` and `temp` variables
+      from the `chicago_air` dataset.
+    solution: chicago_air <- na.omit(chicago_air)
+    output: >-
+      Any missing data in the `ozone` and `temp` variables should be removed
+      from the `chicago_air` dataset.
+    hints:
+      - >-
+        Use the `na.omit()` function in R to remove observations with missing
+        values.
+      - Apply the function to the `chicago_air` dataset.
+    explanation: >-
+      Missing data can affect the accuracy and validity of regression analysis.
+      In this exercise, we used the `na.omit()` function to remove any
+      observations with missing values in the `ozone` and `temp` variables from
+      the `chicago_air` dataset.
+  - title: Scatterplot
+    text: >-
+      Create a scatterplot of the `temp` variable against the `ozone` variable
+      from the `chicago_air` dataset.
+    solution: >-
+      plot(chicago_air$temp, chicago_air$ozone, xlab = 'Temperature', ylab =
+      'Ozone', main = 'Scatterplot of Temperature vs Ozone')
+    output: >-
+      You should have a scatterplot showing the relationship between the `temp`
+      and `ozone` variables.
+    hints:
+      - Use the `plot()` function in R to create a scatterplot.
+      - >-
+        Specify the `temp` variable as the x-axis and the `ozone` variable as
+        the y-axis.
+      - Add appropriate labels for the x-axis, y-axis, and the title.
+    explanation: >-
+      A scatterplot is a visual representation of the relationship between two
+      variables. In this exercise, we used the `plot()` function to create a
+      scatterplot of the `temp` variable against the `ozone` variable from the
+      `chicago_air` dataset.
+  - title: Handling Outliers
+    text: >-
+      Identify and handle any outliers in the scatterplot created in the
+      previous exercise.
+    solution: chicago_air <- chicago_air[chicago_air$ozone < 200, ]
+    output: >-
+      Any outliers in the scatterplot should be removed from the `chicago_air`
+      dataset.
+    hints:
+      - >-
+        Inspect the scatterplot and identify any observations that deviate
+        significantly from the main distribution.
+      - Remove the identified outliers from the `chicago_air` dataset.
+    explanation: >-
+      Outliers can have a substantial impact on regression models. In this
+      exercise, we removed any outliers in the scatterplot by removing
+      observations with `ozone` values greater than 200 from the `chicago_air`
+      dataset.

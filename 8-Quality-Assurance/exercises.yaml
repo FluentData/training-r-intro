@@ -1,0 +1,100 @@
+exercises:
+  - title: 'Exercise 1: Summary Statistics'
+    text: >-
+      Compute and print summary statistics for the variable `age` in the `data`
+      dataset.
+    solution: summary(data$age)
+    output: ''
+    hints: []
+    explanation: >-
+      The `summary()` function is used to compute summary statistics for a
+      variable. In this case, we want to compute the summary statistics for the
+      `age` variable in the `data` dataset.
+  - title: 'Exercise 2: Histogram'
+    text: >-
+      Create a histogram of the variable `height` in the `data` dataset with 10
+      bins.
+    solution: hist(data$height, breaks = 10)
+    output: ''
+    hints: []
+    explanation: >-
+      The `hist()` function is used to create a histogram. In this case, we want
+      to create a histogram of the `height` variable in the `data` dataset with
+      10 bins.
+  - title: 'Exercise 3: Scatterplot'
+    text: >-
+      Create a scatterplot of the variables `weight` and `height` in the `data`
+      dataset.
+    solution: plot(data$weight, data$height)
+    output: ''
+    hints: []
+    explanation: >-
+      The `plot()` function is used to create a scatterplot. In this case, we
+      want to create a scatterplot of the `weight` and `height` variables in the
+      `data` dataset.
+  - title: 'Exercise 4: Density Plot'
+    text: >-
+      Create a density plot of the variable `income` in the `data` dataset with
+      a bandwidth of 0.3.
+    solution: plot(density(data$income), bw = 0.3)
+    output: ''
+    hints: []
+    explanation: >-
+      The `density()` function is used to compute the density estimate. The
+      `plot()` function is used to create a density plot. In this case, we want
+      to create a density plot of the `income` variable in the `data` dataset
+      with a bandwidth of 0.3.
+  - title: 'Exercise 5: Range Checks'
+    text: >-
+      Flag values in the `age` variable that are less than 18 or greater than 65
+      as outliers.
+    solution: outlier <- data$age < 18 | data$age > 65
+    output: ''
+    hints: []
+    explanation: >-
+      We can use conditional statements to flag values that fall outside the
+      desired range. In this case, we want to flag values in the `age` variable
+      that are less than 18 or greater than 65 as outliers.
+  - title: 'Exercise 6: Boxplot'
+    text: Create a boxplot of the variable `weight` in the `data` dataset.
+    solution: boxplot(data$weight)
+    output: ''
+    hints: []
+    explanation: >-
+      The `boxplot()` function is used to create a boxplot. In this case, we
+      want to create a boxplot of the `weight` variable in the `data` dataset.
+  - title: 'Exercise 7: Custom QA Function'
+    text: >-
+      Write a custom QA function named `qa_check` that takes a dataset as input
+      and performs QA checks specific to the data and requirements.
+    solution: |-
+      qa_check <- function(data) {
+        # Perform QA checks
+        # ...
+        
+        # Return QA results
+        return(qa_results)
+      }
+    output: ''
+    hints: []
+    explanation: >-
+      We can write custom functions to perform quality assurance checks specific
+      to our data and requirements. In this case, we want to write a custom QA
+      function named `qa_check` that takes a dataset as input and performs QA
+      checks.
+  - title: 'Exercise 8: Loop Through Datasets'
+    text: >-
+      Create a loop that iterates through the `datasets` list and applies the
+      `qa_check` function to each dataset.
+    solution: |-
+      for (i in 1:length(datasets)) {
+        qa_results <- qa_check(datasets[[i]])
+        # Save or display QA results
+      }
+    output: ''
+    hints: []
+    explanation: >-
+      We can use loops to iterate through multiple datasets and apply the same
+      QA checks to each one. In this case, we want to create a loop that
+      iterates through the `datasets` list and applies the `qa_check` function
+      to each dataset.

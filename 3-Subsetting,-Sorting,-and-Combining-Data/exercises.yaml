@@ -1,0 +1,170 @@
+exercises:
+  - title: Inspecting Data with head() and tail()
+    text: >-
+      Use the `head()` and `tail()` functions to inspect the first 5 rows and
+      last 5 rows of the `cars` data frame. Assign the result of `head()` to a
+      variable named `first_rows` and the result of `tail()` to a variable named
+      `last_rows`.
+    solution: |-
+      first_rows <- head(cars)
+      last_rows <- tail(cars)
+    output: ''
+    hints:
+      - Use the `head()` function to display the first few rows of a data frame.
+      - Use the `tail()` function to display the last few rows of a data frame.
+      - Assign the result of `head()` to a variable named `first_rows`.
+      - Assign the result of `tail()` to a variable named `last_rows`.
+    explanation: >-
+      The `head()` function displays the first few rows of a data frame, while
+      the `tail()` function displays the last few rows. By assigning the result
+      of `head()` and `tail()` to variables, you can store the selected subset
+      of rows for further analysis.
+  - title: Subsetting Rows
+    text: >-
+      Subset the `iris` data frame to include only the rows where the `Species`
+      column contains the value 'setosa'. Assign the result to a new variable
+      named `setosa_subset`.
+    solution: setosa_subset <- iris[iris$Species == 'setosa', ]
+    output: ''
+    hints:
+      - Use the `[ ]` operator to subset a data frame.
+      - Use the `$` operator to select a specific column from a data frame.
+      - Use the `==` operator to check for equality.
+      - Assign the result of the subsetting operation to a new variable.
+    explanation: >-
+      By using the `[ ]` operator and specifying a logical condition, you can
+      subset a data frame to include only the rows that satisfy that condition.
+      In this case, we subset the `iris` data frame to include only the rows
+      where the `Species` column contains the value 'setosa'.
+  - title: Subsetting Columns
+    text: >-
+      Subset the `mtcars` data frame to include only the `mpg` and `cyl`
+      columns. Assign the result to a new variable named `subset_columns`.
+    solution: subset_columns <- mtcars[, c('mpg', 'cyl')]
+    output: ''
+    hints:
+      - Use the `[ ]` operator to subset a data frame.
+      - >-
+        Specify the column names in a vector and use it as the second argument
+        of the `[ ]` operator.
+      - Assign the result of the subsetting operation to a new variable.
+    explanation: >-
+      By using the `[ ]` operator and specifying the column names or indices,
+      you can subset a data frame to include only the desired columns. In this
+      case, we subset the `mtcars` data frame to include only the `mpg` and
+      `cyl` columns.
+  - title: Subsetting Rows and Columns
+    text: >-
+      Subset the `diamonds` data frame to include the first 100 rows and the
+      `cut` and `price` columns. Assign the result to a new variable named
+      `subset_rows_columns`.
+    solution: subset_rows_columns <- diamonds[1:100, c('cut', 'price')]
+    output: ''
+    hints:
+      - Use the `[ ]` operator to subset a data frame.
+      - >-
+        Specify the row indices and column names or indices inside the `[ ]`
+        operator.
+      - Assign the result of the subsetting operation to a new variable.
+    explanation: >-
+      By combining the row and column subsetting inside the `[ ]` operator, you
+      can subset a data frame to include specific rows and columns. In this
+      case, we subset the `diamonds` data frame to include the first 100 rows
+      and the `cut` and `price` columns.
+  - title: Filtering Rows with filter()
+    text: >-
+      Use the `filter()` function from the `dplyr` package to select rows from
+      the `mtcars` data frame where the `mpg` is greater than 20. Assign the
+      result to a new variable named `filtered_data`.
+    solution: |-
+      library(dplyr)
+
+      filtered_data <- filter(mtcars, mpg > 20)
+    output: ''
+    hints:
+      - Load the `dplyr` package using the `library()` function.
+      - Use the `filter()` function to select rows based on a condition.
+      - Assign the result of the filtering operation to a new variable.
+    explanation: >-
+      The `filter()` function from the `dplyr` package allows you to select rows
+      from a data frame based on specific conditions. In this case, we use
+      `filter()` to select rows from the `mtcars` data frame where the `mpg` is
+      greater than 20.
+  - title: Sorting Rows
+    text: >-
+      Sort the `mtcars` data frame by the `hp` column in descending order.
+      Assign the result to a new variable named `sorted_data`.
+    solution: |-
+      library(dplyr)
+
+      sorted_data <- arrange(mtcars, desc(hp))
+    output: ''
+    hints:
+      - Load the `dplyr` package using the `library()` function.
+      - Use the `arrange()` function to sort a data frame by a specific column.
+      - Use the `desc()` function to specify descending order.
+      - Assign the result of the sorting operation to a new variable.
+    explanation: >-
+      The `arrange()` function from the `dplyr` package allows you to sort a
+      data frame by a specific column. By using the `desc()` function, you can
+      specify descending order. In this case, we sort the `mtcars` data frame by
+      the `hp` column in descending order.
+  - title: Combining Data Frames
+    text: >-
+      Combine the `iris` and `mtcars` data frames into a single data frame.
+      Assign the result to a new variable named `combined_data`.
+    solution: |-
+      library(dplyr)
+
+      combined_data <- bind_rows(iris, mtcars)
+    output: ''
+    hints:
+      - Load the `dplyr` package using the `library()` function.
+      - Use the `bind_rows()` function to combine data frames vertically.
+      - Assign the result of the combining operation to a new variable.
+    explanation: >-
+      The `bind_rows()` function from the `dplyr` package allows you to combine
+      data frames vertically, stacking them on top of each other. In this case,
+      we combine the `iris` and `mtcars` data frames into a single data frame.
+  - title: 'Review Exercise: Subsetting, Sorting, and Combining'
+    text: >-
+      Create a dataset with the following columns: `name`, `age`, `gender`,
+      `salary`. Add 10 rows of data to the dataset. Subset the dataset to
+      include only the rows where the `age` is greater than or equal to 25 and
+      the `salary` is less than or equal to 50000. Sort the resulting subset by
+      the `salary` column in descending order. Combine the resulting subset with
+      the original dataset. Assign the final result to a new variable named
+      `final_data`.
+    solution: >-
+      name <- c('John', 'Alice', 'Michael', 'Emily', 'David', 'Sarah', 'Ryan',
+      'Emma', 'Olivia', 'Daniel')
+
+      age <- c(28, 23, 32, 27, 29, 24, 26, 31, 30, 25)
+
+      gender <- c('M', 'F', 'M', 'F', 'M', 'F', 'M', 'F', 'F', 'M')
+
+      salary <- c(40000, 45000, 55000, 50000, 60000, 35000, 48000, 52000, 49000,
+      38000)
+
+      dataset <- data.frame(name, age, gender, salary)
+
+
+      subset_data <- dataset[dataset$age >= 25 & dataset$salary <= 50000, ]
+
+      sorted_data <- arrange(subset_data, desc(salary))
+
+      final_data <- bind_rows(dataset, sorted_data)
+    output: ''
+    hints:
+      - Create vectors for each column of the dataset.
+      - Combine the vectors into a data frame using the `data.frame()` function.
+      - Subset the dataset using the `[ ]` operator and logical conditions.
+      - Sort the subset using the `arrange()` function.
+      - >-
+        Combine the original dataset and the sorted subset using the
+        `bind_rows()` function.
+      - Assign the final result to a new variable.
+    explanation: >-
+      This exercise combines the concepts of subsetting, sorting, and combining
+      data frames. By systematically applying each step, you can create a final
+      dataset that meets the specified criteria.

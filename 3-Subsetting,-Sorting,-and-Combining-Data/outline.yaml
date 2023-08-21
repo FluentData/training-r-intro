@@ -1,0 +1,29 @@
+title: Subsetting, Sorting, and Combining Data
+description: Learn techniques for selecting, ordering, and joining datasets in R.
+objectives:
+  - Subset data frames using indexing, logical operators, filter()
+  - Sort data frames with arrange()
+  - Combine data frames together with bind_rows()
+topics:
+  - title: Viewing Data Frames
+    description: Using head(), tail(), and View() to inspect data frames.
+    key_points:
+      - head() shows first 6 rows
+      - tail() shows last 6 rows
+      - View() opens data viewer
+  - title: Subsetting
+    description: Selecting data subsets using [], $, filter().
+    key_points:
+      - '[row,col] extracts elements'
+      - $ extracts named columns
+      - filter() subsets rows
+  - title: Sorting
+    description: Ordering rows with arrange() and desc().
+    key_points:
+      - arrange() sorts rows
+      - desc() sorts in descending order
+  - title: Combining
+    description: Appending data frames together with bind_rows().
+    key_points:
+      - bind_rows() stacks data frames
+      - Useful for joining related datasets

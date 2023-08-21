@@ -1,0 +1,29 @@
+title: Plotting with ggplot2
+description: Create publication-quality graphics in R with ggplot2.
+objectives:
+  - Make basic plots like scatter, line, bar charts, histograms
+  - Customize appearance of plots
+  - Use facets to generate multiple conditional plots
+topics:
+  - title: ggplot2 basics
+    description: Introduction to ggplot() syntax and components.
+    key_points:
+      - Starts with ggplot(data, aes(x,y))
+      - Geoms like geom_point() visualize data
+  - title: Common plots
+    description: Examples of basic visualization types.
+    key_points:
+      - Scatterplot: geom_point()
+      - Line plot: geom_line()
+      - Histogram: geom_histogram()
+      - Bar chart: geom_bar()
+  - title: Customizing plots
+    description: Options for styling and formatting plots.
+    key_points:
+      - Themes like theme_bw()
+      - Axis limits, labels, title, legend
+  - title: Facets
+    description: Generating multiple plots conditioned on variables.
+    key_points:
+      - facet_wrap() for conditional plots
+      - facet_grid() for multi-panel plots

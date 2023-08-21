@@ -1,0 +1,157 @@
+exercises:
+  - title: Writing Functions
+    text: >-
+      Write a function named `square` that takes a number as input and returns
+      the square of that number.
+    solution: |-
+      square <- function(x) {
+        result <- x * x
+        return(result)
+      }
+    output: ''
+    hints: []
+    explanation: >-
+      The `square` function takes a single input argument `x` and calculates the
+      square of `x` by multiplying it by itself. The result is stored in the
+      variable `result` and returned using the `return` keyword.
+  - title: Using if/else Statements
+    text: >-
+      Write a function named `check_even_odd` that takes a number as input and
+      returns 'even' if the number is even and 'odd' if the number is odd.
+    solution: |-
+      check_even_odd <- function(x) {
+        if (x %% 2 == 0) {
+          return('even')
+        } else {
+          return('odd')
+        }
+      }
+    output: ''
+    hints: []
+    explanation: >-
+      The `check_even_odd` function takes a single input argument `x` and checks
+      if `x` is divisible by 2. If the remainder (`%%`) of the division is 0,
+      the number is even and the function returns 'even'. Otherwise, the number
+      is odd and the function returns 'odd'.
+  - title: Iterating with Loops
+    text: >-
+      Write a function named `sum_range` that takes two numbers `start` and
+      `end` as input and returns the sum of all numbers in the range from
+      `start` to `end` (inclusive).
+    solution: |-
+      sum_range <- function(start, end) {
+        sum <- 0
+
+        for (i in start:end) {
+          sum <- sum + i
+        }
+
+        return(sum)
+      }
+    output: ''
+    hints: []
+    explanation: >-
+      The `sum_range` function takes two input arguments `start` and `end`. It
+      initializes a variable `sum` to 0. Then, it uses a `for` loop to iterate
+      over the range of numbers from `start` to `end` (inclusive) and adds each
+      number to `sum`. Finally, it returns the sum of all the numbers.
+  - title: Applying Functions, Conditionals, and Loops
+    text: >-
+      Write a function named `calculate_statistics` that takes a vector of
+      numbers as input and returns a list containing the mean, minimum, and
+      maximum values of the vector. If the vector is empty, return a list with
+      all values set to `NULL`.
+    solution: |-
+      calculate_statistics <- function(data) {
+        if (length(data) > 0) {
+          mean_value <- mean(data)
+          min_value <- min(data)
+          max_value <- max(data)
+
+          return(list(mean = mean_value, min = min_value, max = max_value))
+        } else {
+          return(list(mean = NULL, min = NULL, max = NULL))
+        }
+      }
+    output: ''
+    hints: []
+    explanation: >-
+      The `calculate_statistics` function takes a single input argument `data`,
+      which is a vector of numbers. It first checks if the length of `data` is
+      greater than 0 using the `length` function. If it is, it calculates the
+      mean, minimum, and maximum values of `data` using the `mean`, `min`, and
+      `max` functions, respectively. It returns a list containing the calculated
+      values. If `data` is empty, it returns a list with all values set to
+      `NULL`.
+  - title: Reinforcement Exercise 1
+    text: >-
+      Write a function named `is_prime` that takes a number as input and returns
+      `TRUE` if the number is prime and `FALSE` otherwise.
+    solution: |-
+      is_prime <- function(x) {
+        if (x <= 1) {
+          return(FALSE)
+        }
+
+        for (i in 2:sqrt(x)) {
+          if (x %% i == 0) {
+            return(FALSE)
+          }
+        }
+
+        return(TRUE)
+      }
+    output: ''
+    hints: []
+    explanation: >-
+      The `is_prime` function takes a single input argument `x` and checks if
+      `x` is less than or equal to 1. If it is, the function returns `FALSE`.
+      Otherwise, it uses a `for` loop to iterate over the numbers from 2 to the
+      square root of `x` (inclusive) and checks if `x` is divisible by any of
+      these numbers. If it is, the function returns `FALSE`. If `x` is not
+      divisible by any of these numbers, it is prime and the function returns
+      `TRUE`.
+  - title: Reinforcement Exercise 2
+    text: >-
+      Write a function named `count_digits` that takes a positive integer as
+      input and returns the number of digits in the integer.
+    solution: |-
+      count_digits <- function(x) {
+        count <- 0
+
+        while (x > 0) {
+          x <- x %/% 10
+          count <- count + 1
+        }
+
+        return(count)
+      }
+    output: ''
+    hints: []
+    explanation: >-
+      The `count_digits` function takes a single input argument `x`, which is a
+      positive integer. It initializes a variable `count` to 0. Then, it uses a
+      `while` loop to repeatedly divide `x` by 10 (using integer division `%/%`)
+      and increment the `count` by 1 until `x` becomes 0. This process counts
+      the number of digits in the original integer and returns the count.
+  - title: Reinforcement Exercise 3
+    text: >-
+      Write a function named `factorial` that takes a positive integer as input
+      and returns its factorial.
+    solution: |-
+      factorial <- function(n) {
+        result <- 1
+
+        for (i in 1:n) {
+          result <- result * i
+        }
+
+        return(result)
+      }
+    output: ''
+    hints: []
+    explanation: >-
+      The `factorial` function takes a single input argument `n`, which is a
+      positive integer. It initializes a variable `result` to 1. Then, it uses a
+      `for` loop to multiply `result` by each number from 1 to `n`. This
+      calculates the factorial of `n`, and the result is returned.

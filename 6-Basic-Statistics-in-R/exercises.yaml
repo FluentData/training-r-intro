@@ -1,0 +1,167 @@
+exercises:
+  - title: Mean and Median
+    text: >-
+      Calculate the mean and median of the `ozone` variable in the `chicago_air`
+      dataset.
+    solution: |-
+      mean_ozone <- mean(chicago_air$ozone)
+      median_ozone <- median(chicago_air$ozone)
+    output: |-
+      mean_ozone
+      median_ozone
+    hints: []
+    explanation: >-
+      The mean is the average of all the values in the dataset, while the median
+      is the middle value when the dataset is sorted in ascending order.
+  - title: Standard Deviation and Variance
+    text: >-
+      Calculate the standard deviation and variance of the `temp` variable in
+      the `chicago_air` dataset.
+    solution: |-
+      sd_temp <- sd(chicago_air$temp)
+      var_temp <- var(chicago_air$temp)
+    output: |-
+      sd_temp
+      var_temp
+    hints: []
+    explanation: >-
+      The standard deviation measures the average amount by which data points
+      deviate from the mean, while the variance is the average of the squared
+      deviations from the mean.
+  - title: Correlation
+    text: >-
+      Calculate the correlation coefficient between the `ozone` and `temp`
+      variables in the `chicago_air` dataset.
+    solution: correlation <- cor(chicago_air$ozone, chicago_air$temp)
+    output: correlation
+    hints: []
+    explanation: >-
+      Correlation measures the strength and direction of the linear relationship
+      between two variables. It takes values between -1 and 1, where -1
+      indicates a perfect negative correlation, 1 indicates a perfect positive
+      correlation, and 0 indicates no correlation.
+  - title: Confidence Intervals
+    text: >-
+      Perform a t-test and calculate a confidence interval for the mean ozone
+      concentration in the `chicago_air` dataset.
+    solution: |-
+      t_test <- t.test(chicago_air$ozone)
+      conf_interval <- t_test$conf.int
+    output: conf_interval
+    hints: []
+    explanation: >-
+      Confidence intervals provide a range of plausible values for a population
+      parameter, such as a population mean. t-tests can be used to calculate
+      confidence intervals for means.
+  - title: ANOVA Analysis
+    text: >-
+      Perform ANOVA analysis on the ozone concentrations grouped by month in the
+      `chicago_air` dataset.
+    solution: |-
+      anova_result <- aov(ozone ~ month, data = chicago_air)
+      summary(anova_result)
+    output: anova_result
+    hints: []
+    explanation: >-
+      ANOVA (Analysis of Variance) is used to compare the means of three or more
+      groups. It determines whether there are any statistically significant
+      differences among the means and provides an overall measure of
+      variability.
+  - title: Linear Regression
+    text: >-
+      Fit a simple linear regression model to the `chicago_air` dataset with
+      ozone as the dependent variable and temperature as the independent
+      variable.
+    solution: |-
+      lm_model <- lm(ozone ~ temp, data = chicago_air)
+      summary(lm_model)
+    output: lm_model
+    hints: []
+    explanation: >-
+      Linear regression allows us to model the relationship between a dependent
+      variable and one or more independent variables. It can be used to predict
+      the value of the dependent variable based on the values of the independent
+      variables.
+  - title: Practice Exercise 1
+    text: >-
+      Calculate the mean and median of the `wind_speed` variable in the
+      `chicago_air` dataset.
+    solution: |-
+      mean_wind_speed <- mean(chicago_air$wind_speed)
+      median_wind_speed <- median(chicago_air$wind_speed)
+    output: |-
+      mean_wind_speed
+      median_wind_speed
+    hints: []
+    explanation: >-
+      The mean is the average of all the values in the dataset, while the median
+      is the middle value when the dataset is sorted in ascending order.
+  - title: Practice Exercise 2
+    text: >-
+      Calculate the standard deviation and variance of the `pressure` variable
+      in the `chicago_air` dataset.
+    solution: |-
+      sd_pressure <- sd(chicago_air$pressure)
+      var_pressure <- var(chicago_air$pressure)
+    output: |-
+      sd_pressure
+      var_pressure
+    hints: []
+    explanation: >-
+      The standard deviation measures the average amount by which data points
+      deviate from the mean, while the variance is the average of the squared
+      deviations from the mean.
+  - title: Practice Exercise 3
+    text: >-
+      Calculate the correlation coefficient between the `ozone` and `wind_speed`
+      variables in the `chicago_air` dataset.
+    solution: correlation <- cor(chicago_air$ozone, chicago_air$wind_speed)
+    output: correlation
+    hints: []
+    explanation: >-
+      Correlation measures the strength and direction of the linear relationship
+      between two variables. It takes values between -1 and 1, where -1
+      indicates a perfect negative correlation, 1 indicates a perfect positive
+      correlation, and 0 indicates no correlation.
+  - title: Practice Exercise 4
+    text: >-
+      Perform a t-test and calculate a confidence interval for the mean wind
+      speed in the `chicago_air` dataset.
+    solution: |-
+      t_test <- t.test(chicago_air$wind_speed)
+      conf_interval <- t_test$conf.int
+    output: conf_interval
+    hints: []
+    explanation: >-
+      Confidence intervals provide a range of plausible values for a population
+      parameter, such as a population mean. t-tests can be used to calculate
+      confidence intervals for means.
+  - title: Practice Exercise 5
+    text: >-
+      Perform ANOVA analysis on the ozone concentrations grouped by month and
+      day in the `chicago_air` dataset.
+    solution: |-
+      anova_result <- aov(ozone ~ month + day, data = chicago_air)
+      summary(anova_result)
+    output: anova_result
+    hints: []
+    explanation: >-
+      ANOVA (Analysis of Variance) is used to compare the means of three or more
+      groups. It determines whether there are any statistically significant
+      differences among the means and provides an overall measure of
+      variability.
+  - title: Practice Exercise 6
+    text: >-
+      Fit a multiple linear regression model to the `chicago_air` dataset with
+      ozone as the dependent variable and temperature and pressure as the
+      independent variables.
+    solution: |-
+      lm_model <- lm(ozone ~ temp + pressure, data = chicago_air)
+      summary(lm_model)
+    output: lm_model
+    hints: []
+    explanation: >-
+      Linear regression allows us to model the relationship between a dependent
+      variable and one or more independent variables. It can be used to predict
+      the value of the dependent variable based on the values of the independent
+      variables.

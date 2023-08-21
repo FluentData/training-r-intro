@@ -1,0 +1,28 @@
+title: Basic Statistics in R
+description: Calculate common descriptive and inference statistics in R.
+objectives:
+  - Calculate summary statistics like mean, median, correlation
+  - Generate confidence intervals and perform t-tests
+  - Perform ANOVA analysis and linear models
+topics:
+  - title: Summary statistics
+    description: Functions for descriptive stats like mean(), median().
+    key_points:
+      - mean(), median() for central tendency
+      - sd(), var() for spread
+      - cor() for correlation
+  - title: Confidence intervals
+    description: Using t.test() for intervals and inference.
+    key_points:
+      - t.test() for confidence intervals
+      - Outputs p-value for significance
+  - title: ANOVA
+    description: One-way ANOVA analysis with aov() and TukeyHSD().
+    key_points:
+      - aov() fits ANOVA model
+      - TukeyHSD() for post-hoc tests
+  - title: Linear models
+    description: Fitting linear models with lm().
+    key_points:
+      - lm() fits linear regression models
+      - summary() to view model output

@@ -1,0 +1,96 @@
+exercises:
+  - title: Installing R and RStudio
+    text: Explain in your own words how to install R and RStudio on your machine.
+    solution: >-
+      To install R, go to the R project website and follow the download
+      instructions for your operating system. Once R is installed, proceed to
+      install RStudio by going to the RStudio website and downloading the free
+      version of RStudio Desktop. Choose the appropriate installer for your
+      operating system and run it to install RStudio.
+    output: >-
+      To install R, go to the [R project website](https://www.r-project.org/)
+      and follow the download instructions for your operating system. Once R is
+      installed, you can proceed to install RStudio. To install RStudio, go to
+      the [RStudio website](https://www.rstudio.com/products/rstudio/download/)
+      and download the free version of RStudio Desktop. Choose the appropriate
+      installer for your operating system and run it to install RStudio.
+  - title: Running Commands in the R Console
+    text: Write a command in the R console that adds 3 and 5.
+    solution: 3 + 5
+    output: '[1] 8'
+  - title: Assigning Variables
+    text: Create a variable called 'name' and assign it the value 'John'.
+    solution: name <- 'John'
+    output: ''
+  - title: Data Types
+    text: What data type is the variable 'height' if its value is 175.5?
+    solution: numeric
+    output: ''
+  - title: Vectors
+    text: Create a numeric vector with the values 1, 2, 3, 4, 5.
+    solution: numbers <- c(1, 2, 3, 4, 5)
+    output: ''
+  - title: Performing Operations on Vectors
+    text: >-
+      Create two numeric vectors: v1 with the values 1, 2, 3 and v2 with the
+      values 4, 5, 6. Add the two vectors together and assign the result to a
+      variable called 'result'.
+    solution: |-
+      v1 <- c(1, 2, 3)
+      v2 <- c(4, 5, 6)
+      result <- v1 + v2
+    output: ''
+  - title: Lists
+    text: >-
+      Create a list called 'person' with three elements: a character element
+      'name' with the value 'John Doe', a numeric element 'age' with the value
+      30, and a character element 'city' with the value 'Chicago'.
+    solution: person <- list(name = 'John Doe', age = 30, city = 'Chicago')
+    output: ''
+  - title: Matrices
+    text: >-
+      Create a matrix called 'matrix1' with the values 1, 2, 3, 4, 5, 6. The
+      matrix should have 2 rows and 3 columns.
+    solution: matrix1 <- matrix(1:6, nrow = 2, ncol = 3)
+    output: ''
+  - title: Data Frames
+    text: >-
+      Create a data frame called 'data' with two columns: 'name' with the values
+      'John', 'Jane', 'David' and 'age' with the values 30, 25, 35.
+    solution: data <- data.frame(name = c('John', 'Jane', 'David'), age = c(30, 25, 35))
+    output: ''
+  - title: Review Exercise 1
+    text: >-
+      Write a command in the R console that calculates the product of two
+      variables: x with the value 10 and y with the value 5.
+    solution: "x <- 10\ty <- 5\nproduct <- x * y"
+    output: ''
+  - title: Review Exercise 2
+    text: >-
+      Create a logical vector called 'is_student' with the values TRUE, FALSE,
+      TRUE.
+    solution: is_student <- c(TRUE, FALSE, TRUE)
+    output: ''
+  - title: Review Exercise 3
+    text: >-
+      Create a data frame called 'people' with three columns: 'name' with the
+      values 'John', 'Jane', 'David', 'age' with the values 30, 25, 35, and
+      'city' with the values 'Chicago', 'New York', 'Los Angeles.
+    solution: >-
+      people <- data.frame(name = c('John', 'Jane', 'David'), age = c(30, 25,
+      35), city = c('Chicago', 'New York', 'Los Angeles'))
+    output: ''
+  - title: Review Exercise 4
+    text: >-
+      Write a command in the R console that calculates the average of the values
+      in a numeric vector called 'grades' with the values 80, 90, 70.
+    solution: |-
+      grades <- c(80, 90, 70)
+      average <- mean(grades)
+    output: ''
+  - title: Review Exercise 5
+    text: >-
+      Create a matrix called 'matrix2' with the values 1, 2, 3, 4, 5, 6, 7, 8,
+      9, 10. The matrix should have 5 rows and 2 columns.
+    solution: matrix2 <- matrix(1:10, nrow = 5, ncol = 2)
+    output: ''
