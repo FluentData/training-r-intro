@@ -22,6 +22,12 @@ topics:
       - Flexibility for doing custom data science/modeling beyond canned reports
       - Reproducibility by using RScripts instead of click-based GUIs
       - Large collection of specialized packages for data tasks
+  - title: R vs python
+    description: Compare R to python for data science.
+    key_points:
+      - Both are popular open source languages for data science
+      - R is more specialized for statistical analysis
+      - Python is more general purpose
   - title: Installing R and RStudio
     description: Downloading and installing R and RStudio IDE.
     key_points:

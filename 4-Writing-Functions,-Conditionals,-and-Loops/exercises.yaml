@@ -1,157 +1,115 @@
-exercises:
-  - title: Writing Functions
+section_exercises:
+  - section_title: Functions in R
     text: >-
-      Write a function named `square` that takes a number as input and returns
-      the square of that number.
-    solution: |-
-      square <- function(x) {
-        result <- x * x
-        return(result)
-      }
-    output: ''
-    hints: []
+      Write a function in R that takes two numbers as input and returns their
+      sum.
+    solution: sum_num <- function(x, y) {return(x + y)}
+    output: For example, sum_num(3, 4) should return 7.
+    hints:
+      - Use the `function` keyword to define the function.
+      - The function should take two parameters.
+      - Use the `return` keyword to specify the result.
     explanation: >-
-      The `square` function takes a single input argument `x` and calculates the
-      square of `x` by multiplying it by itself. The result is stored in the
-      variable `result` and returned using the `return` keyword.
-  - title: Using if/else Statements
+      This function takes two inputs, adds them together and returns the result.
+      It's a simple function that demonstrates how to define functions and use
+      parameters in R.
+  - section_title: If/Else Statements
     text: >-
-      Write a function named `check_even_odd` that takes a number as input and
-      returns 'even' if the number is even and 'odd' if the number is odd.
+      Write an If/Else statement that prints whether a given number is even or
+      odd.
     solution: |-
-      check_even_odd <- function(x) {
-        if (x %% 2 == 0) {
-          return('even')
-        } else {
-          return('odd')
-        }
-      }
-    output: ''
-    hints: []
+      num <- 4
+      if(num %% 2 == 0) {print("Number is even")} else {print("Number is odd")}
+    output: For example, for num=4, it should print 'Number is even'.
+    hints:
+      - Use `%%` operator to get the remainder of a division.
+      - An even number gives a remainder of 0 when divided by 2.
     explanation: >-
-      The `check_even_odd` function takes a single input argument `x` and checks
-      if `x` is divisible by 2. If the remainder (`%%`) of the division is 0,
-      the number is even and the function returns 'even'. Otherwise, the number
-      is odd and the function returns 'odd'.
-  - title: Iterating with Loops
+      This statement checks if a number is divisible by 2 (which means it's
+      even). If yes, it prints 'Number is even', otherwise it prints 'Number is
+      odd'.
+  - section_title: Iteration with Loops
     text: >-
-      Write a function named `sum_range` that takes two numbers `start` and
-      `end` as input and returns the sum of all numbers in the range from
-      `start` to `end` (inclusive).
+      Write a `for` loop in R that calculates the cumulative sum of an array
+      from 1 to 10.
     solution: |-
-      sum_range <- function(start, end) {
-        sum <- 0
-
-        for (i in start:end) {
-          sum <- sum + i
-        }
-
-        return(sum)
-      }
-    output: ''
-    hints: []
+      cumulative_sum <- 0
+      for(i in 1:10) {cumulative_sum <- cumulative_sum + i}
+      print(cumulative_sum)
+    output: 'It should print the cumulative sum: 55'
+    hints:
+      - Use `:` operator to get a sequence from 1 to 10.
+      - In each iteration, add the current number to `cumulative_sum`.
     explanation: >-
-      The `sum_range` function takes two input arguments `start` and `end`. It
-      initializes a variable `sum` to 0. Then, it uses a `for` loop to iterate
-      over the range of numbers from `start` to `end` (inclusive) and adds each
-      number to `sum`. Finally, it returns the sum of all the numbers.
-  - title: Applying Functions, Conditionals, and Loops
-    text: >-
-      Write a function named `calculate_statistics` that takes a vector of
-      numbers as input and returns a list containing the mean, minimum, and
-      maximum values of the vector. If the vector is empty, return a list with
-      all values set to `NULL`.
+      This loop iterates through the numbers 1 to 10. In each iteration, it adds
+      the current number to the cumulative_sum. The final result is the
+      cumulative sum of all numbers from 1 to 10.
+lesson_exercises:
+  - text: >-
+      Write a function in R that accepts an array as input and returns its mean
+      value.
+    solution: mean_value <- function(arr) {return(sum(arr) / length(arr))}
+    output: For example, mean_value(c(1,2,3,4)) should return 2.5
+    hints:
+      - Use the `function` keyword to define the function.
+      - >-
+        Inside the function, use `sum()` to calculate the total sum of the
+        array, and `length()` to get the number of elements.
+      - Divide the total sum by the number of elements to get the mean.
+    explanation: >-
+      This function calculates the mean of an array. It uses the sum function to
+      calculate the sum of the elements, and the length function to calculate
+      the number of elements. Then it divides the sum by the number of elements
+      to get the mean.
+  - text: >-
+      Write an R function that accepts an integer as input and uses a `while`
+      loop to calculate the factorial of the input number.
     solution: |-
-      calculate_statistics <- function(data) {
-        if (length(data) > 0) {
-          mean_value <- mean(data)
-          min_value <- min(data)
-          max_value <- max(data)
-
-          return(list(mean = mean_value, min = min_value, max = max_value))
-        } else {
-          return(list(mean = NULL, min = NULL, max = NULL))
-        }
+      factorial_num <- function(num) {
+       factorial = 1
+       while(num > 1) {
+        factorial = factorial * num 
+        num = num - 1
+       } 
+       return(factorial)
       }
-    output: ''
-    hints: []
+    output: For example, factorial_num(5) should return 120.
+    hints:
+      - >-
+        The factorial of a number is the product of all positive integers less
+        than or equal to that number.
+      - >-
+        Use a `while` loop to multiply all positive integers less than or equal
+        to the input number.
     explanation: >-
-      The `calculate_statistics` function takes a single input argument `data`,
-      which is a vector of numbers. It first checks if the length of `data` is
-      greater than 0 using the `length` function. If it is, it calculates the
-      mean, minimum, and maximum values of `data` using the `mean`, `min`, and
-      `max` functions, respectively. It returns a list containing the calculated
-      values. If `data` is empty, it returns a list with all values set to
-      `NULL`.
-  - title: Reinforcement Exercise 1
-    text: >-
-      Write a function named `is_prime` that takes a number as input and returns
-      `TRUE` if the number is prime and `FALSE` otherwise.
+      This function calculates the factorial of a number. It initializes
+      `factorial` to 1. Then it enters a `while` loop, which continues as long
+      as `num` is greater than 1. In each iteration, it multiplies `factorial`
+      by `num` and then decreases `num` by 1. Finally, it returns the value of
+      `factorial`.
+  - text: >-
+      Write a function in R that accepts an array and a number as input, and
+      returns the number of elements in the array that are greater than the
+      input number.
     solution: |-
-      is_prime <- function(x) {
-        if (x <= 1) {
-          return(FALSE)
-        }
-
-        for (i in 2:sqrt(x)) {
-          if (x %% i == 0) {
-            return(FALSE)
-          }
-        }
-
-        return(TRUE)
+      count_greater <- function(nums, num) { 
+       count = 0 
+       for(i in nums) { 
+       if(i > num) { 
+       count = count + 1 
+       } 
+       } 
+       return(count) 
       }
-    output: ''
-    hints: []
+    output: For example, count_greater(c(1,2,3,4,5), 3) should return 2.
+    hints:
+      - Use a `for` loop to iterate over each element of the array.
+      - >-
+        Inside the loop, use an `if` statement to check if the current element
+        is greater than the input number.
+      - If it is, increment a counter.
     explanation: >-
-      The `is_prime` function takes a single input argument `x` and checks if
-      `x` is less than or equal to 1. If it is, the function returns `FALSE`.
-      Otherwise, it uses a `for` loop to iterate over the numbers from 2 to the
-      square root of `x` (inclusive) and checks if `x` is divisible by any of
-      these numbers. If it is, the function returns `FALSE`. If `x` is not
-      divisible by any of these numbers, it is prime and the function returns
-      `TRUE`.
-  - title: Reinforcement Exercise 2
-    text: >-
-      Write a function named `count_digits` that takes a positive integer as
-      input and returns the number of digits in the integer.
-    solution: |-
-      count_digits <- function(x) {
-        count <- 0
-
-        while (x > 0) {
-          x <- x %/% 10
-          count <- count + 1
-        }
-
-        return(count)
-      }
-    output: ''
-    hints: []
-    explanation: >-
-      The `count_digits` function takes a single input argument `x`, which is a
-      positive integer. It initializes a variable `count` to 0. Then, it uses a
-      `while` loop to repeatedly divide `x` by 10 (using integer division `%/%`)
-      and increment the `count` by 1 until `x` becomes 0. This process counts
-      the number of digits in the original integer and returns the count.
-  - title: Reinforcement Exercise 3
-    text: >-
-      Write a function named `factorial` that takes a positive integer as input
-      and returns its factorial.
-    solution: |-
-      factorial <- function(n) {
-        result <- 1
-
-        for (i in 1:n) {
-          result <- result * i
-        }
-
-        return(result)
-      }
-    output: ''
-    hints: []
-    explanation: >-
-      The `factorial` function takes a single input argument `n`, which is a
-      positive integer. It initializes a variable `result` to 1. Then, it uses a
-      `for` loop to multiply `result` by each number from 1 to `n`. This
-      calculates the factorial of `n`, and the result is returned.
+      This function counts the number of elements in an array that are greater
+      than a given number. It accomplishes this by looping over each element in
+      the array. For each element, it checks if it is greater than the input
+      number. If it is, it increments a counter. The final count is returned.

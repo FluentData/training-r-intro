@@ -1,75 +1,101 @@
-exercises:
-  - title: Calculating the Mean
+section_exercises:
+  - section_title: What are Functions in R?
     text: >-
-      Write a function called `calculate_mean` that takes a vector of numbers as
-      an argument and returns the mean value.
-    solution: calculate_mean <- function(numbers) { mean(numbers) }
-    output: ''
-    hints: []
-    explanation: ''
-  - title: Concatenating Strings
+      Create a vector containing numbers 1 to 10 using R. Calculate the mean of
+      this vector using the mean() function.
+    solution: |-
+      numbers <- c(1:10)
+      mean(numbers)
+    output: '5.5'
+    hints:
+      - Use `:` for generating sequence of numbers.
+      - Apply the `mean()` function on the created vector to calculate the mean.
+    explanation: >-
+      In R, `c(1:10)` generates a vector of numbers from 1 to 10. The `mean()`
+      function calculates the average of the elements in the vector.
+  - section_title: Nesting Functions
     text: >-
-      Write a function called `create_greeting` that takes a name (string) and
-      an age (numeric) as arguments and returns a greeting message that includes
-      the name and age.
-    solution: >-
-      create_greeting <- function(name, age) { greeting <- paste('Hello,', name,
-      '. You are', age, 'years old.') return(greeting) }
-    output: ''
-    hints: []
-    explanation: ''
-  - title: Generating a Sequence
+      First, create a vector of numbers from 1 to 100. Then, find the mean of
+      the subset of numbers that are less than 50.
+    solution: |-
+      numbers <- c(1:100)
+      mean(subset(numbers, numbers < 50))
+    output: '25'
+    hints:
+      - Use `:` to generate a sequence of numbers.
+      - >-
+        The `subset()` function can be used to filter out values in the vector
+        that satisfy a particular condition.
+      - Calculate the mean of the filtered values using `mean()`.
+    explanation: >-
+      The `subset()` function is used to select values from the vector `numbers`
+      that are less than 50. The `mean()` function then calculates the average
+      of these selected values.
+  - section_title: Importing Data
     text: >-
-      Write a function called `generate_sequence` that takes a starting value,
-      an ending value, and a step size as arguments and returns a vector
-      containing the generated sequence.
-    solution: >-
-      generate_sequence <- function(start, end, step) { sequence <- seq(start,
-      end, step) return(sequence) }
-    output: ''
-    hints: []
-    explanation: ''
-  - title: Install and Load a Package
-    text: >-
-      Write a function called `load_package` that takes the name of a package as
-      an argument, installs the package, and loads it into the R session.
-    solution: >-
-      load_package <- function(package_name) { install.packages(package_name)
-      library(package_name) }
-    output: ''
-    hints: []
-    explanation: ''
-  - title: Importing Data from CSV
-    text: >-
-      Write a function called `import_csv` that takes the file path of a CSV
-      file as an argument and imports the data into R as a data frame using the
-      `read.csv()` function.
-    solution: >-
-      import_csv <- function(file_path) { data <- read.csv(file_path)
-      return(data) }
-    output: ''
-    hints: []
-    explanation: ''
-  - title: Importing Data from Excel
-    text: >-
-      Write a function called `import_excel` that takes the file path of an
-      Excel file as an argument, installs and loads the `readxl` package, and
-      imports the data from the Excel file using the `read_excel()` function.
-    solution: >-
-      import_excel <- function(file_path) { install.packages('readxl')
-      library(readxl) data <- read_excel(file_path) return(data) }
-    output: ''
-    hints: []
-    explanation: ''
-  - title: Using Functions
-    text: >-
-      Write a function called `data_summary` that takes a data frame as an
-      argument, calculates the mean of a specific column using the `mean()`
-      function, and returns a summary message that includes the mean value.
-    solution: >-
-      data_summary <- function(data, column) { mean_value <-
-      mean(data[[column]]) summary <- paste('The mean of', column, 'is',
-      mean_value) return(summary) }
-    output: ''
-    hints: []
-    explanation: ''
+      Assume we have a CSV file named `data.csv` in a `data` folder. Write a R
+      command to import data from this file.
+    solution: data <- read.csv("../data/data.csv")
+    output: No specific output for this
+    hints:
+      - Use the `read.csv()` function to read the CSV file.
+      - The file path should be passed as a string to the `read.csv()` function.
+    explanation: >-
+      In R, the `read.csv()` function is used to read a CSV file and store the
+      data as a dataframe in R.
+lesson_exercises:
+  - text: >-
+      Generate a sequence of even numbers from 2 to 20. Calculate the mean of
+      the subset of numbers that are less than 10. Use functions in R.
+    solution: |-
+      numbers <- seq(from = 2, to = 20, by = 2)
+      mean(subset(numbers, numbers < 10))
+    output: '4'
+    hints:
+      - Use `seq()` function to generate a sequence of even numbers.
+      - Use `subset()` function to obtain numbers that are less than 10.
+      - Calculate the mean of the subset numbers using `mean()`.
+    explanation: >-
+      The `seq()` function is used to generate a sequence of even numbers from 2
+      to 20. `subset()` is then used to select numbers less than 10 from this
+      sequence. Finally, `mean()` is used to calculate the average.
+  - text: Concatenate two strings "Hello" and "world" using built-in R functions.
+    solution: paste("Hello", ", world!")
+    output: '"Hello, world!"'
+    hints:
+      - Use `paste()` function to concatenate strings.
+    explanation: >-
+      The `paste()` function in R concatenates (joins) two or more character
+      strings.
+  - text: >-
+      Create a sequence of numbers from 10 to 100, with increment of 10.
+      Calculate the mean and round it off to the nearest integer.
+    solution: |-
+      numbers <- seq(from = 10, to = 100, by = 10)
+      round(mean(numbers))
+    output: '55'
+    hints:
+      - Use `seq()` function to generate the sequence.
+      - Use `mean()` function to calculate the mean.
+      - >-
+        Use `round()` function to round off the value to the nearest whole
+        number.
+    explanation: >-
+      The `seq()` function generates a sequence of numbers. The `mean()`
+      function calculates the mean of these numbers. The `round()` function then
+      rounds off the calculated mean to the nearest integer.
+  - text: >-
+      Assume that we have an Excel file named `excel_data.xlsx` in the same
+      `data` folder. Write an R command to import data from this file.
+    solution: |-
+      library(readxl)
+      excel_data <- read_excel("../data/excel_data.xlsx")
+    output: No specific output for this
+    hints:
+      - You must load the `readxl` library using `library()` function.
+      - >-
+        The `read_excel()` function from `readxl` library can be used to read
+        Excel files.
+    explanation: >-
+      The `read_excel()` function from the `readxl` library in R is used to read
+      Excel files and store the data in R.

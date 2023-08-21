@@ -1,142 +1,176 @@
-exercises:
-  - title: Creating a Scatter Plot
+section_exercises:
+  - section_title: Introduction to ggplot()
     text: >-
-      Create a scatter plot using the `ggplot2` package. Use the `temp` variable
-      as the x-axis and the `ozone` variable as the y-axis.
+      Create a basic scatter plot for the `airquality` dataset in R, plotting
+      Wind speed (m.p.h.) on the y-axis and Solar.R (Radiation) on the x-axis.
     solution: |-
-      ggplot(data, aes(x = temp, y = ozone)) +
+      library(ggplot2)
+
+      ggplot(airquality, aes(x=Solar.R, y=Wind)) +
         geom_point()
     output: ''
     hints:
-      - Use the `ggplot()` function to specify the dataset and aesthetics.
-      - Add the `geom_point()` function to create the scatter plot.
+      - Use `ggplot()` function to initiate the plotting
+      - Use `aes()` function to define X and Y axis
+      - Add `geom_point()` to create a scatter plot
     explanation: >-
-      To create a scatter plot using the `ggplot2` package, you can use the
-      `ggplot()` function to specify the dataset and aesthetics, and then add
-      the `geom_point()` function to create the scatter plot.
-  - title: Creating a Line Chart
+      In this exercise, we have created a scatter plot using the `ggplot2`
+      library. The `geom_point()` function is used to add points to the plot,
+      with the x and y coordinates specified in the `aes()` function.
+  - section_title: Scatter Plot
     text: >-
-      Create a line chart using the `ggplot2` package. Use the `date` variable
-      as the x-axis and the `ozone` variable as the y-axis.
+      Create a scatter plot for the `mtcars` dataset in R, plotting MPG
+      (miles/gallon) on y-axis and disp (Displacement (cu.in.)) on x-axis. Use
+      different colors for different numbers of cylinders (`cyl`).
     solution: |-
-      ggplot(data, aes(x = date, y = ozone)) +
-        geom_line()
+      ggplot(mtcars, aes(x=disp, y=mpg, color=factor(cyl))) +
+        geom_point()
     output: ''
     hints:
-      - Use the `ggplot()` function to specify the dataset and aesthetics.
-      - Add the `geom_line()` function to create the line chart.
+      - Color can be defined inside `aes()` function
+      - Convert `cyl` to factor before defining color
     explanation: >-
-      To create a line chart using the `ggplot2` package, you can use the
-      `ggplot()` function to specify the dataset and aesthetics, and then add
-      the `geom_line()` function to create the line chart.
-  - title: Creating a Bar Chart
+      This exercise introduces the idea of creating scatter plots with different
+      colors for different categories. The `color` aesthetic within the `aes()`
+      function is used to create different colors for different numbers of
+      cylinders.
+  - section_title: Customizing the Scatter Plot
     text: >-
-      Create a bar chart using the `ggplot2` package. Use the `month` variable
-      as the x-axis and fill the bars based on the `month` variable.
+      Customize the scatter plot created in the previous exercise by adding a
+      title and labels for the x and y axes. Use blue color for the data points.
     solution: |-
-      ggplot(data, aes(x = month, fill = factor(month))) +
-        geom_bar()
+      ggplot(mtcars, aes(x=disp, y=mpg, color=factor(cyl))) +
+        geom_point(colour='#3366FF') +
+        ggtitle('Relationship between MPG and Displacement') +
+        xlab('Displacement (cu.in.)') +
+        ylab('MPG (miles/gallon)')
     output: ''
     hints:
-      - Use the `ggplot()` function to specify the dataset and aesthetics.
-      - Add the `geom_bar()` function to create the bar chart.
+      - Use `ggtitle()` to add a title
+      - Use `xlab()` and `ylab()` to add labels to the x and y axes
+      - You can directly assign the color in `geom_point()`
     explanation: >-
-      To create a bar chart using the `ggplot2` package, you can use the
-      `ggplot()` function to specify the dataset and aesthetics, and then add
-      the `geom_bar()` function to create the bar chart.
-  - title: Creating a Histogram
+      Here, we add labels to the x and y axes using `xlab()` and `ylab()`, a
+      title using `ggtitle()`, and we specify the color of the points using the
+      `color` argument in `geom_point()`. This makes the plot more informative
+      and appealing.
+  - section_title: Histogram
     text: >-
-      Create a histogram using the `ggplot2` package. Use the `ozone` variable
-      as the x-axis.
+      Create a histogram for the `airquality` dataset in R, plotting the
+      distribution of `Ozone` (Ozone (ppb)).
     solution: |-
-      ggplot(data, aes(x = ozone)) +
-        geom_histogram()
+      ggplot(airquality, aes(x=Ozone)) +
+        geom_histogram(binwidth=5, fill='#FF6633', color='black')
     output: ''
     hints:
-      - Use the `ggplot()` function to specify the dataset and aesthetics.
-      - Add the `geom_histogram()` function to create the histogram.
+      - Use `geom_histogram()` to create a histogram
+      - '`binwidth` controls the width of the bars'
+      - Change the color of the bars using `fill`
     explanation: >-
-      To create a histogram using the `ggplot2` package, you can use the
-      `ggplot()` function to specify the dataset and aesthetics, and then add
-      the `geom_histogram()` function to create the histogram.
-  - title: Customizing Plots
+      In a histogram, the continuous variable is divided into bins or intervals,
+      and the number of observations in each bin is counted. Here, we create a
+      histogram of ozone levels, specify the binwidth as 5, and change the color
+      of the bars using the `fill` parameter.
+  - section_title: Faceted Bar Plot
     text: >-
-      Modify the appearance of a plot created using `ggplot2`. Add a theme to
-      change the overall appearance, add axis labels, and add a title.
+      Create a faceted bar plot for `airquality` dataset in R, showing the
+      average `Ozone` for each `Month`, faceted by `Day`. Hint: You can use the
+      `aggregate()` function to calculate the average `Ozone` for each `Month`
+      and `Day` combination.
+    solution: >-
+      avg_ozone <- aggregate(Ozone ~ Month + Day, data = airquality, FUN = mean,
+      na.rm = TRUE)
+
+
+      ggplot(avg_ozone, aes(x=factor(Month), y=Ozone, fill=factor(Day))) +
+        geom_bar(stat='identity') +
+        theme_minimal() +
+        facet_wrap(~Day) +
+        labs(title='Average Ozone Concentration per Month, Faceted by Day',
+             x='Month',
+             y='Average Ozone Concentration (ppb)')
+    output: ''
+    hints:
+      - >-
+        Calculate mean `Ozone` concentration per `Month` and `Day` using
+        `aggregate()`
+      - '`geom_bar(stat=''identity'')` can be used to create a bar plot'
+      - >-
+        The `facet_wrap()` function is used to create multiple plots based on
+        the `Day` factor
+      - '`theme_minimal()` gives a clean white background.'
+    explanation: >-
+      A faceted plot, also known as a trellis plot or small-multiple plot,
+      breaks the data into subsets based on a factor and then applies the same
+      graphical representation to each subset. This makes it easier to compare
+      different groups in the data.
+lesson_exercises:
+  - text: >-
+      Combine what you've learned to create a faceted scatter plot that shows
+      the relationship between `Wind` and `Solar.R` in the `airquality` dataset,
+      faceted by `Month`. Customize this plot by adding a title and labels to
+      the x and y axes. Use green color for the data points.
     solution: |-
-      ggplot(data, aes(x = temp, y = ozone)) +
+      ggplot(airquality, aes(x=Wind, y=Solar.R)) +
+        geom_point(colour='#00CC00') +
+        facet_wrap(~Month) +
+        ggtitle('Relationship between Wind Speed and Solar Radiation per Month') +
+        xlab('Wind Speed (mph)') +
+        ylab('Solar Radiation (lang)')
+    output: ''
+    hints:
+      - Use `ggplot()` to define dataset and aesthetics
+      - Use `geom_point()` to define type of the plot
+      - Use `facet_wrap()` to create facets
+      - Add labels using `ggtitle()`, `xlab()`, `ylab()`
+      - Set color directly in `geom_point()`
+    explanation: >-
+      In this exercise, we have combined scatter plot, faceting, and
+      customization techniques taught in the lesson. Faceting has been used to
+      create a subplot for each Month, and the scatter plot visualizes the
+      relationship between Wind Speed and Solar Radiation.
+  - text: >-
+      Using the `mtcars` dataset, create a scatter plot of `mpg` (y) against
+      `hp` (x), color the points by number of cylinders (`cyl`), and facet this
+      plot by gearbox (`am`, where 0 = automatic, 1 = manual). Also, add
+      suitable title and axis labels.
+    solution: |-
+      ggplot(mtcars, aes(x=hp, y=mpg, color=factor(cyl))) +
         geom_point() +
-        theme_bw() +
-        xlab("Temperature") +
-        ylab("Ozone") +
-        ggtitle("Temperature vs. Ozone")
+        facet_wrap(~am) +
+        ggtitle('MPG vs. Horsepower, Faceted by Gearbox Type') +
+        xlab('Horsepower') +
+        ylab('Miles per Gallon')
     output: ''
     hints:
-      - Use the `+` operator to add different elements to the plot.
-      - Use the `theme_bw()` function to change the theme.
-      - Use the `xlab()` and `ylab()` functions to add axis labels.
-      - Use the `ggtitle()` function to add a title.
+      - Use `ggplot()` to define dataset and aesthetics
+      - Use `geom_point()` to define type of the plot
+      - Use `facet_wrap()` to create facets
+      - Add labels using `ggtitle()`, `xlab()`, `ylab()`
     explanation: >-
-      To modify the appearance of a plot created using `ggplot2`, you can use
-      the `+` operator to add different elements to the plot. You can use the
-      `theme_bw()` function to change the theme, the `xlab()` and `ylab()`
-      functions to add axis labels, and the `ggtitle()` function to add a title.
-  - title: Creating Conditional Plots with Facets
-    text: Create a scatter plot with facets based on the `month` variable
+      This exercise reinforces how to use many aspects of `ggplot2` together:
+      scatter plots, aesthetics, faceting, and customizing plots with titles and
+      labels. Faceting facilitates a comparison between automatic and manual
+      gearboxes.
+  - text: >-
+      Create a customizable histogram for the `mtcars` dataset, showing the
+      distribution of `mpg` (miles per gallon) for each gearbox type (`am`),
+      where fill color is set to green.
     solution: |-
-      ggplot(data, aes(x = temp, y = ozone)) +
-        geom_point() +
-        facet_wrap(~ month)
+      ggplot(mtcars, aes(x=mpg)) +
+        geom_histogram(binwidth=2, fill='#00CC00') +
+        facet_wrap(~am) +
+        ggtitle('Distributions of MPG, Faceted by Gearbox Type') +
+        xlab('Miles per Gallon') +
+        ylab('Count')
     output: ''
     hints:
-      - Use the `ggplot()` function to specify the dataset and aesthetics.
-      - Add the `geom_point()` function to create the scatter plot.
-      - Add the `facet_wrap()` function to create the facets.
+      - Use `geom_histogram()` to create a histogram
+      - '`binwidth` controls the width of the bins'
+      - Change the color of the bars using `fill`
+      - Use `facet_wrap()` to create facets
+      - Add labels using `ggtitle()`, `xlab()`, `ylab()`
     explanation: >-
-      To create a scatter plot with facets based on the `month` variable, you
-      can use the `ggplot()` function to specify the dataset and aesthetics, add
-      the `geom_point()` function to create the scatter plot, and then add the
-      `facet_wrap()` function to create the facets.
-  - title: Creating Grid of Plots with Facets
-    text: >-
-      Create a scatter plot with facets based on the `month` variable for the
-      rows and the `weekday` variable for the columns
-    solution: |-
-      ggplot(data, aes(x = temp, y = ozone)) +
-        geom_point() +
-        facet_grid(month ~ weekday)
-    output: ''
-    hints:
-      - Use the `ggplot()` function to specify the dataset and aesthetics.
-      - Add the `geom_point()` function to create the scatter plot.
-      - Add the `facet_grid()` function to create the facets.
-    explanation: >-
-      To create a scatter plot with facets based on the `month` variable for the
-      rows and the `weekday` variable for the columns, you can use the
-      `ggplot()` function to specify the dataset and aesthetics, add the
-      `geom_point()` function to create the scatter plot, and then add the
-      `facet_grid()` function to create the facets.
-  - title: Reviewing ggplot2
-    text: >-
-      Which of the following is true about `ggplot2`?
-
-
-      A. `ggplot2` is a package that allows you to create basic plots like
-      scatter plots, line charts, bar charts, and histograms.
-
-      B. `ggplot2` is a powerful visualization library that allows you to create
-      a wide range of plots.
-
-      C. `ggplot2` is a layered approach to creating plots, allowing you to
-      build and modify plots incrementally.
-
-      D. All of the above.
-    solution: D
-    output: ''
-    hints:
-      - Read the lesson content again.
-    explanation: >-
-      `ggplot2` is a powerful visualization library that allows you to create a
-      wide range of plots, such as scatter plots, line charts, bar charts, and
-      histograms. It follows a layered approach to creating plots, allowing you
-      to build and modify plots incrementally.
+      In this exercise, histograms have been used to visualize the distribution
+      of mpg segmented by gearbox type. We controlled the binwidth and set the
+      fill color to green.

@@ -1,110 +1,52 @@
 # Introduction to R and RStudio
 
-Welcome to the first lesson of the "Introduction to R for Air Quality Data Science" course! In this lesson, we will get started with R and RStudio by learning how to run basic commands, assign variables, and work with data structures. By the end of this lesson, you will have a good understanding of R's core concepts such as variables, data types, vectors, lists, matrices, and data frames.
+Welcome to the first lesson of our R for Air Quality Data Science training course! In this lesson, we will introduce you to the R programming language and the RStudio integrated development environment. We will look at how to install these tools on your own computer and familiarize yourself with the environment where you will be doing most of your R programming. 
 
-## Installation and Setup
+By the end of this lesson, you will be able to:
+1. Install and setup R and RStudio.
+2. Understand core R concepts like variables, data types, vectors, lists, matrices, and data frames.
 
-Before we dive into the world of R, we need to install both R and RStudio on our machine. R is the programming language, and RStudio is the Integrated Development Environment (IDE) that makes writing and running R code easier.
+## Why Use R?
 
-To install R, go to the [R project website](https://www.r-project.org/) and follow the download instructions for your operating system. Once R is installed, you can proceed to install RStudio.
+R is a programming language specialized for statistical analysis and data visualization. It was originally developed in academia, but it has since become widely used in industry and government. One of the main advantages of R is its open-source nature, which means that you can use it for free and that it has a large community of developers who constantly improve it and add new functionality. R's rich ecosystem of add-on packages will allow us to carry out complex data analysis tasks with a few commands.
 
-To install RStudio, go to the [RStudio website](https://www.rstudio.com/products/rstudio/download/) and download the free version of RStudio Desktop. Choose the appropriate installer for your operating system and run it to install RStudio.
+## Comparing R to Python for Data Science
 
-Now that both R and RStudio are installed, we are ready to begin!
+Both R and Python are popular open-source languages for data science. While Python is a general-purpose language that can be used for many tasks beyond data analysis, R is a specialized language with a specific focus on statistics, data visualization, and data manipulation. This focus is particularly clear when looking at R's vast library of packages for statistical analysis. This does not mean that Python cannot do these tasks – it absolutely can, and very well – but R provides a more statistician-friendly environment. In this course, we will be diving deep into R's capabilities for air quality data analysis.
 
-## Getting Started with R
+## Installing R and RStudio
 
-### The R Console
+To get started with R, you will need to install two pieces of software: R itself and the RStudio integrated development environment (IDE). The R software is what actually interprets and runs your R code, while RStudio provides a user-friendly interface that makes interacting with R much easier.
 
-When you open RStudio, you will see a window with several panels. The left panel is the **Console**, where you can interact with R by typing commands and getting immediate results. The console is where we will write and execute R code throughout this course.
+### 1. Install R
 
-To run a command, simply type it in the console and press Enter. For example, if you type `1 + 2` and press Enter, R will evaluate the expression and return the result:
+R can be installed from the Comprehensive R Archive Network (CRAN). Go to the [CRAN download page](https://cran.r-project.org/mirrors.html) and select a mirror that is close to your geographical location. Then click on the version of R for your operating system (Windows, Mac, Linux), and follow the instructions on the site to download and install R.
 
-```R
-> 1 + 2
-[1] 3
-```
+### 2. Install RStudio
 
-### Variables and Assignment
+Next, install RStudio. First, go to the [RStudio download page](https://www.rstudio.com/products/rstudio/download/#download). Under "Installers for Supported Platforms", click on the installer for your operating system and follow the instructions to download and install RStudio. 
 
-In R, we use variables to store and manipulate data. A variable is a name that represents a value or an object in R. We can assign a value to a variable using the assignment operator (`<-` or `=`). Let's see some examples:
+Note: RStudio is not required for using R, but it makes it much easier to write and debug R code. 
 
-```R
-# Assigning a value to a variable
-x <- 10
-y <- 5
+## Tour of the RStudio Interface
 
-# Performing calculations and assigning the result to a variable
-sum <- x + y
-difference <- x - y
-product <- x * y
-quotient <- x / y
-```
+Once you have installed both R and RStudio, you can open RStudio to see the main interface, which is organized into four main “panes”:
 
-### Basic Data Types
+1. The R Console (`bottom left by default`): This is where R is waiting for you to tell it what to do, and where it will show the results of the commands you run.
+2. The Script pane (`top left by default`): This is where you can write longer pieces of code or create documents that mix text, code, and output.
+3. The Environment/History pane (`top right by default`): Here, you can see a record of the commands you’ve previously entered and output you’ve previously computed (the “History” tab), as well as all the things you’ve defined and stored to use later (the “Environment” tab).
+4. The Files/Plots/Packages/Help pane (`bottom right by default`): This pane has multiple uses, from browsing what files you’ve got in your current working directory (the “Files” tab), to seeing the plots you’ve made (the “Plots” tab), to getting some help on what different functions do (the “Help” tab). 
 
-R has several basic data types, including numeric, character, logical, and more. Here are some examples:
+You can customize the layout of RStudio and the behavior of RStudio to suit your preferences. One common recommendation is to set RStudio to point to your project directory when you open a new session. Use the "Global Options…" in the Tools menu, then select "R General". In the "Default working directory (when not in a project)" you can browse and select your project directory. Click "Apply" and restart RStudio to see the changes.
 
-```R
-# Numeric data type
-age <- 30
-height <- 175.5
+To run any R command, simply type it into the console pane and hit `Enter`. For example, after typing `2 + 2` and hitting `Enter`, the console will show the result `4`.
 
-# Character data type
-name <- "John Doe"
-city <- "Chicago"
+This rudimentary command introduces us to the idea of R as a large, powerful calculator, and throughout this course we will incrementally build on that knowledge to harness the powerful statistical and data processing capabilities of the R programming language.
 
-# Logical data type
-is_student <- TRUE
-has_car <- FALSE
-```
+## Wrapping up
+ 
+In this lesson, we introduced the R programming language for data analysis, the benefits of using a programming language such as R over traditional spreadsheet software, and a comparison of the relative strengths of R and Python for data science. We also covered installation of R and RStudio on personal computers and took a brief tour of the RStudio ecosystem.
 
-### Vectors
+----
 
-A vector is a collection of elements of the same data type. We can create a vector using the `c()` function. Here's an example:
-
-```R
-# Creating a numeric vector
-numbers <- c(1, 2, 3, 4, 5)
-
-# Creating a character vector
-fruits <- c("apple", "banana", "orange")
-```
-
-We can perform operations on vectors, such as addition, subtraction, and more. The operations will be applied element-wise. Here's an example:
-
-```R
-# Adding two numeric vectors
-v1 <- c(1, 2, 3)
-v2 <- c(4, 5, 6)
-result <- v1 + v2
-```
-
-### Lists, Matrices, and Data Frames
-
-In addition to vectors, R also provides other data structures like lists, matrices, and data frames.
-
-- Lists: A list is an ordered collection of elements of different data types. We can create a list using the `list()` function.
-- Matrices: A matrix is a two-dimensional data structure with rows and columns. We can create a matrix using the `matrix()` function.
-- Data Frames: A data frame is a two-dimensional data structure similar to a matrix, but each column can have a different data type. We often use data frames to store and manipulate tabular data. We can create a data frame using the `data.frame()` function.
-
-```R
-# Creating a list
-person <- list(name = "John Doe", age = 30, city = "Chicago")
-
-# Creating a matrix
-matrix1 <- matrix(1:6, nrow = 2, ncol = 3)
-
-# Creating a data frame
-data <- data.frame(name = c("John", "Jane", "David"), age = c(30, 25, 35))
-```
-
-## Summary
-
-In this lesson, we learned how to get started with R and RStudio. We covered the basics of R programming, including running commands in the R console, assigning variables, and working with data types such as numeric, character, and logical. We also explored vectors as a way to store collections of data, and introduced other data structures like lists, matrices, and data frames.
-
-Now that you have a good understanding of the fundamentals, you are ready to dive deeper into R programming with the next lesson: "Functions and Data Import." In that lesson, you will learn how to use functions in R and import data from common sources. See you there!
-
-## Up Next
-
-In the next lesson, "Functions and Data Import," we will explore how to use functions in R and import data from common sources like CSVs and Excel. You will learn about the core concepts of functions and how to use built-in R functions. We will also cover installing and loading R packages, and importing data into R. Get ready to unlock even more of R's power and flexibility in the next lesson!
+In our upcoming [lesson](2-Functions-and-Data-Import/readme.md), we will delve deeper into functions and data import mechanisms in R!

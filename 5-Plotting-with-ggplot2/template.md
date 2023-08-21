@@ -1,168 +1,92 @@
-# Lesson 5: Plotting with ggplot2
+# Plotting with ggplot2
 
-In this lesson, we will learn how to create publication-quality graphics in R using the `ggplot2` package. `ggplot2` is a powerful visualization library that allows us to create a wide range of plots, such as scatter plots, line charts, bar charts, and histograms. We will also explore how to customize the appearance of plots and generate multiple conditional plots using facets.
+In our [last lesson](../4-Writing-Functions-Conditionals-and-Loops), we finished automating our data processing tasks using functions, conditionals, and loops. Now we are ready to explore and understand our data better with visualizations. 
 
-At the end of this lesson, you will be able to:
+## Introduction to ggplot()
 
-- Make basic plots like scatter plots, line charts, bar charts, and histograms using `ggplot2`.
-- Customize the appearance of plots by modifying colors, labels, titles, legends, and other visual elements.
-- Use facets to generate multiple plots conditioned on variables.
+`ggplot2` is a powerful and flexible data visualization package in R. It uses a layered approach to plot building, which allows you to add, remove or change components in a straightforward, transparent manner. 
 
-## Introduction to ggplot2
+To use `ggplot2`, we typically follow a sequence of steps:
 
-`ggplot2` is a popular data visualization package in R created by Hadley Wickham. It follows a layered approach to creating plots, allowing you to build and modify plots incrementally. 
+1. Start with the `ggplot()` function where we specify the dataset and map variables to aesthetics (visual properties of objects in the plot like shapes or colors).
+2. Add `geoms` – geometric objects like points (`geom_point` for scatter plots), bars (`geom_bar` for bar plots), or lines (`geom_line` for line plots) that determine the type of the plot.
+3. Finally, customize and refine the plot with additional layers like labels, themes, facets etc.
 
-The basic syntax of a `ggplot2` plot consists of three main components:
+Let's begin by installing and loading the `ggplot2` package. If you haven't installed it before, uncomment and run the first line.
 
-- Data: The dataset that contains the variables you want to plot.
-- Aesthetics (aes): The mapping between variables in the dataset and visual properties of the plot, such as position, color, and size.
-- Geometries (geoms): The type of plot you want to create, such as points, lines, bars, or areas.
-
-Let's start by creating a simple scatter plot using the `ggplot2` syntax:
-
-```R
+```r
+# install.packages('ggplot2')
 library(ggplot2)
+```
 
+Now we are ready to use `ggplot2` to make some plots!
+
+## Scatter Plot
+
+For our first plot, let's create a scatter plot of ozone concentration (`ozone`) against temperature (`temp`) using the `chicago_air.csv` dataset. 
+
+```r
 # Load the dataset
-data <- read.csv("data/chicago_air.csv")
+air_quality <- read.csv('../data/chicago_air.csv')
 
 # Create a scatter plot
-ggplot(data, aes(x = temp, y = ozone)) +
+ggplot(air_quality, aes(x=temp, y=ozone)) +
   geom_point()
 ```
 
-In this example, we use the `ggplot()` function to specify the dataset `data` and the `aes()` function to map the variables `temp` and `ozone` to the x and y axes, respectively. The `geom_point()` function is used to add the points to the plot.
+In this example, we have used `geom_point()` to create a scatter plot. The first argument to `ggplot()` function is the dataset `air_quality`. The `aes()` function is used to map the `temp` to x-axis and `ozone` to y-axis.
 
-## Basic Visualization Types
+## Customizing the Scatter Plot
 
-`ggplot2` provides a wide range of geoms to create different types of plots. Let's explore a few examples:
+The plot above is pretty basic. Let's customize it by adding color, title and labels.
 
-### Scatter Plot
-
-To create a scatter plot, use the `geom_point()` function:
-
-```R
-ggplot(data, aes(x = temp, y = ozone)) +
-  geom_point()
+```r
+# Customized scatter plot
+ggplot(air_quality, aes(x=temp, y=ozone)) +
+  geom_point(colour='#3366FF') +
+  ggtitle('Relationship between Ozone and Temperature') +
+  xlab('Temperature (°F)') +
+  ylab('Ozone (ppm)')
 ```
 
-![scatter_plot](images/scatter_plot.png)
+Here we used `geom_point(colour='#3366FF')` to change the point color, `ggtitle()` to add a title to the plot and `xlab()` & `ylab()` to label the x and y axes respectively.
 
-### Line Chart
+## Histogram
 
-To create a line chart, use the `geom_line()` function:
+Next, let's create a histogram of `ozone` concentrations.
 
-```R
-ggplot(data, aes(x = date, y = ozone)) +
-  geom_line()
+```r
+# Histogram
+ggplot(air_quality, aes(x=ozone)) +
+  geom_histogram(binwidth=0.005, fill='#FF6633', color='black')
 ```
 
-![line_chart](images/line_chart.png)
+Histogram divides the continuous variable into bins (intervals) and count the number of observations in each bin. So unlike scatter plot, histogram only needs one variable (`ozone` in this case) which is passed to x. The `binwidth` argument controls the width of the bins and `fill` changes the color of the bars.
 
-### Bar Chart
+## Faceted Bar Plot
 
-To create a bar chart, use the `geom_bar()` function:
+Lastly, let's create a bar plot showing the average `ozone` concentration for each `month`, and facet it by `weekday`.
 
-```R
-ggplot(data, aes(x = month, fill = factor(month))) +
-  geom_bar()
+First, we need to calculate the average `ozone` concentration per `month` and `weekday`. We will use `aggregate()` function from base R for this purpose.
+
+```r
+# Calculate mean ozone concentration per month and weekday
+avg_ozone <- aggregate(ozone ~ month + weekday, data = air_quality, FUN = mean, na.rm = TRUE)
+
+# Create faceted bar plot
+ggplot(avg_ozone, aes(x=month, y=ozone, fill=weekday)) +
+  geom_bar(stat='identity') +
+  theme_minimal() +
+  facet_wrap(~weekday) +
+  labs(title='Average Ozone Concentration per Month, Faceted by Weekday',
+       x='Month',
+       y='Average Ozone Concentration (ppm)')
 ```
 
-![bar_chart](images/bar_chart.png)
-
-### Histogram
-
-To create a histogram, use the `geom_histogram()` function:
-
-```R
-ggplot(data, aes(x = ozone)) +
-  geom_histogram()
-```
-
-![histogram](images/histogram.png)
-
-## Customizing Plots
-
-`ggplot2` provides a wide range of options to customize the appearance of your plots. You can modify colors, labels, titles, legends, and other visual elements to make your plots more informative and visually appealing.
-
-### Themes
-
-You can apply different themes to your plots to change the overall appearance. `ggplot2` provides several built-in themes, such as `theme_bw()`, `theme_classic()`, and `theme_minimal()`. You can apply a theme by adding it to your plot using the `+` operator.
-
-```R
-ggplot(data, aes(x = temp, y = ozone)) +
-  geom_point() +
-  theme_bw()
-```
-
-### Axis Labels
-
-You can add labels to the x and y axes using the `xlab()` and `ylab()` functions.
-
-```R
-ggplot(data, aes(x = temp, y = ozone)) +
-  geom_point() +
-  xlab("Temperature") +
-  ylab("Ozone")
-```
-
-### Legends
-
-To add a legend to your plot, use the `labs()` function and specify the `fill` or `color` argument with the desired label.
-
-```R
-ggplot(data, aes(x = month, fill = factor(month))) +
-  geom_bar() +
-  labs(fill = "Month")
-```
-
-You can also modify the position, title, and appearance of the legend using the `theme()` function.
-
-### Titles
-
-To add a title to your plot, use the `ggtitle()` function.
-
-```R
-ggplot(data, aes(x = temp, y = ozone)) +
-  geom_point() +
-  ggtitle("Temperature vs. Ozone")
-```
-
-## Conditional Plots with Facets
-
-Facets allow you to generate multiple plots conditioned on variables in your dataset. This is useful when you want to compare subsets of your data or visualize relationships across different groups.
-
-To use facets, you can add the `facet_wrap()` or `facet_grid()` function to your plot.
-
-### `facet_wrap()`
-
-The `facet_wrap()` function creates multiple plots arranged in a "wrap" layout. It takes in a formula specifying the variables to be used for conditioning.
-
-```R
-ggplot(data, aes(x = temp, y = ozone)) +
-  geom_point() +
-  facet_wrap(~ month)
-```
-
-This will create a separate plot for each month of the year.
-
-### `facet_grid()`
-
-The `facet_grid()` function creates multiple plots arranged in a grid layout. It takes in two formulas specifying the variables to be used for conditioning on the rows and columns, respectively.
-
-```R
-ggplot(data, aes(x = temp, y = ozone)) +
-  geom_point() +
-  facet_grid(month ~ weekday)
-```
-
-This will create a grid of plots, with each row representing a month and each column representing a weekday.
-
-## Summary
-
-In this lesson, we learned how to create plots using the `ggplot2` package in R. We explored different types of plots such as scatter plots, line charts, bar charts, and histograms. We also learned how to customize the appearance of plots by modifying various visual elements. Finally, we learned how to use facets to generate multiple plots conditioned on variables. With these capabilities, we can create professional-quality graphics to visualize and communicate our data effectively.
+Here we are using `geom_bar(stat='identity')` to create a bar plot. The `facet_wrap()` function creates a series of plots for each level of `weekday` factor. The `theme_minimal()` gives a clean white background.
 
 ## Up Next
 
-In the next lesson, we will learn how to calculate common descriptive and inference statistics in R using base R functions. We will explore how to calculate summary statistics, generate confidence intervals, and perform statistical tests such as t-tests and ANOVA analysis. Get ready to dive into the world of statistics in R!
+In this lesson, we used `ggplot2` to create and customize a variety of graphics. We covered the basics of the `ggplot()` function structure, and we practiced creating scatter plots, histograms, and bar plots, and learned how to facet our plots.
 
+In our [next lesson](../6-Basic-Statistics-in-R), we will move into calculating common descriptive and inferential statistics such as mean, median, correlation, confidence intervals, t-tests, ANOVA, and linear models. We will use these statistical tools to continue exploring and gaining insights from our air quality datasets!

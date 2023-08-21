@@ -1,114 +1,83 @@
-# Lesson 8: Quality Assurance
+# Quality Assurance
 
-In this lesson, we will learn techniques for assessing and improving the quality of our data. Quality assurance (QA) is an essential part of the data analysis process as it helps us identify errors, outliers, and other anomalies that can affect the accuracy and reliability of our results. We will explore various methods for checking data quality, including visual inspections and automated checks using R.
+As we have discussed before, the real-world data is often messy and requires a lot of cleaning. In this lesson, we will focus on some important aspects of quality assurance in data science like checking for outliers and uncommon values. We'll also learn how we can improve the quality of our data and automate these quality assurance tasks.
 
-## Section 1: Understanding Data Distributions
+_After completing this lesson, you will be able to:_
 
-Before we dive into QA techniques, let's start by understanding the distribution of our data. We can use summary statistics and visualizations to gain insights into the central tendency, spread, and skewness of our variables.
+- Check for outliers and common data issues
+- Use visual tools to perform quality assurance
+- Write functions to automate these QA checks
 
-### Subsection 1: Summary Statistics
+## Checking Distributions
 
-Summary statistics provide a quick overview of our data, including the minimum, maximum, mean, median, and quartiles. We can use the `summary()` function in R to obtain these statistics.
+Before we perform any kind of analysis, it is important to understand the distributions of our data. **summary()** function is a quick way to get basic stats about your data like minimum, maximum, median, mean, 1st quartile and 3rd quartile.
 
 ```r
-# Summary statistics for a variable
-summary(data$variable)
+summary(chicago_air$pollution)
 ```
 
-### Subsection 2: Histograms
-
-Histograms visualize the distribution of a variable by displaying the frequency or count of values in each bin. We can use histograms to identify potential outliers, assess skewness, and evaluate data symmetry.
+We can also visualize the distribution with histograms.
 
 ```r
-# Histogram of a variable
-hist(data$variable)
+hist(chicago_air$pollution)
 ```
 
-> **Tip**: Make sure to adjust the number of bins in the histogram to achieve the desired level of granularity for your data.
+> _**Info:** Histograms divide the data into bins and represent data distribution by plotting the frequency of the bins. They provide a visual representation of data distribution._
 
-## Section 2: Visual Quality Assurance
+## Visual Data Inspection
 
-Visual inspection of the data can often reveal issues that summary statistics alone may not capture fully. In this section, we will explore different types of plots that can help us identify potential data quality issues.
+Scatter plots and density plots are other tools that can help us understand our data better.
 
-### Subsection 1: Scatterplots
-
-Scatterplots are useful for examining the relationship between two continuous variables. We can use scatterplots to identify outliers, assess linearity, and detect patterns or trends in our data.
+Scatter plots can give us some intuition into the relationship between two variables.
 
 ```r
-# Scatterplot of two variables
-plot(data$variable1, data$variable2)
+plot(chicago_air$pollution, chicago_air$temp)
 ```
 
-### Subsection 2: Density Plots
-
-Density plots, also known as kernel density plots, provide a smooth representation of the distribution of a variable. Density plots can help us identify multimodal distributions, peaks, and skewness.
+Then we can use density plots to visualize the distribution of a single variable. The y-axis is the density which depends on the count and becomes a probability when integrated over the range of x values.
 
 ```r
-# Density plot of a variable
-plot(density(data$variable))
+plot(density(chicago_air$pollution))
 ```
 
-> **Tip**: Adjust the bandwidth parameter to control the smoothness of the density plot.
+## Checking Data Properties: Outliers and Ranges
 
-## Section 3: Data Validation Checks
-
-In this section, we will explore various checks and validations that can help us identify and address common data quality issues.
-
-### Subsection 1: Range Checks
-
-Range checks verify that our data falls within the expected range for a particular variable. This is particularly important for variables with known physical limits or constraints. We can use conditional statements to flag values that fall outside the desired range.
+Checking if the values are within the expected range can help identify entry errors or other problems.
 
 ```r
-# Range check for a variable
-outlier <- data$variable < lower_limit | data$variable > upper_limit
+any(chicago_air$pollution < 0)
 ```
 
-### Subsection 2: Outlier Detection
-
-Outliers are observations that deviate significantly from the overall pattern of the data. They can occur due to measurement errors, data entry mistakes, or other reasons. We can use boxplots to visualize outliers and identify potential data quality issues.
+Identifying outliers with boxplots:
 
 ```r
-# Boxplot of a variable
-boxplot(data$variable)
+boxplot(chicago_air$pollution, main = "Boxplot of Air Pollution", ylab="Pollution")
 ```
 
-> **Tip**: Use appropriate thresholds or statistical tests to determine if a value is considered an outlier.
+> _**Info:** Boxplots provide a summary of the minimum, first quartile, median, third quartile, and maximum in a visual way. We can also identify outliers (if present) using whisker of the boxplot._
 
-## Section 4: Automating Quality Assurance
+## Automating Quality Assurance
 
-In this section, we will explore how we can automate quality assurance checks using R functions. Automating QA checks not only saves time but also ensures consistency across multiple datasets.
-
-### Subsection 1: Writing QA Functions
-
-We can write custom functions to perform quality assurance checks specific to our data and requirements. These functions can encapsulate validation logic and be reused across multiple datasets.
+Instead of manually checking every dataset, we can write functions to automate this.
 
 ```r
-# Custom QA function
-qa_check <- function(data) {
-  # Perform QA checks
-  # ...
-  
-  # Return QA results
-  return(qa_results)
+qa_check <- function(df, var){
+  print(summary(df[,var]))
+  plot(density(df[,var]))
+  print(any(df[,var] < 0))
+  boxplot(df[,var])
 }
+
+# Call the function on pollution data
+qa_check(chicago_air, "pollution")
 ```
 
-### Subsection 2: Looping Through Datasets
+By making a report that compiles all these checks for all variables, we can quickly identify any potential data issues.
 
-We can use loops to iterate through multiple datasets and apply the same QA checks to each one. This helps us maintain a consistent QA process and ensures that no datasets are overlooked.
+---
 
-```r
-# Loop through datasets
-for (i in 1:length(datasets)) {
-  qa_results <- qa_check(datasets[[i]])
-  # Save or display QA results
-}
-```
+Congratulations, you made it to the end of the Introduction to R for Air Quality Data Science course! In today's lesson, we've learned how to perform some basic quality assurance checks on our data to ensure that it's clean and ready to use. We've looked into histograms, density plots, scatter plots, and box plots. We also automated our QA tasks with functions. Your newfound knowledge on cleaning and preparing data will prove incredibly useful in your day-to-day data science tasks!
 
-> **Tip**: Use lists or data frames to store multiple datasets and access them in a loop.
+Happy Coding!
 
-## Up Next
-
-In the next lesson, we will learn about advanced techniques for data transformation and regression analysis in R. We will explore different ways to transform variables and build regression models to analyze relationships between variables. Get ready to take your data analysis skills to the next level!
-
-Continue to [Lesson 9: Data Transformation and Regression](./9-Data-Transformation-and-Regression/readme.md)
+_Up next, check out more advanced topics in R and environmental science with **[R for Environmental Data Analysis](../r-for-environmental-data-analysis/readme.md)**._

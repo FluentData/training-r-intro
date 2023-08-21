@@ -1,96 +1,133 @@
-exercises:
-  - title: Installing R and RStudio
-    text: Explain in your own words how to install R and RStudio on your machine.
+section_exercises:
+  - section_title: Why Use R?
+    text: >-
+      Describe three advantages of using the R programming language for data
+      analysis.
     solution: >-
-      To install R, go to the R project website and follow the download
-      instructions for your operating system. Once R is installed, proceed to
-      install RStudio by going to the RStudio website and downloading the free
-      version of RStudio Desktop. Choose the appropriate installer for your
-      operating system and run it to install RStudio.
-    output: >-
-      To install R, go to the [R project website](https://www.r-project.org/)
-      and follow the download instructions for your operating system. Once R is
-      installed, you can proceed to install RStudio. To install RStudio, go to
-      the [RStudio website](https://www.rstudio.com/products/rstudio/download/)
-      and download the free version of RStudio Desktop. Choose the appropriate
-      installer for your operating system and run it to install RStudio.
-  - title: Running Commands in the R Console
-    text: Write a command in the R console that adds 3 and 5.
-    solution: 3 + 5
-    output: '[1] 8'
-  - title: Assigning Variables
-    text: Create a variable called 'name' and assign it the value 'John'.
-    solution: name <- 'John'
-    output: ''
-  - title: Data Types
-    text: What data type is the variable 'height' if its value is 175.5?
-    solution: numeric
-    output: ''
-  - title: Vectors
-    text: Create a numeric vector with the values 1, 2, 3, 4, 5.
-    solution: numbers <- c(1, 2, 3, 4, 5)
-    output: ''
-  - title: Performing Operations on Vectors
+      1. Specialized language for statistical analysis.
+
+      2. Open-source nature allows for community input and continuous
+      improvement.
+
+      3. Rich ecosystem of add-on packages that simplify complex analyses.
+    output: Not applicable as this is a descriptive exercise.
+    hints:
+      - >-
+        Think about the areas where R shines: statistics, community support, and
+        available packages.
+    explanation: >-
+      R is a powerful tool for statistical analysis due to its specialized
+      features. It's open-source nature means it benefits from the insight and
+      improvements offered by a global community of developers. Furthermore, the
+      availability of numerous R packages augments its capabilities, offering
+      streamlined solutions for complex tasks.
+  - section_title: Comparing R to Python for Data Science
     text: >-
-      Create two numeric vectors: v1 with the values 1, 2, 3 and v2 with the
-      values 4, 5, 6. Add the two vectors together and assign the result to a
-      variable called 'result'.
+      List three reasons why someone might choose to use R over Python for data
+      analysis.
     solution: |-
-      v1 <- c(1, 2, 3)
-      v2 <- c(4, 5, 6)
-      result <- v1 + v2
-    output: ''
-  - title: Lists
-    text: >-
-      Create a list called 'person' with three elements: a character element
-      'name' with the value 'John Doe', a numeric element 'age' with the value
-      30, and a character element 'city' with the value 'Chicago'.
-    solution: person <- list(name = 'John Doe', age = 30, city = 'Chicago')
-    output: ''
-  - title: Matrices
-    text: >-
-      Create a matrix called 'matrix1' with the values 1, 2, 3, 4, 5, 6. The
-      matrix should have 2 rows and 3 columns.
-    solution: matrix1 <- matrix(1:6, nrow = 2, ncol = 3)
-    output: ''
-  - title: Data Frames
-    text: >-
-      Create a data frame called 'data' with two columns: 'name' with the values
-      'John', 'Jane', 'David' and 'age' with the values 30, 25, 35.
-    solution: data <- data.frame(name = c('John', 'Jane', 'David'), age = c(30, 25, 35))
-    output: ''
-  - title: Review Exercise 1
-    text: >-
-      Write a command in the R console that calculates the product of two
-      variables: x with the value 10 and y with the value 5.
-    solution: "x <- 10\ty <- 5\nproduct <- x * y"
-    output: ''
-  - title: Review Exercise 2
-    text: >-
-      Create a logical vector called 'is_student' with the values TRUE, FALSE,
-      TRUE.
-    solution: is_student <- c(TRUE, FALSE, TRUE)
-    output: ''
-  - title: Review Exercise 3
-    text: >-
-      Create a data frame called 'people' with three columns: 'name' with the
-      values 'John', 'Jane', 'David', 'age' with the values 30, 25, 35, and
-      'city' with the values 'Chicago', 'New York', 'Los Angeles.
+      1. R's specialization in statistics and data visualization.
+      2. R's extensive library of packages for statistical analysis.
+      3. R offers a more statistician-friendly environment.
+    output: Not applicable as this is a descriptive exercise.
+    hints:
+      - Consider the strengths of R mentioned in the section.
+    explanation: >-
+      While both R and Python are powerful tools for data science, R's specific
+      focus on statistical analysis and data visualization, its extensive
+      library of packages, and its inherently statistician-friendly environment
+      make it particularly appealing for projects heavily rooted in statistical
+      analysis.
+  - section_title: Installing R and RStudio
+    text: Explain the roles of R and RStudio in the data analysis process.
     solution: >-
-      people <- data.frame(name = c('John', 'Jane', 'David'), age = c(30, 25,
-      35), city = c('Chicago', 'New York', 'Los Angeles'))
-    output: ''
-  - title: Review Exercise 4
-    text: >-
-      Write a command in the R console that calculates the average of the values
-      in a numeric vector called 'grades' with the values 80, 90, 70.
-    solution: |-
-      grades <- c(80, 90, 70)
-      average <- mean(grades)
-    output: ''
-  - title: Review Exercise 5
-    text: >-
-      Create a matrix called 'matrix2' with the values 1, 2, 3, 4, 5, 6, 7, 8,
-      9, 10. The matrix should have 5 rows and 2 columns.
-    solution: matrix2 <- matrix(1:10, nrow = 5, ncol = 2)
-    output: ''
+      R is the software that interprets and runs your code, while RStudio is a
+      user-friendly interface that makes it easier to interact with R.
+    output: Not applicable as this is a descriptive exercise.
+    hints:
+      - >-
+        Think about the actual processing of the code and the environment in
+        which you write and debug that code.
+    explanation: >-
+      R and RStudio provide two crucial components of the data analysis setup. R
+      is the engine that runs your code, performing all of the operations and
+      computations. RStudio, on the other hand, is the interface in which you
+      write your code. It provides valuable features such as syntax
+      highlighting, debugging tools, and project management, which can
+      significantly enhance your coding experience and efficiency.
+  - section_title: Tour of the RStudio Interface
+    text: Identify three features of the RStudio interface and describe their uses.
+    solution: >-
+      1. R Console: R waits here for input and displays results.
+
+      2. Script Pane: This is where you can write long pieces of code or
+      documents.
+
+      3. Environment/History Pane: This shows a record of previous commands and
+      stored variables.
+    output: Not applicable as this is a descriptive exercise.
+    hints:
+      - Review the description of the four main panes in the RStudio interface.
+    explanation: >-
+      The RStudio interface is divided into four main parts, each with a
+      specific purpose. The R Console is the command line interface where you
+      can input commands and see the results. The Script Pane is akin to a text
+      editor where you can write scripts or documents that are longer and more
+      complex. Lastly, the Environment/History Pane allows you to see your
+      command history and currently stored variables, aiding in project
+      management and preventing repetition.
+lesson_exercises:
+  - text: >-
+      Provide a step-by-step guide for someone on how to install R and RStudio
+      on their computer.
+    solution: >-
+      1. Go to the CRAN download page and choose a mirror near your location.
+
+      2. Click on the version of R for your OS and follow the instructions to
+      download and install R.
+
+      3. Go to the RStudio download page and under 'Installers for Supported
+      Platforms', click on the installer for your OS and follow the instructions
+      to download and install RStudio.
+    output: Not applicable as this is a descriptive exercise.
+    hints:
+      - >-
+        Steps for installing R and RStudio are mentioned in the 'Installing R
+        and RStudio' section.
+    explanation: >-
+      Installing R and RStudio is a straightforward process. Visit the CRAN and
+      RStudio websites, select the appropriate versions of their software for
+      your OS, and follow the respective instructions provided. After a
+      successful installation, you should be able to launch RStudio and begin
+      your work in R.
+  - text: Write a short command in R to add two numbers.
+    solution: 2 + 3
+    output: '5'
+    hints:
+      - In R, you can simply use the '+' operator to add two numbers.
+    explanation: >-
+      Using the '+' operator in R allows you to add two numbers together. The
+      command '2 + 3' asks R to evaluate the sum of 2 and 3, which is 5.
+  - text: >-
+      Explain the main differences between Python and R as tools for data
+      analysis.
+    solution: >-
+      While both are powerful tools for data analysis, Python is a
+      general-purpose language suitable for a variety of tasks beyond just data
+      analysis. R, in contrast, is specifically tailored towards statistics,
+      data visualization, and data manipulation, offering a more
+      statistician-friendly environment. Additionally, R's extensive package
+      library, specifically for statistical analysis, is one of its core
+      strengths.
+    output: Not applicable as this is a descriptive exercise.
+    hints:
+      - >-
+        Review the 'Comparing R to Python for Data Science' section in the
+        material.
+    explanation: >-
+      Python and R are both used in data analysis but differ in their scope and
+      strengths. Python, being a general-purpose language, is ideal for various
+      tasks beyond data analysis. On the other hand, R was specifically designed
+      for statistics and data manipulation, and has a richer and more extensive
+      package ecosystem suitable for data analysis, making it somewhat easier
+      and more intuitive to use for statisticians and data scientists.

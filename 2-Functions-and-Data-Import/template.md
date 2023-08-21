@@ -1,140 +1,83 @@
-## Functions and Data Import
+# Functions and Data Import
 
-In this lesson, we will learn how to use functions in R and import data from common sources like CSVs and Excel.
+## Introduction
 
-### Objectives
+After learning about the basics of R and RStudio in the [previous lesson](./1-Introduction-to-R-and-RStudio/readme.tmd), it's time to explore some of the R's built-in functions and understand how to import data into R, specifically from CSVs and Excel files. These are fundamental skills any data scientist working in R will need.
 
-By the end of this lesson, you will be able to:
+## What are Functions in R?
 
-- Understand what functions are and how to use them
-- Use built-in R functions like mean(), paste(), seq()
-- Install and load R packages
-- Import CSV and Excel data into R
+In R, a function is a piece of code that is used to perform a specific task. You can think of it as a machine that takes in inputs (called arguments), does something with them, and then gives back some output. Functions can simplify your code by allowing you to re-use the same code without having to write it out every time.
 
-### Functions in R
+### R's Built-in Functions
 
-Functions in R are blocks of reusable code that perform a specific task. They take inputs (arguments) and produce outputs. R has many built-in functions that we can use, and we can also create our own functions.
+R comes with a wide range of built-in functions. Let's look at a few of them:
 
-To use a function, we need to know its name and any required arguments. Arguments are the values or variables that are passed into the function to perform its task. Functions can have zero or more arguments.
-
-Let's start by using some common built-in functions in R.
-
-#### mean()
-
-The `mean()` function calculates the average of a set of numbers. It takes a vector of numbers as its argument and returns the mean value. 
-
-Here's an example:
+**mean()** function to calculate the average of a vector:
 
 ```R
-# Calculate the mean of a vector
-numbers <- c(10, 20, 30, 40, 50)
-average <- mean(numbers)
-print(average)
+numbers <- c(5,10,15,20)
+mean(numbers)
 ```
 
-Output:
-```
-[1] 30
-```
-
-#### paste()
-
-The `paste()` function concatenates multiple strings together. It takes any number of arguments and returns a single string.
-
-Here's an example:
+**paste()** function to concatenate strings:
 
 ```R
-# Concatenate multiple strings
-name <- "John"
-age <- 25
-greeting <- paste("Hello,", name, ". You are", age, "years old.")
-print(greeting)
+paste("Hello,", "world!")
 ```
 
-Output:
-```
-[1] "Hello, John . You are 25 years old."
-```
-
-#### seq()
-
-The `seq()` function generates a sequence of numbers. It takes three arguments: the starting value, the ending value, and the step size. It returns a vector containing the generated sequence.
-
-Here's an example:
+**seq()** function to generate a sequence of numbers:
 
 ```R
-# Generate a sequence of numbers
-sequence <- seq(1, 10, 2)
-print(sequence)
+seq(from = 1, to = 10, by = 2)  # generates 1, 3, 5, 7, 9
 ```
 
-Output:
-```
-[1] 1 3 5 7 9
-```
+### Nesting Functions
 
-### Packages in R
-
-R packages are collections of functions, data, and documentation that extend the capabilities of base R. There are thousands of packages available for various purposes.
-
-To use a package, we first need to install it. We can use the `install.packages()` function to install packages from the Comprehensive R Archive Network (CRAN), which is the primary repository for R packages.
-
-Here's an example:
+You can place functions inside other functions, in which case the inner function(s) execute first. For example, you might want to calculate the average temperature for a particular month. To do this, you could first use the `subset()` function to extract the temperature data for that month, and then use the `mean()` function to calculate the average:
 
 ```R
-# Install the dplyr package
-install.packages("dplyr")
-```
+# make sure to load the dataset "chicago_air.csv" before using this code
+chicago_air <- read.csv("../data/chicago_aqs.csv")
 
-After installing a package, we need to load it into our R session using the `library()` function.
+mean(subset(chicago_air, month == 6)$temp)
+```
+## Importing Data
+
+R's true power comes from its ability to analyze data. But before we can analyze data, we need to import it into R. In this section, we'll look at how to import CSV and Excel files into R.
+
+### CSV
+
+A common data format is the comma-separated values (CSV) file, which can be read into R using the `read.csv()` function. The function needs to know the path of the CSV file you wish to load. 
 
 ```R
-# Load the dplyr package
-library(dplyr)
+# Here we assume that the chicago_air.csv file is located in a`data` folder at the same level as this folder.
+chicago_air <- read.csv("../data/chicago_air.csv")
 ```
 
-Now we can use the functions provided by the package.
 
-### Importing Data
+### Excel
 
-R can import data from various sources, including CSV files and Excel spreadsheets.
-
-#### CSV Files
-
-To import data from a CSV file, we can use the `read.csv()` function. It takes the file path as its argument and returns a data frame containing the data.
-
-Here's an example:
+For reading Excel files, we can use libraries like `readxl`.
 
 ```R
-# Import data from a CSV file
-data <- read.csv("path/to/file.csv")
+# Before we can use 'readxl', we need to install and load it using the install.packages and library commands
+# Uncomment the lines below to install and load the readxl library
+# install.packages("readxl")
+# library(readxl)
+
+# Then we can use the read_excel function from the readxl library to read the file.
+# chicago_air_excel <- read_excel("../data/chicago_air.xlsx")
 ```
 
-Make sure to replace `"path/to/file.csv"` with the actual file path of your CSV file.
+## Conclusion
 
-#### Excel Spreadsheets
+Congrats on getting through your first R functions and learning some basics about data import! These skills will be key foundations as we dive deeper into using R for air quality data science.
 
-To import data from an Excel spreadsheet, we need to first install and load the `readxl` package. This package provides the `read_excel()` function for importing data from Excel files.
+## Additional Resources
 
-Here's an example:
+1. [An Introduction to R Functions](https://bookdown.org/learnr/bookdown/more-on-functions.html)
+2. [Data Import in R](https://bookdown.org/learnr/bookdown/data-import.html)
 
-```R
-# Install and load the readxl package
-install.packages("readxl")
-library(readxl)
+## What's Next
 
-# Import data from an Excel file
-data <- read_excel("path/to/file.xlsx")
-```
-
-Make sure to replace `"path/to/file.xlsx"` with the actual file path of your Excel file.
-
-### Summary
-
-In this lesson, we learned about functions in R and how to use them. We explored some common built-in functions like `mean()`, `paste()`, and `seq()`. We also learned about packages in R, how to install and load them, and how to use functions provided by packages. Finally, we learned how to import data from CSV files using the `read.csv()` function and from Excel spreadsheets using the `read_excel()` function from the `readxl` package.
-
-Now that you have learned about functions and data import in R, you can apply this knowledge to perform a wide range of data analysis tasks. In the next lesson, we will explore subsetting, sorting, and combining data in R.
-
-### Up Next
-
-In the next lesson, we will learn about subsetting, sorting, and combining data in R. [Click here to go to Lesson 3 - Subsetting, Sorting, and Combining Data](./3-Subsetting-Sorting-and-Combining-Data/README.md).
+Now that we have some data in our R environment, we can learn how to select, order, and join this data in the [next lesson](./3-Subsetting-Sorting-and-Combining-Data/readme.tmd).

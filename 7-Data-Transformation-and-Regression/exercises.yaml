@@ -1,95 +1,158 @@
-exercises:
-  - title: Logarithmic Transformation
+section_exercises:
+  - section_title: Data Transformations
     text: >-
-      Perform a logarithmic transformation on the `ozone` variable from the
-      `chicago_air` dataset and assign the transformed variable to a new column
-      called `log_ozone`.
-    solution: chicago_air$log_ozone <- log(chicago_air$ozone)
+      Given the air quality data, perform a log, square root, and Box-Cox
+      transformation on the 'pm25' pollutant measurements. Save these
+      transformed datasets as new variables in the dataframe.
+    solution: |-
+      data$sqrt_pm25 <- sqrt(data$pm25) 
+       data$log_pm25 <- log(data$pm25) 
+       data$bc_pm25 <- boxcox(data$pm25 ~ 1, lambda = seq(-0.5, 0.5, by=0.1))
     output: >-
-      The `log_ozone` column should contain the logarithmic transformation of
-      the `ozone` variable.
+      The output will be the updated dataframe with added columns for the
+      transformed data.
     hints:
-      - Use the `log()` function in R to perform the logarithmic transformation.
-      - Assign the result to a new column in the `chicago_air` dataset.
+      - Remember to use the sqrt(), log() and boxcox() functions.
+      - Box-Cox transformation requires you to specify the 'lambda' parameter.
     explanation: >-
-      Performing a logarithmic transformation on a skewed variable can help
-      improve its distribution and relationship with other variables. In this
-      exercise, we used the `log()` function to apply the logarithmic
-      transformation to the `ozone` variable and stored the result in a new
-      column called `log_ozone`.
-  - title: Fit Simple Linear Regression Model
+      The solution applies the square root, log, and Box-Cox transformations
+      respectively on the 'pm25' measurements of the air quality data. The
+      transformed data are added as new columns in the dataframe.
+  - section_title: Regression Analysis
     text: >-
-      Fit a simple linear regression model using the `ozone` variable as the
-      dependent variable and the `temp` variable as the independent variable
-      from the `chicago_air` dataset.
-    solution: model <- lm(ozone ~ temp, data = chicago_air)
-    output: You should have a linear regression model object named `model`.
-    hints:
-      - Use the `lm()` function in R to fit the linear regression model.
-      - >-
-        Specify the formula `ozone ~ temp` to indicate the relationship to
-        model.
-      - Add the `data` argument and specify the `chicago_air` dataset.
-    explanation: >-
-      A linear regression model allows us to model the relationship between a
-      dependent variable and one or more independent variables. In this
-      exercise, we used the `lm()` function to fit a simple linear regression
-      model with the `ozone` variable as the dependent variable and the `temp`
-      variable as the independent variable from the `chicago_air` dataset.
-  - title: Handling Missing Data
-    text: >-
-      Identify and handle any missing data in the `ozone` and `temp` variables
-      from the `chicago_air` dataset.
-    solution: chicago_air <- na.omit(chicago_air)
+      Build a simple linear regression model using the 'temp' and the log
+      transformed 'ozone' values. What does the summary of this model tell you?
+    solution: |-
+      model <- lm(log_ozone ~ temp, data = data) 
+       summary(model)
     output: >-
-      Any missing data in the `ozone` and `temp` variables should be removed
-      from the `chicago_air` dataset.
+      The output will be the summary statistics of the regression model which
+      includes the coefficients, standard errors, t-values, p-values, and
+      R-squared.
     hints:
-      - >-
-        Use the `na.omit()` function in R to remove observations with missing
-        values.
-      - Apply the function to the `chicago_air` dataset.
+      - Use the lm() function to create a linear model.
+      - Use the summary() function to provide a summary of the regression model.
     explanation: >-
-      Missing data can affect the accuracy and validity of regression analysis.
-      In this exercise, we used the `na.omit()` function to remove any
-      observations with missing values in the `ozone` and `temp` variables from
-      the `chicago_air` dataset.
-  - title: Scatterplot
+      The solution fits a simple linear regression model using temperature as
+      the predictor and the log transformed ozone as the response. The summary
+      provides information about the model fit and the significance of the
+      predictors.
+  - section_title: Missing Data
     text: >-
-      Create a scatterplot of the `temp` variable against the `ozone` variable
-      from the `chicago_air` dataset.
+      How many missing values (NAs) are there in the 'ozone' variable and the
+      'pm25' variable. Remove these rows from the data set.
+    solution: |-
+      sum(is.na(data$ozone)) 
+       sum(is.na(data$pm25)) 
+       data <- na.omit(data)
+    output: >-
+      The output will be the number of missing values in 'ozone' and 'pm25'. The
+      dataframe will be updated to remove rows with missing values.
+    hints:
+      - Use the is.na() function to identify missing values.
+      - Use the sum() function to count the total number of NAs.
+      - Use the na.omit() function to remove rows with NA values.
+    explanation: >-
+      The solution first identifies and counts the number of missing values in
+      'ozone' and 'pm25'. Then it removes the rows with any NA values from the
+      dataframe.
+  - section_title: Outliers
+    text: >-
+      Identify potential outliers in the 'temp' variable using a boxplot.
+      Discuss how these can be handled.
     solution: >-
-      plot(chicago_air$temp, chicago_air$ozone, xlab = 'Temperature', ylab =
-      'Ozone', main = 'Scatterplot of Temperature vs Ozone')
+      boxplot(data$temp, main = "Boxplot of Temperature", ylab = "Temperature
+      (F)", col = "blue")
     output: >-
-      You should have a scatterplot showing the relationship between the `temp`
-      and `ozone` variables.
+      The output will be a boxplot showing potential outliers in the 'temp'
+      variable.
     hints:
-      - Use the `plot()` function in R to create a scatterplot.
+      - Use the boxplot() function to create a boxplot.
       - >-
-        Specify the `temp` variable as the x-axis and the `ozone` variable as
-        the y-axis.
-      - Add appropriate labels for the x-axis, y-axis, and the title.
+        Outliers are shown as individual points outside the whiskers in a
+        boxplot.
     explanation: >-
-      A scatterplot is a visual representation of the relationship between two
-      variables. In this exercise, we used the `plot()` function to create a
-      scatterplot of the `temp` variable against the `ozone` variable from the
-      `chicago_air` dataset.
-  - title: Handling Outliers
-    text: >-
-      Identify and handle any outliers in the scatterplot created in the
-      previous exercise.
-    solution: chicago_air <- chicago_air[chicago_air$ozone < 200, ]
+      The solution creates a boxplot of the 'temp' measurements to visually
+      identify potential outliers. Outliers can be handled by removal,
+      winsorizing, or using robust statistical methods.
+lesson_exercises:
+  - text: >-
+      Calculate the mean and median of the original 'ozone', and the square
+      root, log, and Box-Cox transformed 'ozone' values. How do these changes
+      with each transformation?
+    solution: |-
+      mean_ozone <- mean(data$ozone) 
+       median_ozone <- median(data$ozone) 
+       mean_sqrt_ozone <- mean(data$sqrt_ozone) 
+       median_sqrt_ozone <- median(data$sqrt_ozone) 
+       mean_log_ozone <- mean(data$log_ozone) 
+       median_log_ozone <- median(data$log_ozone) 
+       mean_bc_ozone <- mean(data$bc_ozone) 
+       median_bc_ozone <- median(data$bc_ozone)
+    output: The output will be mean and median of ozone and its transformed values.
+    hints:
+      - Use the mean() and median() functions to calculate respective values.
+      - >-
+        Note that after transformation, the mean and median values of the data
+        should become closer.
+    explanation: >-
+      The solution calculates the mean and median of both the original and
+      transformed 'ozone' data. Comparing these values gives you an insight how
+      transformation affects the distribution of the data.
+  - text: >-
+      Build a multiple linear regression model where the dependent variable is
+      the Box-Cox transformed value of 'ozone', and the independent variables
+      are 'temp' and 'pm25'. Summarize this model.
+    solution: |-
+      model <- lm(bc_ozone ~ temp + pm25, data = data) 
+       summary(model)
     output: >-
-      Any outliers in the scatterplot should be removed from the `chicago_air`
-      dataset.
+      The output will be the summary statistics of the multi-linear regression
+      model which includes the coefficients, standard errors, t-values,
+      p-values, and R-squared among others.
     hints:
+      - Use the lm() function to create a linear model.
       - >-
-        Inspect the scatterplot and identify any observations that deviate
-        significantly from the main distribution.
-      - Remove the identified outliers from the `chicago_air` dataset.
+        Use the + sign to include more than one predictor (independent variable)
+        in the model.
+      - Use the summary() function to summarize the model.
     explanation: >-
-      Outliers can have a substantial impact on regression models. In this
-      exercise, we removed any outliers in the scatterplot by removing
-      observations with `ozone` values greater than 200 from the `chicago_air`
-      dataset.
+      The solution fits a multiple linear regression model using temperature and
+      'pm25' as predictors and the Box-Cox transformed ozone as the response.
+      The summary provides information about the model fit and the significance
+      of the predictors.
+  - text: >-
+      Create a new variable 'bad_air_day' that is 'yes' if the ozone level is
+      greater than its median and 'no' otherwise. How many 'bad air days' are
+      there in the dataset?
+    solution: |-
+      data$bad_air_day <- ifelse(data$ozone > median(data$ozone), 'yes', 'no') 
+       table(data$bad_air_day)
+    output: >-
+      The output will be the counts of 'yes' and 'no' in the 'bad_air_day'
+      variable.
+    hints:
+      - Use the ifelse() function to create a new variable based on a condition.
+      - Use the table() function to count the number of 'bad air days'.
+    explanation: >-
+      The solution creates a new variable 'bad_air_day' which is 'yes' if the
+      ozone level is greater than its median and 'no' otherwise. Then it counts
+      the number of 'bad air days' using the table() function.
+  - text: >-
+      Remove the 'temp' variable from the dataset and then try to fit the same
+      linear model as before. What happened? Why?
+    solution: |-
+      data$temp <- NULL 
+       model <- lm(bc_ozone ~ temp + pm25, data = data)
+    output: >-
+      The output will be an error because the 'temp' variable does not exist in
+      the dataframe.
+    hints:
+      - Use the NULL assignment to remove a column from the dataframe.
+      - >-
+        The lm() function will return an error if one of the variables in the
+        formula is not found in the dataframe.
+    explanation: >-
+      The solution removed the 'temp' variable from the dataframe and then tries
+      to fit the regression model that includes 'temp' as a predictor. Since
+      'temp' no longer exists in the dataframe, an error is returned.

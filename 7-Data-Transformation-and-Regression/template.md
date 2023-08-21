@@ -1,104 +1,94 @@
 # Data Transformation and Regression
 
-In this lesson, we will learn about transforming variables and building regression models in R. Data transformation involves modifying variables to improve their distribution or relationship with other variables. Regression analysis, on the other hand, allows us to model the relationship between a dependent variable and one or more independent variables. These techniques are widely used in data science and can be applied to various domains, including air quality analysis.
+Welcome back! In the previous lesson, we delved into basic statistical analysis using R. We calculated descriptive statistics, conducted hypothesis tests, and even fit basic linear models. Now, using those foundational skills, we kick things up a notch. Get ready to dive into the heart of data preprocessing and regression modeling!
 
-## The Importance of Data Transformation
+## Data Transformations 
 
-Before diving into regression analysis, it is important to consider the characteristics of the variables you are working with. Sometimes, variables may have skewed distributions or relationships that are not linear. In these cases, transforming the variables can improve the accuracy and interpretability of the regression models.
+Data transformations are a ubiquitous method in statistical analysis including air quality data. They help to stabilize variance, make the data more closely align with the assumptions of the inferential model, and improve interpretability. 
 
-### Common Transformations
+### Log, Square root & Box-Cox
 
-#### Logarithmic Transformation
+For measurements that are skewed, we may apply transformations to reexpress our data for improved analysis. For instance, air pollutant data is often skewed right because it cannot go below zero, but there can be some very high values during pollution events.
 
-The logarithmic transformation is useful for variables that have a highly skewed distribution, where the majority of the data is concentrated towards one end of the range. Taking the logarithm of the variable can compress the range of values and make the distribution more symmetrical.
+Let's import our air quality data and try out some transformations.
+  
+```R
+# Import the data
+data <- read.csv("./data/chicago_air.csv")
 
-To perform a logarithmic transformation in R, you can use the `log()` function. For example, if `x` is the variable you want to transform, you can create a new variable `log_x` by applying the logarithmic transformation as follows:
+# Apply a square root transformation
+data$sqrt_ozone <- sqrt(data$ozone)
+
+# Apply a log transformation
+data$log_ozone <- log(data$ozone)
+
+# Use the boxcox() function to do a Box-Cox transformation
+library(MASS)  # boxcox() is in MASS package
+data$bc_ozone <- boxcox(data$ozone ~ 1, lambda = seq(-0.5, 0.5, by=0.1))
+``` 
+
+The log, square root and Box-Cox are common transformations when dealing with skewed data. Note that Box-Cox is a family of transformations and requires us to choose a 'lambda' parameter that determines the specific transformation to apply.
+
+## Regression Analysis 
+
+We've previously built a simple linear model. It's now time to take it up a notch and bring our new skills together. 
+
+### Simple Linear Regression Model 
+
+Just to refresh, here's how you would build a simple linear model of the relationship of temperature with the ozone.
 
 ```R
-log_x <- log(x)
-```
+# Fit the model
+model <- lm(ozone ~ temp, data = data)
 
-#### Square Root Transformation
-
-The square root transformation is another way to address skewed distributions by compressing the higher values and expanding the lower values. It can be useful when the variable has a non-linear relationship with the dependent variable.
-
-To perform a square root transformation in R, you can use the `sqrt()` function. For example, if `y` is the variable you want to transform, you can create a new variable `sqrt_y` by applying the square root transformation as follows:
-
-```R
-sqrt_y <- sqrt(y)
-```
-
-#### Box-Cox Transformation
-
-The Box-Cox transformation is a more flexible transformation that can handle a wider range of distribution shapes. It is defined by a power parameter lambda (λ) that determines the type of transformation applied. The `car` package in R provides a function called `boxCox()` that can automatically determine the optimal lambda value for a given variable.
-
-To perform a Box-Cox transformation in R, you can use the `boxCox()` function from the `car` package. Let's assume `z` is the variable you want to transform. Here's an example of how you can identify the optimal lambda value and apply the transformation:
-
-```R
-library(car)
-bc_result <- boxCox(z)
-opt_lambda <- bc_result$x[which.max(bc_result$y)]
-z_transformed <- ifelse(opt_lambda == 0, log(z), (z^opt_lambda - 1) / opt_lambda)
-```
-
-### Linear Regression
-
-Linear regression is a statistical technique used to model the linear relationship between a dependent variable and one or more independent variables. It assumes that the relationship between the variables can be represented by a straight line.
-
-#### Fitting a Simple Linear Regression Model
-
-To perform simple linear regression in R, you can use the `lm()` function. Let's assume we have a dependent variable `y` and an independent variable `x`. We can fit a simple linear regression model as follows:
-
-```R
-model <- lm(y ~ x)
-```
-
-The formula `y ~ x` specifies the relationship we want to model, where `y` is the dependent variable and `x` is the independent variable. The `lm()` function fits the linear regression model and returns an object that can be used to extract information about the model, such as the coefficients and statistical summaries.
-
-To view a summary of the linear regression model, you can use the `summary()` function:
-
-```R
+# Model summary
 summary(model)
 ```
 
-The summary output provides information about the coefficients, standard errors, t-values, p-values, and other statistical measures.
+This tells us if there's a statistically significant linear relationship between temperature and ground level ozone concentration. 
 
-#### Handling Missing Data
+### Confidence Intervals 
 
-Missing data is a common issue in real-world datasets. In R, missing values are represented by `NA`. When fitting a regression model, it's important to handle missing data appropriately. The `lm()` function in R automatically excludes observations with missing values from the analysis.
-
-However, it's essential to understand the reason for missingness and consider the impact on the analysis. For example, if missing values are related to the dependent variable or other predictors, excluding them from the analysis may introduce bias. In such cases, imputation techniques or other methods should be considered.
-
-#### Handling Outliers
-
-Outliers are extreme values that deviate significantly from the other observations. They can have a substantial impact on regression models, affecting the estimated coefficients and model performance. Identifying and handling outliers is crucial for accurate regression analysis.
-
-One way to identify outliers is by visually inspecting scatterplots and examining observations that are far away from the main distribution. In R, you can create scatterplots using the `plot()` function. Here's an example:
+While summarizing the model will give us coefficient estimates, we can also compute their confidence intervals using the `confint()` function.
 
 ```R
-plot(x, y)
+# Confidence intervals for model coefficients
+confint(model)
 ```
 
-To handle outliers, you can remove the extreme values or consider robust regression techniques that are less sensitive to outliers. Robust regression methods, such as robust regression or quantile regression, can be particularly useful when dealing with datasets that have a high degree of variability or contain influential outliers.
+## Missing Data 
 
-## Exercise
+Real-world air quality data often contains missing values, referred to as NAs in R. Before doing many operations in R, we usually need to handle these.
 
-Now it's time to practice what you've learned about data transformation and regression in R. Using the `chicago_air.csv` dataset, complete the following exercises:
+### Handling Missing Values 
 
-1. Load the `chicago_air.csv` dataset into R.
-2. Transform the `ozone` variable using a logarithmic transformation. Assign the transformed variable to a new column called `log_ozone`.
-3. Fit a simple linear regression model with `temp` as the independent variable and `ozone` as the dependent variable.
-4. Identify and handle any missing data in the `ozone` and `temp` variables.
-5. Create a scatterplot of `temp` against `ozone` to visually inspect the relationship between the variables.
-6. Identify any outliers in the scatterplot and decide how to handle them.
-7. OPTIONAL: Try applying other data transformation techniques (e.g., square root) and compare the regression results.
+```R
+# Total number of NAs in dataset
+sum(is.na(data$ozone))
 
-## Summary
+# Remove rows with NA values
+data <- na.omit(data)
 
-In this lesson, we explored the importance of data transformation and regression analysis in R. We learned about common transformation techniques such as logarithmic, square root, and Box-Cox transformations. We also discussed linear regression and how to fit a simple linear regression model using the `lm()` function in R. Additionally, we covered strategies for handling missing data and outliers, which are crucial for accurate regression analysis. Finally, we applied what we learned to a practical exercise using the `chicago_air.csv` dataset.
+# Check if NAs are removed
+sum(is.na(data$ozone))
+```
 
-Keep practicing these techniques as they will be valuable for analyzing air quality data and making informed decisions. In the next lesson, we will focus on quality assurance techniques to ensure the reliability and accuracy of our analysis.
+## Outliers 
 
-## Up Next
+Finally, let's discuss outliers in our data. Outliers can greatly affect our analysis, especially models because they can lead to erroneous conclusions. 
 
-In the next lesson, we will learn about quality assurance techniques for assessing and improving the quality of air quality data. We will cover methods for checking outliers and anomalies, assessing common data quality issues, performing visual quality assurance with plots, and automating quality assurance checks with functions. Get ready to enhance your data quality management skills! [Learn more about Quality Assurance](quality-assurance.md)
+### Identifying and Handling Outliers
+
+Let's use boxplots to identify potential outliers in our dataset. Boxplots represent the median (middle line), first and third quartiles (box), and the range (whiskers). Outliers are shown as individual points outside the whiskers.
+
+```R
+# Create a boxplot
+boxplot(data$ozone, main = "Boxplot of Ozone levels", ylab = "Ozone (ppm)", col = "blue")
+```
+If outliers are found, you could consider removing them, winsorizing the data (replacing outliers with less extreme values), or use robust statistical methods designed to be not too badly affected by outliers.
+
+## Wrapping up
+
+In this lesson, we dove deep into the world of data pre-processing before regression analysis, including important topics like data transformations, regression modeling, handling missing data and outliers. All of these make up key steps for accurately interpreting real-world air quality data. 
+
+**[Up Next](../8-quality-assurance/readme.tmd)**: As we near the end of this introductory R course, we will look at ensuring the quality of our data and output. Remember, there will always be garbage-in, garbage-out phenomenon in data science, to get quality output, you need to ensure the quality of the input. Head on over to the next lesson where we will learn techniques to assess and improve data quality!

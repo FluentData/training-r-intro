@@ -2,7 +2,7 @@
 
   Use short, simple sentences that are easy to understand and avoid complex grammatical structures. Maintain a conversational tone using contractions and everyday language while explaining technical terms when first introduced. Avoid unnecessary jargon and use plain language descriptions. Keep paragraphs focused on one main idea and break up long blocks of text. Use an active voice with "we" instead of passive voice and adopt a friendly, encouraging tone towards the reader. Follow a consistent structure in each lesson with learning objectives, overviews, examples, summaries and exercises. Leverage formatting tools like headers, lists, code blocks and links to enhance readability. Include images and tables to visually demonstrate concepts and break up lessons. Provide clear instructions when asking readers to complete coding exercises. Maintain a professional, educational tone even with a friendly style. Examples and exercises should be relevant to the target audience and use real-world data from the available datasets when possible.
 
-### Structure
+## Structure
   - After the H1 title, have a short paragraph reviewing the previous lesson and introducing the lesson topics
   - Use an H2 header for each major topic
   - For longer topics, break into H3 subheaders
@@ -12,7 +12,7 @@
 
 ---
 
-### Formatting
+## Formatting
   - Use consistent Markdown formatting
       - H1 and H2 headers
       - Inline code with backticks
@@ -28,7 +28,7 @@
 
 ---
 
-### Length and Scope
+## Length and Scope
 - Keep lessons to around 1,000 - 1,500 words each  
 - Each lesson covers one self-contained topic. Don't try to cram multiple big ideas into one lesson or conversely drag out one concept over multiple lessons.
 - Include 2 - 5 hands-on coding exercises at the end of each lesson. Don't have just 1 or 10+ exercises per lesson.
@@ -40,12 +40,16 @@
 
 ---
 
+## Lesson Template
+
 Use the following template for each lesson:
 
 ```markdown
 # Lesson Title
 
-Brief Introduction of lesson with review of last lesson (with inline link back to that lesson) and how they tie together (1 paragraph)
+## Introduction
+
+Brief introduction of lesson with review of last lesson (with inline link back to that lesson) and how they tie together (1 paragraph)
 
 ## Section Title (DO NOT NUMBER SECTIONS)
 
