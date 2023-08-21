@@ -165,5 +165,5 @@ In this lesson, we introduced the R programming language for data analysis, the 
 
 ----
 
-In our upcoming [lesson](2-Functions-and-Data-Import/readme.md), we will delve deeper into functions and data import mechanisms in R!
+In our upcoming [lesson](../2-Functions-and-Data-Import/readme.md), we will delve deeper into functions and data import mechanisms in R!
 
