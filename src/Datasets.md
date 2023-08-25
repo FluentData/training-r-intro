@@ -1,3 +1,7 @@
+---
+role: system
+---
+
 The following datasets are available to use in examples and exercises in the course:
 
 # chicago_air.csv

@@ -1,12 +1,16 @@
 ---
-title: "Introduction to R and RStudio"
-output: 
-  md_document
+title: "Lesson #1: Introduction to R and RStudio"
+author: "Your Name"
+date: "The Date"
+output: html_document
 ---
+
+# Introduction to R and RStudio
 
 Welcome to the first lesson of our R for Air Quality Data Science training course! In this lesson, we will introduce you to the R programming language and the RStudio integrated development environment. We will look at how to install these tools on your own computer and familiarize yourself with the environment where you will be doing most of your R programming. 
 
 By the end of this lesson, you will be able to:
+
 1. Install and setup R and RStudio.
 2. Understand core R concepts like variables, data types, vectors, lists, matrices, and data frames.
 
@@ -22,11 +26,11 @@ Both R and Python are popular open-source languages for data science. While Pyth
 
 To get started with R, you will need to install two pieces of software: R itself and the RStudio integrated development environment (IDE). The R software is what actually interprets and runs your R code, while RStudio provides a user-friendly interface that makes interacting with R much easier.
 
-### 1. Install R
+### Install R
 
 R can be installed from the Comprehensive R Archive Network (CRAN). Go to the [CRAN download page](https://cran.r-project.org/mirrors.html) and select a mirror that is close to your geographical location. Then click on the version of R for your operating system (Windows, Mac, Linux), and follow the instructions on the site to download and install R.
 
-### 2. Install RStudio
+### Install RStudio
 
 Next, install RStudio. First, go to the [RStudio download page](https://www.rstudio.com/products/rstudio/download/#download). Under "Installers for Supported Platforms", click on the installer for your operating system and follow the instructions to download and install RStudio. 
 
@@ -43,15 +47,12 @@ Once you have installed both R and RStudio, you can open RStudio to see the main
 
 You can customize the layout of RStudio and the behavior of RStudio to suit your preferences. One common recommendation is to set RStudio to point to your project directory when you open a new session. Use the "Global Options…" in the Tools menu, then select "R General". In the "Default working directory (when not in a project)" you can browse and select your project directory. Click "Apply" and restart RStudio to see the changes.
 
-```{r}
-# This is a simple calculation example executed in R
-2 + 2
-```
+To run any R command, simply type it into the console pane and hit `Enter`. For example, after typing `2 + 2` and hitting `Enter`, the console will show the result `4`.
 
 This rudimentary command introduces us to the idea of R as a large, powerful calculator, and throughout this course we will incrementally build on that knowledge to harness the powerful statistical and data processing capabilities of the R programming language.
 
 ## Wrapping up
- 
+
 In this lesson, we introduced the R programming language for data analysis, the benefits of using a programming language such as R over traditional spreadsheet software, and a comparison of the relative strengths of R and Python for data science. We also covered installation of R and RStudio on personal computers and took a brief tour of the RStudio ecosystem.
 
 ----

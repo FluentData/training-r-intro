@@ -1,3 +1,7 @@
+---
+role: system
+---
+
 The directory structure for the course is as follows:
 
 ```

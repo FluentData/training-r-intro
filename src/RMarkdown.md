@@ -1,3 +1,7 @@
+---
+role: system
+---
+
 Rmarkdown is a superset of markdown. It allows you to embed R code in your markdown document. 
 When you render the document, the R code is executed and the results are inserted into the final document. Below
 are some of the most common features of Rmarkdown that make it different from markdown.

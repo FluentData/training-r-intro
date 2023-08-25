@@ -1,6 +1,6 @@
 ---
 title: "Functions and Data Import"
-output: md_document
+output: github_document
 ---
 
 # Functions and Data Import
@@ -71,7 +71,7 @@ For reading Excel files, we can use libraries like `readxl`.
 # library(readxl)
 
 # Then we can use the read_excel function from the readxl library to read the file.
-# chicago_air_excel <- read_excel("../data/chicago_air.xlsx")
+#  chicago_air_excel <- read_excel("../data/chicago_air.xlsx")
 ```
 
 ## Conclusion
