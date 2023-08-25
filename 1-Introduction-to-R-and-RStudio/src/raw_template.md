@@ -1,52 +1,54 @@
 # Introduction to R and RStudio
 
-Welcome to the first lesson of our R for Air Quality Data Science training course! In this lesson, we will introduce you to the R programming language and the RStudio integrated development environment. We will look at how to install these tools on your own computer and familiarize yourself with the environment where you will be doing most of your R programming. 
+In the first lesson of this course, we'll explore the basics of R as a language and tool for data analysis. We will install R and RStudio on our computers and navigate the RStudio Integrated Development Environment (IDE). By the end of this lesson, we will have gained familiarity with some of the core R concepts like variables and data types.
 
-By the end of this lesson, you will be able to:
-1. Install and setup R and RStudio.
-2. Understand core R concepts like variables, data types, vectors, lists, matrices, and data frames.
+## What is R?
 
-## Why Use R?
+R is a free, open-source programming language built specifically for statistical computing and graphics. Developed by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand in the early 90s, R is now maintained by the R Development Core Team and a flourishing community of developers who contribute add-on packages that extend the capabilities of R.
 
-R is a programming language specialized for statistical analysis and data visualization. It was originally developed in academia, but it has since become widely used in industry and government. One of the main advantages of R is its open-source nature, which means that you can use it for free and that it has a large community of developers who constantly improve it and add new functionality. R's rich ecosystem of add-on packages will allow us to carry out complex data analysis tasks with a few commands.
+> **Advantages of R**
+> 
+> - While spreadsheets are great for storing data and basic analysis tasks, R lends itself well to more complex data manipulation, statistical analysis, and graphics.
+> - Due to its open-source nature, anyone can contribute to it, resulting in a rich ecosystem of libraries and packages addressing a wide variety of computational needs.
+> - Scripting functionality in R promotes reproducibility of research.
 
-## Comparing R to Python for Data Science
+## R vs Python for Data Science
 
-Both R and Python are popular open-source languages for data science. While Python is a general-purpose language that can be used for many tasks beyond data analysis, R is a specialized language with a specific focus on statistics, data visualization, and data manipulation. This focus is particularly clear when looking at R's vast library of packages for statistical analysis. This does not mean that Python cannot do these tasks – it absolutely can, and very well – but R provides a more statistician-friendly environment. In this course, we will be diving deep into R's capabilities for air quality data analysis.
+Both R and Python are popular languages for data science, each with its own strengths. While R has a steep learning curve, it excels at statistical operations and creating highly customizable and comprehensive visualizations. Python, on the other hand, is a more general-purpose programming language that is also used for data science through packages like NumPy and pandas.
+
+> **R vs Python**
+>
+>Get your feet wet by starting with R. As you hone your skills, consider learning Python too! Data scientists proficient in both languages are in high demand. 
 
 ## Installing R and RStudio
 
-To get started with R, you will need to install two pieces of software: R itself and the RStudio integrated development environment (IDE). The R software is what actually interprets and runs your R code, while RStudio provides a user-friendly interface that makes interacting with R much easier.
+To get started, we'll need to install both R and RStudio on our computers. Here's how:
 
-### 1. Install R
+1. Download and install R from the Comprehensive R Archive Network (CRAN).
+2. Download and install RStudio which is an Integrated Development Environment (IDE) that makes using R much easier.
 
-R can be installed from the Comprehensive R Archive Network (CRAN). Go to the [CRAN download page](https://cran.r-project.org/mirrors.html) and select a mirror that is close to your geographical location. Then click on the version of R for your operating system (Windows, Mac, Linux), and follow the instructions on the site to download and install R.
-
-### 2. Install RStudio
-
-Next, install RStudio. First, go to the [RStudio download page](https://www.rstudio.com/products/rstudio/download/#download). Under "Installers for Supported Platforms", click on the installer for your operating system and follow the instructions to download and install RStudio. 
-
-Note: RStudio is not required for using R, but it makes it much easier to write and debug R code. 
+After you've installed R and RStudio, go ahead and open up RStudio!
 
 ## Tour of the RStudio Interface
 
-Once you have installed both R and RStudio, you can open RStudio to see the main interface, which is organized into four main “panes”:
+RStudio consists of multiple panes to help with different aspects of your work. You may customize the layout of these panes to fit your workflow. The default layout consists of:
 
-1. The R Console (`bottom left by default`): This is where R is waiting for you to tell it what to do, and where it will show the results of the commands you run.
-2. The Script pane (`top left by default`): This is where you can write longer pieces of code or create documents that mix text, code, and output.
-3. The Environment/History pane (`top right by default`): Here, you can see a record of the commands you’ve previously entered and output you’ve previously computed (the “History” tab), as well as all the things you’ve defined and stored to use later (the “Environment” tab).
-4. The Files/Plots/Packages/Help pane (`bottom right by default`): This pane has multiple uses, from browsing what files you’ve got in your current working directory (the “Files” tab), to seeing the plots you’ve made (the “Plots” tab), to getting some help on what different functions do (the “Help” tab). 
+1. **Script**: This is where you'll be writing your scripts. You should see a blank script with an R logo.
+2. **Console**: Similar to a terminal, it's where R runs your script code. You should see `>` (the R prompt).
+3. **Environment/History** (tabbed): Displays objects that you’ve defined in your R session and records your R command history.
+4. **Files/Plots/Packages/Help** (tabbed): Lets you navigate your file system, displays plots made in R, lists installed R packages, and displays the R help documentation system.
 
-You can customize the layout of RStudio and the behavior of RStudio to suit your preferences. One common recommendation is to set RStudio to point to your project directory when you open a new session. Use the "Global Options…" in the Tools menu, then select "R General". In the "Default working directory (when not in a project)" you can browse and select your project directory. Click "Apply" and restart RStudio to see the changes.
+Notably, you can set the working directory according to your projects, which helps RStudio keep things organized.
 
-To run any R command, simply type it into the console pane and hit `Enter`. For example, after typing `2 + 2` and hitting `Enter`, the console will show the result `4`.
+Good job on completing this first lesson! You are now familiar with R, have installed it along with its amazing companion RStudio, and explored its interface. Next up, we'll dive into some more R essentials such as functions and data import.
 
-This rudimentary command introduces us to the idea of R as a large, powerful calculator, and throughout this course we will incrementally build on that knowledge to harness the powerful statistical and data processing capabilities of the R programming language.
+## Additional Resources
 
-## Wrapping up
- 
-In this lesson, we introduced the R programming language for data analysis, the benefits of using a programming language such as R over traditional spreadsheet software, and a comparison of the relative strengths of R and Python for data science. We also covered installation of R and RStudio on personal computers and took a brief tour of the RStudio ecosystem.
+For supplemental reading, check out these resources:
 
-----
+1. [R for Data Science](https://r4ds.had.co.nz/) - an online book by Hadley Wickham and Garrett Grolemund.
+2. [Official Introduction to R](https://cran.r-project.org/doc/manuals/R-intro.html) - a comprehensive introduction to R from CRAN.
 
-In our upcoming [lesson](2-Functions-and-Data-Import/readme.md), we will delve deeper into functions and data import mechanisms in R!
+## Up Next
+
+In the [next lesson](http://github.com/user/repo/blob/branch/lesson-link.md), we will dive deeper into understanding *Functions* and *Data Import* in R. With real-world datasets, you'll experience firsthand how powerful R is for managing and manipulating data. We'll see you there! Knowledge is power - let's keep going!

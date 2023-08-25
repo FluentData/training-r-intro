@@ -25,6 +25,9 @@ Example of appropriate feedback, tone, and format:
 
 * The lesson is missing a section on using the `read.table()` function
 
+## General Feedback
+
+* Always show the most common options for each function first
 
 ## Lesson Sections
 
@@ -40,3 +43,5 @@ Example of appropriate feedback, tone, and format:
     * Include more examples of how to make sure that the data is imported with the correct type.
 
 ```
+
+Notice that the example only lists those things that need to be changed in the lesson and each bullet point is a self-contained critique or update.
