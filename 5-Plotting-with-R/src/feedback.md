@@ -8,6 +8,9 @@
 
 * Always begin with a simple example and the build on it by adding more customization as the section progresses.
 * Assume that the learner has no prior R knowledge and explain every step in detail. It is always better to say too much than not enough.
+* Use a common dataset for all examples. This will allow the learner to see how the different types of graphs can be used to visualize the same data.
+* Start each plot with the simplest example possible and then build on it by adding more customization over the course of 3-5 examples.
+* This should be a final draft, there should be no placeholders or TODOs in the lesson.
 
 ## Lesson Sections
 
@@ -17,7 +20,7 @@
 * Base R Plots
     * This section could use more types of base R plots. Bar plots and density plots could be useful additions. 
     * Give a brief explanation of what each plot type is and when to use it before diving into code examples.
-    * Give a list of common arguements and what they do after each plot example.
+    * Give a list of common arguements and what they do for each plot function.
 
 * Introduction to ggplot2
     * state some of the benefits of using ggplot2 over base R graphs

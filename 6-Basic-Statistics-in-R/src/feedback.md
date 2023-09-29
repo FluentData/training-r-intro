@@ -29,6 +29,7 @@ Under each topic:
 * Try to avoid using technical terms like "population means" without first explaining the context. Remember, you are dealing with people who understand the environment, not necessarily statistics, so taking the time to explain these terms will go a long way in helping them understand the content of the lessons.
 
 ## Lesson Content
-* At the end of the lesson, a recap or summary of the key points would be beneficial for the learners to solidify the concepts they've learned.
-* Practical exercises relating to each individual topic would be beneficial in aiding understanding of each concept.
+
 * Considering the specific audience, the lesson could do with some context about when these statistical concepts might be utilized in the real world of environmental regulation and policy.
+* In general, this lesson should be fleshed out more and more examples should be included to help the reader understand the concepts.
+* The lesson should include more information about the statistical concepts and how they are used in the real world. The lesson should also include more examples and those examples should be iterative. The lesson should start with a simple example and then build on that example to show how to make it more complex.
